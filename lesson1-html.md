@@ -4,25 +4,12 @@ title: HTML
 subtitle: Making things appear in your browser
 minutes: 20
 ---
-> ## Prerequisites {.prereq}
->
-> * Github account
-> * Participation in at least one SWC workshop
-> * Familiarity with your favourite text editor (Sublime 2 is a good option)
 
 > ## Learning Objectives {.objectives}
 >
 > * Create a first page that opens in a browser
 > * Understand the structure of an html document
 > * Understand different environments within an html document
-
-Open science should be visible science. And what better
-way to make your research visible and accessible than putting it on the 
-internet. But no one wants to read endless tables of data. We’d rather
-look at graphs, even better, interactive graphs.
-And we have probably all created some graphs. But in order to make them 
-accessible by many people, we will have to move away from our specialised
-software to something everyone can interact with. 
 
 A way of writing that is understood by all web browsers is html: 
 hypertext markup language. Since we don’t have the ability to do 
