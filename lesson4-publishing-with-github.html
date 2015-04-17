@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Publishing using Github</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">Publishing using Github</h1>
+          <h2 class="subtitle">Show us your art!</h2>
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Hosting your webpage on Github</li>
+</ul>
+</div>
+</div>
+<p>The next thing we want to do is show the world what we made! There are different ways to go about this. Arguably one of the easiest ones is provided by <a href="https://github.com">Github</a>.</p>
+<p>You should all have signed up for a Github account. If you haven't, now is the time!</p>
+<p>As you might remember, Github is a version control software that is used to track changes in text documents. This alone makes it perfect for hosting our code and enables us to travel back in time and undo errors that we might introduce.</p>
+<p>On Github you can create so-called repositories in your folders. This folder is then tracked and github tells you immediately if and what has changed in the files that are contained in the repository. You can then 'commit' to a change you made and synchronize your local folder with the one that is hosted on github.</p>
+<p>But what's even better is that Github gives us the possibility to turn every repository into a website.</p>
+<p>First, let's create our new repository:</p>
+<ul>
+<li>Click on your face (upper right corner)</li>
+<li>Go to the 'repository' tab</li>
+<li>Click 'add a new repository'</li>
+<li>Name it 'myartwork', and click 'Create repository'</li>
+</ul>
+<p>Don't worry about the other options for now.</p>
+<ul>
+<li>Click &quot;Set up in Desktop&quot;.</li>
+</ul>
+<p>Your computer should now be cloning the (still empty) reposotory to the location of your choice. Copy the file that contains yoru artwork into this folder and call it 'index.html'. The reason for this is that 'index.html' is the default location a browser accesses.</p>
+<p>Save the file, commit to the change using your Github program, and push the changes to your reposotory (&quot;Publish&quot; button in the gui).</p>
+<p>Right now, our code is on teh web, but we haven't told the browser to interpret it yet. To do this, we create a branch called 'gh-pages'.</p>
+<ul>
+<li>To create the brance, navigate to your reposotory and click on where it says &quot;branch:master&quot; first. You will find your webpage at www.username.github.io/reposotoryname. From now on, remember to only commit to your gh-pages branch. Otherwise changes will not show up.</li>
+</ul>
+<div id="show-us-your-art-work" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Show us your art work!</h2>
+</div>
+<div class="panel-body">
+<p>Publish your art work and send us a link. It should be www.username.github.io/myartwork/index.html</p>
+</div>
+</div>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

@@ -27,7 +27,7 @@ Along the way, we will learn:
 
 > ## Prerequisites {.prereq}
 >
-> * Github account
+> * Github account and Github client for your operating system (Windows, Linux, iOS)
 > * Participation in at least one SWC workshop
 > * Familiarity with your favorite text editor (Sublime 2 is a good option)
 
