@@ -8,7 +8,7 @@ minutes: 20
 >
 > * Github account
 > * Participation in at least one SWC workshop
-> * Using you favourite text editor (Sublime 2)
+> * Familiarity with your favourite text editor (Sublime 2 is a good option)
 
 > ## Learning Objectives {.objectives}
 >
@@ -31,6 +31,7 @@ not a programming language.
 
 Let’s see how we can get our browser to greet the world. 
 We need to:
+
 * Create a local folder 'my_first_webpage'
 * In the folder, create the file 'index.html'
 * Open the file with a text editor
