@@ -37,5 +37,5 @@ Along the way, we will learn:
 1.  [HTML](lesson1-html.html)
 2.  [CSS](lesson2-css.html)
 3.  [Images and SVG](lesson3-images-and-svg.html) 
-4. 	[Publishing with Github](lesson4-publishing.html)
+4. 	[Publishing with Github](lesson4-publishing-with-github.html)
 
