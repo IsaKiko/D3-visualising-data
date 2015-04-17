@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Images and SVG</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">Images and SVG</h1>
+          <h2 class="subtitle">Adding graphical components</h2>
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Integrating images into your page</li>
+<li>Understanding Scalable Vector Graphics (SVGs)</li>
+<li>Integrating multiple SVGs into your page</li>
+</ul>
+</div>
+</div>
+<p>Websites that only consist of text can be quite boring. So let's have a look at how we can integrate an image.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&#39;image&#39;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;img/cat.jpg&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;/div&gt;</span></code></pre>
+<p><img src="img/cat.jpg" style="height:350px"></p>
+<p>And by adding a class called 'image' to our css file, we can define the size and position of the image we load and apply the style to other images we might want to load.</p>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.image</span> <span class="kw">{</span>
+<span class="kw">width:</span> <span class="dt">100px</span><span class="kw">;</span>
+<span class="kw">position:</span> <span class="dt">relative</span><span class="kw">;</span>
+<span class="kw">left:</span> <span class="dt">20px</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+<p>The end goal for us is to create a graph, so it will be made up of graphical objects like lines, circles, and squares, not photos of cats. We could just find an image of a circle and integrate this wherever we want it to represent data, scale it, position it on the page etc. But that might not be the best way. Each image has to be downloaded, taking up space and data rate. This makes the page you create very inaccessible.</p>
+<p>A better way to include graphical elements that aren't photos, is the use of Scalable Vector Graphics (SVGs).</p>
+<p>An svg is just another environment in the html file, used in the same way as division.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;svg</span><span class="ot"> class=</span><span class="st">&quot;chart&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;circle</span><span class="ot"> cx=</span><span class="st">&quot;25&quot;</span><span class="ot"> cy=</span><span class="st">&quot;25&quot;</span><span class="ot"> r=</span><span class="st">&quot;15&quot;</span><span class="ot"> class=</span><span class="st">&quot;circ1&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;/cirlce&gt;</span>
+<span class="kw">&lt;/svg&gt;</span></code></pre>
+<p>Here, we've creates an svg canvas, using the styles of the class 'chart'. Within this envrironment, we're created a circle, using the styles of the class 'circ1'. Both of these classes need to also be defined in our css file:</p>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.chart</span> <span class="kw">{</span>
+<span class="kw">width:</span> <span class="dt">100px</span><span class="kw">;</span>
+<span class="kw">height:</span> <span class="dt">100px</span><span class="kw">;</span>
+<span class="kw">}</span>
+
+<span class="fl">.circ1</span> <span class="kw">{</span>
+<span class="kw">stroke:</span> <span class="dt">green</span><span class="kw">;</span> 
+<span class="kw">fill:</span> <span class="dt">white</span><span class="kw">;</span>
+<span class="kw">stroke-width:</span> <span class="dt">5</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+<p>The environment for circle is already defined. 'cx', 'cy', and 'r' are attributes that are special to the circle environment. 'cx' and 'cy' define the x and y coordinates of the center of the circle, 'r' is the radius of the circle.</p>
+<div id="question" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Question</h2>
+</div>
+<div class="panel-body">
+<p>What happens if 'cx' and 'cy' aren't set?</p>
+</div>
+</div>
+<p>But what if we don't only use circles, but instead use other shapes? On the internet we can find tons of examples. A good resource to find simple examples for shapes that are commonly used in the svg environment is <a href="http://www.w3schools.com/svg/default.asp">w3school</a>.</p>
+<div id="make-art" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Make art!</h2>
+</div>
+<div class="panel-body">
+<p>Make some art, using at least one circle, one rectangle, and one polygon If you don't know what to do, draw a robot!</p>
+</div>
+</div>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>
