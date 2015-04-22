@@ -6,14 +6,16 @@ title: Visualizing your data on the web using D3
 Open science should be visible science. And what better
 way to make your research visible and accessible than putting it on the 
 internet. But no one wants to read endless tables of data. We’d rather
-look at graphs, even better, interactive graphs.
+look at graphs, or, even better, have the possibility of interact with the data.
 And we have probably all created some graphs. But in order to make them 
 accessible by many people, we will have to move away from our specialized
-software to something everyone can interact with. 
+software to some a more universal platform - the internet. 
 
 We want to:
 
 * Display our data on a website to increase visibility and accessibility of our research.
+
+Our goal is to create a so-called bubble plot and publish it on the internet.
 
 Along the way, we will learn:
 
@@ -34,8 +36,9 @@ Along the way, we will learn:
 
 ## Topics
 
-1.  [HTML](lesson1-html.html)
-2.  [CSS](lesson2-css.html)
-3.  [Images and SVG](lesson3-images-and-svg.html) 
-4. 	[Publishing with Github](lesson4-publishing-with-github.html)
+1.  [HTML](01-html.html)
+2.  [CSS](02-css.html)
+3.  [Images and SVG](03-images-and-svg.html) 
+4. 	[Publishing with Github](04-publishing-with-github.html)
+5. 	[Javascript](05-javascript.html)
 

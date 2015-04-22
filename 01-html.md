@@ -52,7 +52,7 @@ Since our browser understands this language, we can instantly
 open our local index.html file and the browser will interpret our
 code as visual components. 
 
-Html has more predefined environments that will vary in size and style. 
+Html has more predefined elements that will vary in size and style. 
 To divide the page into different section, we can create a division 
 using &lt;div&gt; to open &lt;/div&gt; to close it. 
 
@@ -69,13 +69,7 @@ using &lt;div&gt; to open &lt;/div&gt; to close it.
 </body> 
 ~~~
 
-<!-- > ## Other environments {.callout}
->
-> <div> is not the only useful environment. There are environments that are 
-
-and one or more of these: -->
-
-> ## Other environments {.challenge}
+> ## Other elements {.challenge}
 >
 > Create a folder that contains the file index.html. (or download it..)
 > What seems to be the difference between &lt;div&gt;, &lt;h1&gt;, and &lt;em&gt;?

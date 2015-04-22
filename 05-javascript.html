@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Javascript</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">Javascript</h1>
+          <h2 class="subtitle">Feeding a cat</h2>
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Linking to a javascript file</li>
+<li>Passing html element tags to javascript</li>
+<li>Manipulating html elements using javascript</li>
+</ul>
+</div>
+</div>
+<p>We've learned how to integrate text and graphical objects into our page and we also know how to publish it. So far, we might as well just create a plot elsewhere and publish it as an image. But wouldn't it be much better, if the user could interact with the data? Do do that, we need to learn a little scripting, and, again, html provides a scripting environment. Everything between &lt;script&gt; and &lt;/script&gt; within the body environment will be interpreted as javascript code. Just like we did with styles, we can outsource our code into a separate file with the extension <code>.js</code>.</p>
+<p>So, let's go back to using the cat image for now. We want the cat to acknoweledge that we click on it.</p>
+<p>First we need to create our <code>interaction.js</code> file and link to it in the html body.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src</span> <span class="ot">=</span> <span class="st">&quot;interaction.js&quot;</span> <span class="kw">&gt;&lt;/script&gt;</span></code></pre>
+<p>We need to introduce the script to the html element, using these basic steps:</p>
+<ul>
+<li>Set up a link between html and the script by giving the html-element we want to interact with a unique ID.</li>
+<li>Retrieving the element and assigning it to a variable in the script that we can work with.</li>
+<li>Detect the action we are interested in, i.e. button click using an event listener.</li>
+<li>Do things.</li>
+</ul>
+<p>The ID is an attribute we can set for the image:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&#39;image&#39;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;img</span><span class="ot"> id=</span><span class="st">&quot;cat&quot;</span><span class="ot"> src=</span><span class="st">&quot;img/cat.jpg&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;/div&gt;</span></code></pre>
+<p>Using <code>getElementByID</code>, we can grab the element from the document (a magical object representing the entire page) and work with it in the javascript file.</p>
+<pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);</code></pre>
+<p>Now we want to detect if someone clicks on the cat image. Event listeners help us by constantly checking if someone performs a certain action. The second argument determines what we want to happen. In our case, we want to execute a function called <code>meow</code>, that we haven't written yet.</p>
+<pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);
+cat_image.addEventListener(&quot;click&quot;, meow);</code></pre>
+<p>The last step is to write the meow function. We want a pop-up window. The javascript function alert() will give us one.</p>
+<pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);
+cat_image.addEventListener(&quot;click&quot;, meow);
+function meow() {
+    alert(&quot;Meow!&quot;);
+};</code></pre>
+<div id="feed-your-pet-cat" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Feed your pet cat</h2>
+</div>
+<div class="panel-body">
+<p>Create a button using the &lt;button&gt; element to feed the cat. Use the alert() function to have the cat thank you.</p>
+</div>
+</div>
+<p>The next step to having a fully interactive page is to change html elements using javascript.</p>
+<p>We've created a button in the html file</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;button</span><span class="ot"> id=</span><span class="st">&#39;feed_button&#39;</span><span class="kw">&gt;</span> 
+    FOOD!
+<span class="kw">&lt;/button&gt;</span></code></pre>
+<p>This is what we all should be up to by now:</p>
+<pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);
+var feed_button = document.getElementById(&#39;feed_button&#39;);
+
+feed_button.addEventListener(&quot;click&quot;, feed);
+function feed() {
+    alert(&quot;OMNOMNOM!&quot;);
+};</code></pre>
+<p>The goal now is to make the cat put on a little bit of weight when we feed it. Again, we have to link to both, the cat element, and the food button to both files know what we're talking about.</p>
+<p>We're setting the width by stringing a few words together: <code>cat_image.style.width</code>. We can think of 'cat_image' to have an attribute called 'style', which has an attribute called 'width'. Let's add a couple of grams. We also have to retrieve the current object width. Our cat_image object has a member called .objectWidth that will give us the current value as a number (as opposed to the string '200px'. (Google is your friend here to find handy functions like this one). Lastly we have to append the new value with 'px'.</p>
+<pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);
+var feed_button = document.getElementById(&#39;feed_button&#39;);
+
+feed_button.addEventListener(&quot;click&quot;, feed);
+function feed() {
+    cat_image.style.width = (cat_image.offsetWidth + 30) + &#39;px&#39;;
+};</code></pre>
+<div id="let-the-cat-work-out" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Let the cat work out</h2>
+</div>
+<div class="panel-body">
+<p>Create a second button 'run around the block', that makes the cat slimmer again.</p>
+</div>
+</div>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

@@ -42,7 +42,7 @@ and data rate. This makes the page you create very inaccessible.
 A better way to include graphical elements that aren't 
 photos, is the use of Scalable Vector Graphics (SVGs).
 
-An svg is just another environment in the html file, used in the same way as division.
+An svg is just another element in the html file, used in the same way as division.
 
 ~~~{.html}
 <svg class="chart">
@@ -52,7 +52,7 @@ An svg is just another environment in the html file, used in the same way as div
 ~~~
 
 Here, we've creates an svg canvas, using the styles of the class 'chart'.
-Within this envrironment, we're created a circle, using the styles of the class 'circ1'.
+Within this element, we're created a circle, using the styles of the class 'circ1'.
 Both of these classes need to also be defined in our css file:
 
 ~~~{.css}
@@ -68,8 +68,8 @@ stroke-width: 5;
 }
 ~~~
 
-The environment for circle is already defined. 'cx', 'cy', and 'r' are attributes that
-are special to the circle environment. 'cx' and 'cy' define the x and y coordinates of 
+The circle element is already defined. 'cx', 'cy', and 'r' are attributes that
+are special to the circle element. 'cx' and 'cy' define the x and y coordinates of 
 the center of the circle, 'r' is the radius of the circle. 
 
 > ## Question {.challenge}
@@ -78,7 +78,7 @@ the center of the circle, 'r' is the radius of the circle.
 
 But what if we don't only use circles, but instead use other shapes?
 On the internet we can find tons of examples. A good resource to 
-find simple examples for shapes that are commonly used in the svg environment
+find simple examples for shapes that are commonly used in the svg element
 is [w3school](http://www.w3schools.com/svg/default.asp). 
 
 

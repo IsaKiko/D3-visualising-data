@@ -7,9 +7,9 @@ minutes: 20
 
 > ## Learning Objectives {.objectives}
 >
-> * Changing the appearance of different environments
+> * Changing the appearance of different elements
 > * Creating new classes in a css file
-> * Applying classes to different environments 
+> * Applying classes to different elements 
 
 
 The heading has a certain look. This includes the colour, 
@@ -66,7 +66,7 @@ by linking to it in the head:
 <!DOCTYPE html>
 <html> 
 <head> 
-<link rel="stylesheet" type="text/css" href="css/styles.css>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head> 
 ~~~
 
