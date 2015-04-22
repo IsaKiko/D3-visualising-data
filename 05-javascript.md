@@ -130,3 +130,10 @@ function feed() {
 > Create a second button 'run around the block', that makes the cat slimmer again.
 
 
+> ## Other event listeners, that might come in handy  {.callout}
+> * dblclick - Double click
+> * contextmenu - Right click
+> * mouseover - Mouse moved over an element
+> * keypress - Key pressed on keyboard
+
+
