@@ -17,10 +17,10 @@ we can integrate an image.
 
 ~~~{.html}
 <div class='image'>
-<img src="img/cat.jpg">
+<img src="cat.jpg">
 </div>
 ~~~
-<img src="img/cat.jpg" style="height:350px">
+<img src="cat.jpg" style="height:350px">
 
 And by adding a class called 'image' to our css file, we can define the size and 
 position of the image we load and apply the style to other images we might want to load. 
