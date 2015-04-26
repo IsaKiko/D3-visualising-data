@@ -33,47 +33,49 @@
 </div>
 <div class="panel-body">
 <ul>
-<li>Create a first page that opens in a browser</li>
-<li>Understand the structure of an html document</li>
-<li>Understand different environments within an html document</li>
+<li>Create your first web page and view it in a browser</li>
+<li>Understand the structure of an HTML document</li>
+<li>Understand the different elements within an HTML document</li>
 </ul>
 </div>
 </div>
-<p>A way of writing that is understood by all web browsers is html: hypertext markup language. Since we don’t have the ability to do logical operations (loops etc) with html alone, it’s strictly speaking not a programming language.</p>
+<p>A way of writing that is understood by all web browsers is HTML: hypertext markup language. Since we don’t have the ability to do logical operations (loops, etc.) with HTML alone, it’s not technically a programming language.</p>
 <p>Let’s see how we can get our browser to greet the world. We need to:</p>
 <ul>
 <li>Create a local folder 'my_first_webpage'</li>
 <li>In the folder, create the file 'index.html'</li>
 <li>Open the file with a text editor</li>
 </ul>
-<p>Now, if we want to open our new file in a browser, we have to tell it, what kind of file to expect. To do this, we start our file with:</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></code></pre>
-<p>Every good webpage consists of a head and a body. The header (&lt;head&gt; to open &lt;/head&gt;to close) normally contains any meta-data. This could be name of the page or the inclusion of other files.</p>
-<p>The body (&lt;body&gt; to open &lt;/body&gt; to close) is where all our text should go. So everything we type between the brackets will be displayed on our page.</p>
+<p>Now, if we want to open our new file in a browser, we have to tell it what kind of file to expect. To do this, we start our file with:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
+<span class="kw">&lt;html&gt;</span>
+    --&gt; Everything goes in here <span class="er">&lt;</span>--
+<span class="kw">&lt;/html&gt;</span> </code></pre>
+<p>Every good webpage consists of a head and a body. The header (&lt;head&gt; to open and &lt;/head&gt; to close) normally contains any meta-data. This could be name of the page or the inclusion of other files.</p>
+<p>The body (&lt;body&gt; to open and &lt;/body&gt; to close) is where all our content should go. So everything we type between the brackets will be displayed on our page.</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;head&gt;</span> 
 <span class="kw">&lt;/head&gt;</span>
-
 <span class="kw">&lt;body&gt;</span> 
-Hello world!
+    Hello world!
 <span class="kw">&lt;/body&gt;</span> </code></pre>
 <p>Since our browser understands this language, we can instantly open our local index.html file and the browser will interpret our code as visual components.</p>
-<p>Html has more predefined elements that will vary in size and style. To divide the page into different section, we can create a division using &lt;div&gt; to open &lt;/div&gt; to close it.</p>
+<p>HTML has more predefined elements that will vary in size and style. To divide the page into different section, we can create a division using &lt;div&gt; to open and &lt;/div&gt; to close it.</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
-
-<span class="kw">&lt;head&gt;</span> 
---&gt; meta-data (like page title, inclusion of other files) <span class="er">&lt;</span>--
-<span class="kw">&lt;/head&gt;</span> 
-
-<span class="kw">&lt;body&gt;</span> 
-<span class="kw">&lt;div&gt;</span> Hello world! <span class="kw">&lt;div/&gt;</span>
-<span class="kw">&lt;div&gt;</span> Hello back! <span class="kw">&lt;div/&gt;</span>
-<span class="kw">&lt;/body&gt;</span> </code></pre>
+<span class="kw">&lt;html&gt;</span> 
+    <span class="kw">&lt;head&gt;</span> 
+        --&gt; meta-data (like page title, inclusion of other files) <span class="er">&lt;</span>--
+    <span class="kw">&lt;/head&gt;</span> 
+    <span class="kw">&lt;body&gt;</span> 
+        <span class="kw">&lt;div&gt;</span>Hello world!<span class="kw">&lt;div/&gt;</span>
+        <span class="kw">&lt;div&gt;</span>Hello back!<span class="kw">&lt;div/&gt;</span>
+    <span class="kw">&lt;/body&gt;</span> 
+<span class="kw">&lt;/html&gt;</span> </code></pre>
 <div id="other-elements" class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Other elements</h2>
 </div>
 <div class="panel-body">
-<p>Create a folder that contains the file index.html. (or download it..) What seems to be the difference between &lt;div&gt;, &lt;h1&gt;, and &lt;em&gt;? Create a heading that is in italics.</p>
+<p>Create a folder that contains the file index.html (or download it). What seems to be the difference between &lt;div&gt;, &lt;h1&gt;, and &lt;em&gt;? Create a heading that is in italics.</p>
 </div>
 </div>
         </div>

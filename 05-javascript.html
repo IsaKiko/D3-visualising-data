@@ -34,29 +34,28 @@
 <div class="panel-body">
 <ul>
 <li>Linking to a javascript file</li>
-<li>Passing html element tags to javascript</li>
-<li>Manipulating html elements using javascript</li>
+<li>Passing HTML element tags to javascript</li>
+<li>Manipulating HTML elements using javascript</li>
 </ul>
 </div>
 </div>
-<p>We've learned how to integrate text and graphical objects into our page and we also know how to publish it. So far, we might as well just create a plot elsewhere and publish it as an image. But wouldn't it be much better, if the user could interact with the data? Do do that, we need to learn a little scripting, and, again, html provides a scripting environment. Everything between &lt;script&gt; and &lt;/script&gt; within the body environment will be interpreted as javascript code. Just like we did with styles, we can outsource our code into a separate file with the extension <code>.js</code>.</p>
-<p>So, let's go back to using the cat image for now. We want the cat to acknoweledge that we click on it.</p>
-<p>First we need to create our <code>interaction.js</code> file and link to it in the html body.</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src</span> <span class="ot">=</span> <span class="st">&quot;interaction.js&quot;</span> <span class="kw">&gt;&lt;/script&gt;</span></code></pre>
-<p>We need to introduce the script to the html element, using these basic steps:</p>
+<p>We've learned how to integrate text and graphical objects into our page and we also know how to publish it. So far, we might as well just create a plot elsewhere and publish it as an image. But wouldn't it be much better, if the user could interact with the data? Do do that, we need to learn a little scripting, and, again, HTML provides a scripting environment. Everything between &lt;script&gt; and &lt;/script&gt; within the body will be interpreted as javascript code. Just like we did with styles, we can outsource our code into a separate file with the extension '.js'.</p>
+<p>So, let's go back to using the cat image for now. We want the cat to acknoweledge that we click on it. First we need to create our <code>interaction.js</code> file and link to it in the HTML body.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;interaction.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre>
+<p>We need to introduce the script to the HTML element, using these basic steps:</p>
 <ul>
-<li>Set up a link between html and the script by giving the html-element we want to interact with a unique ID.</li>
+<li>Set up a link between HTML and the script by giving the HTML element we want to interact with a unique ID.</li>
 <li>Retrieving the element and assigning it to a variable in the script that we can work with.</li>
 <li>Detect the action we are interested in, i.e. button click using an event listener.</li>
 <li>Do things.</li>
 </ul>
 <p>The ID is an attribute we can set for the image:</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&#39;image&#39;</span><span class="kw">&gt;</span>
-<span class="kw">&lt;img</span><span class="ot"> id=</span><span class="st">&quot;cat&quot;</span><span class="ot"> src=</span><span class="st">&quot;img/cat.jpg&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;img</span><span class="ot"> id=</span><span class="st">&quot;cat&quot;</span><span class="ot"> src=</span><span class="st">&quot;img/cat.jpg&quot;</span><span class="kw">&gt;</span>
 <span class="kw">&lt;/div&gt;</span></code></pre>
-<p>Using <code>getElementByID</code>, we can grab the element from the document (a magical object representing the entire page) and work with it in the javascript file.</p>
+<p>Using 'getElementByID', we can grab the element from the document (a magical object representing the entire page) and work with it in the javascript file.</p>
 <pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);</code></pre>
-<p>Now we want to detect if someone clicks on the cat image. Event listeners help us by constantly checking if someone performs a certain action. The second argument determines what we want to happen. In our case, we want to execute a function called <code>meow</code>, that we haven't written yet.</p>
+<p>Now we want to detect if someone clicks on the cat image. Event listeners help us by constantly checking if someone performs a certain action. The second argument determines what we want to happen. In our case, we want to execute a function called 'meow', that we haven't written yet.</p>
 <pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);
 cat_image.addEventListener(&quot;click&quot;, meow);</code></pre>
 <p>The last step is to write the meow function. We want a pop-up window. The javascript function alert() will give us one.</p>
@@ -73,8 +72,8 @@ function meow() {
 <p>Create a button using the &lt;button&gt; element to feed the cat. Use the alert() function to have the cat thank you.</p>
 </div>
 </div>
-<p>The next step to having a fully interactive page is to change html elements using javascript.</p>
-<p>We've created a button in the html file</p>
+<p>The next step to having a fully interactive page is to change HTML elements using javascript.</p>
+<p>We've created a button in the HTML file:</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;button</span><span class="ot"> id=</span><span class="st">&#39;feed_button&#39;</span><span class="kw">&gt;</span> 
     FOOD!
 <span class="kw">&lt;/button&gt;</span></code></pre>
@@ -86,8 +85,8 @@ feed_button.addEventListener(&quot;click&quot;, feed);
 function feed() {
     alert(&quot;OMNOMNOM!&quot;);
 };</code></pre>
-<p>The goal now is to make the cat put on a little bit of weight when we feed it. Again, we have to link to both, the cat element, and the food button to both files know what we're talking about.</p>
-<p>We're setting the width by stringing a few words together: <code>cat_image.style.width</code>. We can think of 'cat_image' to have an attribute called 'style', which has an attribute called 'width'. Let's add a couple of grams. We also have to retrieve the current object width. Our cat_image object has a member called .objectWidth that will give us the current value as a number (as opposed to the string '200px'. (Google is your friend here to find handy functions like this one). Lastly we have to append the new value with 'px'.</p>
+<p>The goal now is to make the cat put on a little bit of weight when we feed it. Again, we have to link to both the cat element and the food button so that both files know what we're talking about.</p>
+<p>We're setting the width by stringing a few words together: 'cat_image.style.width'. We can think of 'cat_image' as having an attribute called 'style', which in turn has an attribute called 'width'. Let's add a couple of grams. We also have to retrieve the current object width. Our 'cat_image' object also has a attribute called 'offsetWidth'. This will give us the current width as a number (as opposed to the string '200px'). Google is your friend here. Use it to find out these handy functions. Lastly we have to append the new value with 'px'.</p>
 <pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);
 var feed_button = document.getElementById(&#39;feed_button&#39;);
 
@@ -116,6 +115,7 @@ function feed() {
 </ul>
 </div>
 </div>
+<p>... Isabell, I think after this is a good time to explain 'numbers vs. strings', 'functions', and 'object attributes' (i.e. the 'dot' notation).</p>
         </div>
       </div>
       <div class="footer">

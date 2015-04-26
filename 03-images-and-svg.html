@@ -33,40 +33,40 @@
 </div>
 <div class="panel-body">
 <ul>
-<li>Integrating images into your page</li>
+<li>Adding images to your page</li>
 <li>Understanding Scalable Vector Graphics (SVGs)</li>
-<li>Integrating multiple SVGs into your page</li>
+<li>Adding multiple SVGs to your page</li>
 </ul>
 </div>
 </div>
-<p>Websites that only consist of text can be quite boring. So let's have a look at how we can integrate an image.</p>
+<p>Websites that only consist of text can be quite boring. So let's have a look at how we can add an image.</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&#39;image&#39;</span><span class="kw">&gt;</span>
-<span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;cat.jpg&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;cat.jpg&quot;</span><span class="kw">&gt;</span>
 <span class="kw">&lt;/div&gt;</span></code></pre>
 <p><img src="code/cat.jpg" style="height:350px"></p>
-<p>And by adding a class called 'image' to our css file, we can define the size and position of the image we load and apply the style to other images we might want to load.</p>
+<p>And by adding a class called 'image' to our CSS file, we can define the size and position of the image we load and apply the style to other images we might want to load.</p>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.image</span> <span class="kw">{</span>
-<span class="kw">width:</span> <span class="dt">100px</span><span class="kw">;</span>
-<span class="kw">position:</span> <span class="dt">relative</span><span class="kw">;</span>
-<span class="kw">left:</span> <span class="dt">20px</span><span class="kw">;</span>
+    <span class="kw">width:</span> <span class="dt">100px</span><span class="kw">;</span>
+    <span class="kw">position:</span> <span class="dt">relative</span><span class="kw">;</span>
+    <span class="kw">left:</span> <span class="dt">20px</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
-<p>The end goal for us is to create a graph, so it will be made up of graphical objects like lines, circles, and squares, not photos of cats. We could just find an image of a circle and integrate this wherever we want it to represent data, scale it, position it on the page etc. But that might not be the best way. Each image has to be downloaded, taking up space and data rate. This makes the page you create very inaccessible.</p>
-<p>A better way to include graphical elements that aren't photos, is the use of Scalable Vector Graphics (SVGs).</p>
-<p>An svg is just another element in the html file, used in the same way as division.</p>
+<p>The end goal for us is to create a graph, which will be made up of graphical objects such as lines, circles, and squares (not photos of cats). We could just find an image of a circle and use this to represent the data by scaling and positioning it on the page, but that might not be the best way. An image is an inefficient way to represent lines and circles and your webpage would spend an unnecessary amount of time downloading each of these image files.</p>
+<p>A better way to include graphical elements that aren't photos, is to use Scalable Vector Graphics (SVGs).</p>
+<p>An SVG is just another element in the HTML file, used in the same way as a division.</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;svg</span><span class="ot"> class=</span><span class="st">&quot;chart&quot;</span><span class="kw">&gt;</span>
     <span class="kw">&lt;circle</span><span class="ot"> cx=</span><span class="st">&quot;25&quot;</span><span class="ot"> cy=</span><span class="st">&quot;25&quot;</span><span class="ot"> r=</span><span class="st">&quot;15&quot;</span><span class="ot"> class=</span><span class="st">&quot;circ1&quot;</span><span class="kw">&gt;</span>
     <span class="kw">&lt;/cirlce&gt;</span>
 <span class="kw">&lt;/svg&gt;</span></code></pre>
-<p>Here, we've creates an svg canvas, using the styles of the class 'chart'. Within this element, we're created a circle, using the styles of the class 'circ1'. Both of these classes need to also be defined in our css file:</p>
+<p>Here, we've creates an SVG canvas, using the styles of the class 'chart'. Within this element, we've created a circle, using the styles of the class 'circ1'. Both of these classes need to also be defined in our CSS file:</p>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.chart</span> <span class="kw">{</span>
-<span class="kw">width:</span> <span class="dt">100px</span><span class="kw">;</span>
-<span class="kw">height:</span> <span class="dt">100px</span><span class="kw">;</span>
+    <span class="kw">width:</span> <span class="dt">100px</span><span class="kw">;</span>
+    <span class="kw">height:</span> <span class="dt">100px</span><span class="kw">;</span>
 <span class="kw">}</span>
 
 <span class="fl">.circ1</span> <span class="kw">{</span>
-<span class="kw">stroke:</span> <span class="dt">green</span><span class="kw">;</span> 
-<span class="kw">fill:</span> <span class="dt">white</span><span class="kw">;</span>
-<span class="kw">stroke-width:</span> <span class="dt">5</span><span class="kw">;</span>
+    <span class="kw">stroke:</span> <span class="dt">green</span><span class="kw">;</span> 
+    <span class="kw">fill:</span> <span class="dt">white</span><span class="kw">;</span>
+    <span class="kw">stroke-width:</span> <span class="dt">5</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
 <p>The circle element is already defined. 'cx', 'cy', and 'r' are attributes that are special to the circle element. 'cx' and 'cy' define the x and y coordinates of the center of the circle, 'r' is the radius of the circle.</p>
 <div id="question" class="challenge panel panel-success">
@@ -77,7 +77,7 @@
 <p>What happens if 'cx' and 'cy' aren't set?</p>
 </div>
 </div>
-<p>But what if we don't only use circles, but instead use other shapes? On the internet we can find tons of examples. A good resource to find simple examples for shapes that are commonly used in the svg element is <a href="http://www.w3schools.com/svg/default.asp">w3school</a>.</p>
+<p>But what if we don't want to only use circles, but instead want to use other shapes? On the internet we can find tons of helpful examples. A good resource to find simple examples of using different, commonly used SVG shapes is <a href="http://www.w3schools.com/svg/default.asp">w3school</a>.</p>
 <div id="make-art" class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Make art!</h2>

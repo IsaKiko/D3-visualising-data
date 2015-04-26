@@ -33,51 +33,51 @@
 </div>
 <div class="panel-body">
 <ul>
-<li>Changing the appearance of different elements</li>
-<li>Creating new classes in a css file</li>
-<li>Applying classes to different elements</li>
+<li>Change the appearance of different HTML elements</li>
+<li>Create new classes in a CSS file</li>
+<li>Apply these classes to different HTML elements</li>
 </ul>
 </div>
 </div>
-<p>The heading has a certain look. This includes the colour, the position, the font size, and many more attributes.</p>
-<p>We can change the appearance of our text in different ways. A quick way is to simply mention what we want our element to look like the moment we create it setting the “style” attribute. If we want to change the colour for example, we write:</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h1</span><span class="ot"> style=</span><span class="st">&quot;color:blue&quot;</span><span class="kw">&gt;</span> This is a blue heading <span class="kw">&lt;/h1&gt;</span></code></pre>
+<p>The heading has a certain look. This look (or style) includes the colour, position, font size, as well as many other attributes.</p>
+<p>We can change the appearance of our text in different ways. A quick way is to simply mention what we want our element to look like when we create it by setting the &quot;style&quot; attribute. If we want to change the colour, for example, we write:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h1</span><span class="ot"> style=</span><span class="st">&quot;color:blue&quot;</span><span class="kw">&gt;</span>This is a blue heading<span class="kw">&lt;/h1&gt;</span></code></pre>
 <p>Changing the font size:</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h1</span><span class="ot"> style=</span><span class="st">“font-size:</span> <span class="er">10px“</span><span class="kw">&gt;</span> This is a big heading <span class="kw">&lt;/h1&gt;</span></code></pre>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h1</span><span class="ot"> style=</span><span class="st">&quot;font-size: 10px&quot;</span><span class="kw">&gt;</span>This is a big heading<span class="kw">&lt;/h1&gt;</span></code></pre>
 <p>If we want to change two things at the same time, we just mention all of them at once:</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h1</span><span class="ot"> style=</span><span class="st">“font-size:</span> <span class="er">10px;</span><span class="ot"> colour: blue</span><span class="er">“</span><span class="kw">&gt;</span> This is a big heading <span class="kw">&lt;/h1&gt;</span></code></pre>
-<p>This is a quick and simple way to change the appearance of elements on the spot. However, if we want to create different elements of the same type, we have to do a lot of typing, and our file will quickly become confused.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h1</span><span class="ot"> style=</span><span class="st">&quot;font-size: 10px; colour: blue&quot;</span><span class="kw">&gt;</span>This is a big, blue heading<span class="kw">&lt;/h1&gt;</span></code></pre>
+<p>This is a quick and simple way to change the appearance of elements on the spot. However, if we want to create different elements of the same type, we have to do a lot of typing, and our file will quickly become confusing and hard to maintain.</p>
 <p>If we want to change the look of many elements at the same time, we can instead create a style file (extension .css).</p>
 <ul>
-<li>create a css file: styles.css</li>
+<li>create a CSS file: styles.css</li>
 </ul>
-<p>In this file, we can define classes, that we can then apply to one or more of our elements in the html-file. Let's create a class called 'title' that we want to apply to different environments on our page.</p>
+<p>In this file, we can define classes, that we can then apply to one or more of our elements in the HTML file. Let's create a class called 'title' that we want to apply to different elements on our page.</p>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.title</span>
 <span class="kw">{</span>
     <span class="kw">color:</span> <span class="dt">red</span><span class="kw">;</span>
     <span class="kw">font-size:</span> <span class="dt">10px</span><span class="kw">;</span>
     <span class="kw">text-align:</span> <span class="dt">center</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
-<p>All that’s left to do, is to tell the html file where to find out new .css file. This is done by linking to it in the head:</p>
+<p>All that's left to do, is to tell the HTML file where to find our new CSS file. This is done by linking to it in the head:</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
 <span class="kw">&lt;html&gt;</span> 
-<span class="kw">&lt;head&gt;</span> 
-<span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="ot"> href=</span><span class="st">&quot;css/styles.css&quot;</span><span class="kw">&gt;</span>
-<span class="kw">&lt;/head&gt;</span> </code></pre>
-<p>In the body, we can use the class, that we just created:</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;body&gt;</span> 
-<span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;title&quot;</span><span class="kw">&gt;</span> First title <span class="kw">&lt;/div&gt;</span>
-<span class="kw">&lt;div&gt;</span> some text <span class="kw">&lt;/div&gt;</span>
-<span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;title&quot;</span><span class="kw">&gt;</span> And another title <span class="kw">&lt;/div&gt;</span>
-<span class="kw">&lt;/body&gt;</span> 
+    <span class="kw">&lt;head&gt;</span> 
+        <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="ot"> href=</span><span class="st">&quot;css/styles.css&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;/head&gt;</span> </code></pre>
+<p>In the body, we can use the class that we just created:</p>
+<pre class="sourceCode html"><code class="sourceCode html">    <span class="kw">&lt;body&gt;</span> 
+        <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;title&quot;</span><span class="kw">&gt;</span> First title <span class="kw">&lt;/div&gt;</span>
+        <span class="kw">&lt;div&gt;</span> some text <span class="kw">&lt;/div&gt;</span>
+        <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;title&quot;</span><span class="kw">&gt;</span> And another title <span class="kw">&lt;/div&gt;</span>
+    <span class="kw">&lt;/body&gt;</span> 
 <span class="kw">&lt;/html&gt;</span> </code></pre>
 <div id="create-and-use-your-own-class" class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Create and use your own class</h2>
 </div>
 <div class="panel-body">
-<p>Create a class called description. Left bound, dark grey, font size, certain width on the page, padding around ...also, write some text so it wraps around. If you like, play with the heading, until you like how it looks.</p>
-<p>Optional: Set bg of body to purple and text to white</p>
+<p>Create a class called 'description'. Left bound, dark grey, font size, certain width on the page, padding around ...also, write some text so it wraps around. If you like, play with the heading, until you like how it looks.</p>
+<p>Optional: Set background of body to purple and text to white</p>
 </div>
 </div>
         </div>
