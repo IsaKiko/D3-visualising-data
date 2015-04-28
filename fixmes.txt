@@ -1,0 +1,5 @@
+- introduce console in the javascript lesson, talk abotu debugging
+- motivation at the start: show bubble plot that we will be able to program 
+- adjust times after running an alpha bootcamp
+- callout boxes in other lessons: useful svgs, ... ?
+- lesson 7 (obviously)
