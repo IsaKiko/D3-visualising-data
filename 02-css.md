@@ -12,12 +12,12 @@ minutes: 20
 > * Apply these classes to different HTML elements 
 
 The heading has a certain look. This look (or style) includes the 
-colour, position, font size, as well as many other attributes. 
+color, position, font size, as well as many other attributes. 
 
 We can change the appearance of our text in different ways. 
 A quick way is to simply mention what we want our element
 to look like when we create it by setting the "style" attribute.
-If we want to change the colour, for example, we write:
+If we want to change the color, for example, we write:
 
 ~~~ {.html}
 <h1 style="color:blue">This is a blue heading</h1>
@@ -83,7 +83,7 @@ In the body, we can use the class that we just created:
 > ## Create and use your own class {.challenge}
 >
 > Create a class called 'description'. 
-> Left bound, dark grey, font size, certain width on the page, padding around
+> Left bound, dark gray, font size, certain width on the page, padding around
 > ...also, write some text so it wraps around.
 > If you like, play with the heading, until you like how it looks. 
 >

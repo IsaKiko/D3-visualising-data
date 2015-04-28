@@ -11,7 +11,7 @@ minutes: 20
 > * Converting JavaScript data to JSON format
 > * Converting JSON data to JavaScript format
 
-The goal of these lessons is to visualise data. 
+The goal of these lessons is to visualize data. 
 So far we haven't really dealt with any specific data, let alone 
 relatively big data files.
 In this lesson, we will learn about the basic data types used 
@@ -88,7 +88,7 @@ Now if we want add a second cat, we can store both in the same array `cat_list`.
 We can append an array using the `push()` function
 
 ~~~{.js}
-var cat_list = [cat_object]; // initialising with the first field being cat_object
+var cat_list = [cat_object]; // initializing with the first field being cat_object
 cat_list.push({weight = 6 , past_weight_values = [5.9, 5.3, 6.1], name = 'Snowball'});
 ~~~
 

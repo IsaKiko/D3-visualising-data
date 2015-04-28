@@ -18,7 +18,7 @@ Do do that, we need to learn a little scripting, and, again, HTML provides a scr
 Everything between &lt;script&gt; and &lt;/script&gt; within the body will be interpreted as JavaScript code. 
 Just like we did with styles, we can outsource our code into a separate file with the extension '.js'.
 
-So, let's go back to using the cat image for now. We want the cat to acknoweledge that we click on it. 
+So, let's go back to using the cat image for now. We want the cat to acknowledge that we click on it. 
 First we need to create our `interaction.js` file and link to it in the HTML body.
 
 ~~~{.html}

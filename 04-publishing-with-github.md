@@ -7,7 +7,7 @@ minutes: 20
 
 > ## Learning Objectives {.objectives}
 >
-> * Hosting your webpage on Github
+> * Hosting your page on Github
 
 The next thing we want to do is show the world what we've made! 
 There are different ways to go about this. One of the easiest ones
@@ -39,12 +39,12 @@ Don't worry about the other options for now.
 
 * Click 'Set up in Desktop'. 
 
-Your computer should now be cloning the (still empty) reposotory to the location of your choice.
+Your computer should now be cloning the (still empty) repository to the location of your choice.
 Copy the file that contains your artwork into this folder and call it 'index.html'.
 The reason for this is that 'index.html' is the default location that is shown. 
 
 Save the file, commit to the change using your Github program, and push the changes 
-to your reposotory ('Publish' button in the GUI).
+to your repository ('Publish' button in the GUI).
 
 Right now, our code is on the web, but we haven't told the Github to publish it yet. 
 To do this, we create a branch called 'gh-pages'.
