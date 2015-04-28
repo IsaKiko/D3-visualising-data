@@ -95,9 +95,9 @@ cat_list.push({weight = 6 , past_weight_values = [5.9, 5.3, 6.1], name = 'Snowba
 This process is called 'nesting'.
 
 > # Nesting {.challenge}
-> Append the array by a third cat, not entering a name or weight.
-> Do all animals have to have the same attribute fields?
-> Use the console of your browser to read the values of your object. 
+> 1. Append the array by a third cat, not entering a name or weight.
+> 1. Do all animals have to have the same attribute fields?
+> 1. Use the console of your browser to read the values of your object. 
 
 When we start creating our data for the plot, this is the structured 
 (and nicely annotated) data format that we want. 
