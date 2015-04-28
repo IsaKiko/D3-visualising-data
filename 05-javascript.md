@@ -105,9 +105,10 @@ We're setting the width by stringing a few words together:
 We can think of 'cat_image' as having an attribute called 'style', which in turn has an attribute 
 called 'width'.
 Let's add a couple of grams. 
-We also have to retrieve the current object width. Our 'cat_image' object also has a 
+We have to retrieve the current object width. Our 'cat_image' object also has a 
 attribute called 'offsetWidth'. This will give us the current width as a number (as
-opposed to the string '200px'). Google is your friend here. Use it to find out these handy functions. 
+opposed to the string '200px'). 
+Google is your friend here. Use it to find out these handy functions. 
 Lastly we have to append the new value with 'px'.
 
 ~~~{.js}
@@ -116,19 +117,30 @@ var feed_button = document.getElementById('feed_button');
 
 feed_button.addEventListener("click", feed);
 function feed() {
-	cat_image.style.width = (cat_image.offsetWidth + 30) + 'px';
+	cat_image.style.width = (cat_image.offsetWidth + 30.0) + 'px';
 };
 ~~~
 
 > ## Let the cat work out  {.challenge}
 > Create a second button 'run around the block', that makes the cat slimmer again.
 
+In javascript there are two main data types: strings (text, everything in quotes) 
+and numbers. It's important to remember that you can't do maths with strings or 
+append numbers together.
+
+For example:
+`5+5 = 10`
+but 
+`'5'+'5' = '55'`
+
+If one of the arguments is a string, the other one gets converted, too:
+`5 + '5' = '55'`
+
+We've also just used that, when we concatenated 
+`(cat_image.offsetWidth + 30.0) + 'px'`.
+
 > ## Other event listeners, that might come in handy  {.callout}
 > * dblclick - Double click
 > * contextmenu - Right click
 > * mouseover - Mouse moved over an element
 > * keypress - Key pressed on keyboard
-
-
-
-... Isabell, I think after this is a good time to explain 'numbers vs. strings', 'functions', and 'object attributes' (i.e. the 'dot' notation). 

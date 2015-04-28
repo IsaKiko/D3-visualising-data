@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: json</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">json</h1>
+          <h2 class="subtitle">Everything is strings!</h2>
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Understand javascript data types</li>
+<li>Converting javascript data to json format</li>
+<li>Converting json data to javascript format</li>
+</ul>
+</div>
+</div>
+<p>The goal of these lessons is to visualise data. So far we haven't really dealt with any specific data, let alone relatively big data files. In this lesson, we will learn about the basic data types used by javascript and also talk about ways to conveniently convert variables into a text file so we can store it.</p>
+<p>There are two containers in javascript: arrays (<code>[]</code>-notation) and objects (<code>{}</code>-notation).</p>
+<p>In order to create a container, we have to declare it first using the <code>var</code> keyword that we've already come across.</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> list_of_numbers;</code></pre>
+<p>creates an array. But so far it’s empty.</p>
+<p>We can now fill this array. A simple vector assigning numbers to the first three elements could look like this:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> list_of_numbers = [<span class="dv">30</span>, <span class="dv">2</span>, <span class="dv">5</span>];</code></pre>
+<p>Let’s use the console of the browser to look at the values of object by including some extra code:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">console</span>.<span class="fu">log</span>(list_of_numbers)</code></pre>
+<p>Or we can just address one field of the vector. Counting begins from zero, so the third field has the index '2'.</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">console</span>.<span class="fu">log</span>(list_of_numbers[<span class="dv">2</span>])</code></pre>
+<p><code>list_of_numbers</code> is a vector that holds 3 numbers. We can also have a variable that contains a string:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> text = <span class="st">&#39;I love cats.&#39;</span>;</code></pre>
+<p>We can address this string by using indices, so <code>console.log(text[2])</code> returns <code>l</code>.</p>
+<p>Different from many other programming languages, javascript objects are very versatile and you don’t have to call fields through their indices, but can give them names. So we can create something more meaningful:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> cat_object = {
+    <span class="dt">weight </span>: <span class="dv">5</span>,
+    <span class="dt">past_weight_values </span>: [<span class="fl">4.5</span>, <span class="fl">5.1</span>, <span class="fl">4.9</span>],
+    <span class="dt">name </span>: <span class="st">&#39;Princess Caroline&#39;</span>
+};</code></pre>
+<div id="creating-new-attributes" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Creating new attributes</h2>
+</div>
+<div class="panel-body">
+<p>You can append the list of attributes using the dot-syntax <code>cat_object.attribute = ...</code>. Create a new attribute <code>height</code> and assign a number!</p>
+</div>
+</div>
+<p>Sometimes we don't want to have objects of the same kind that we can address using an index. In our case we might have multiple cats. Now if we want add a second cat, we can store both in the same array <code>cat_list</code>. We can append an array using the <code>push()</code> function</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> cat_list = [cat_object]; <span class="co">// initialising with the first field being cat_object</span>
+<span class="ot">cat_list</span>.<span class="fu">push</span>({weight = <span class="dv">6</span> , past_weight_values = [<span class="fl">5.9</span>, <span class="fl">5.3</span>, <span class="fl">6.1</span>], name = <span class="st">&#39;Snowball&#39;</span>});</code></pre>
+<p>This process is called 'nesting'.</p>
+<div id="nesting" class="challenge panel panel-success">
+<div class="panel-heading">
+<h1><span class="glyphicon glyphicon-pencil"></span>Nesting</h1>
+</div>
+<div class="panel-body">
+<p>Append the array by a third cat, not entering a name or weight. Do all animals have to have the same attribute fields? Use the console of your browser to read the values of your object.</p>
+</div>
+</div>
+<p>When we start creating our data for the plot, this is the structured (and nicely annotated) data format that we want. In order to store our data outside of the scripting environment, we need to convert it into a string.</p>
+<p>Javascript provides an easy way to do this. Data can get converted using <code>JSON.stringify()</code>. To create this specific string, type</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> cat_json = <span class="ot">JSON</span>.<span class="fu">stringify</span>(cat_list)</code></pre>
+<p>The resulting string is what we would normally store in a <code>.json</code> file to read it in later. At this stage, we can't really create a file, because we're in a browser and creating files would make it too easy to program a virus.</p>
+<p>So instead, let's have a look at our stringified data using the <code>alert()</code> function:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="fu">alert</span>(cat_json);</code></pre>
+<p>We could now copy this string and save it manually in a <code>.json</code> file.</p>
+<div id="de-stringify" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>De-stringify</h2>
+</div>
+<div class="panel-body">
+<p>Lets assume we read in a json formatted string from a file and want to retrieve the nice structure. This process is called parsing and we can use the JSON.parse() function. Convert the data back and store it in a container called new_cat_list.</p>
+</div>
+</div>
+<p>We are now at a stage where we can have a look at the data file that we want to work with. Open 'nations.json'.</p>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

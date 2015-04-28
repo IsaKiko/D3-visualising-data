@@ -41,4 +41,6 @@ Along the way, we will learn:
 3.  [Images and SVG](03-images-and-svg.html) 
 4. 	[Publishing with Github](04-publishing-with-github.html)
 5. 	[Javascript](05-javascript.html)
+6.	[Json dataformat](06-json.html)
+7.	[D3](07-d3.html)
 

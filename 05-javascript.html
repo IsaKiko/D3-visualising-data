@@ -86,13 +86,13 @@ function feed() {
     alert(&quot;OMNOMNOM!&quot;);
 };</code></pre>
 <p>The goal now is to make the cat put on a little bit of weight when we feed it. Again, we have to link to both the cat element and the food button so that both files know what we're talking about.</p>
-<p>We're setting the width by stringing a few words together: 'cat_image.style.width'. We can think of 'cat_image' as having an attribute called 'style', which in turn has an attribute called 'width'. Let's add a couple of grams. We also have to retrieve the current object width. Our 'cat_image' object also has a attribute called 'offsetWidth'. This will give us the current width as a number (as opposed to the string '200px'). Google is your friend here. Use it to find out these handy functions. Lastly we have to append the new value with 'px'.</p>
+<p>We're setting the width by stringing a few words together: 'cat_image.style.width'. We can think of 'cat_image' as having an attribute called 'style', which in turn has an attribute called 'width'. Let's add a couple of grams. We have to retrieve the current object width. Our 'cat_image' object also has a attribute called 'offsetWidth'. This will give us the current width as a number (as opposed to the string '200px'). Google is your friend here. Use it to find out these handy functions. Lastly we have to append the new value with 'px'.</p>
 <pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);
 var feed_button = document.getElementById(&#39;feed_button&#39;);
 
 feed_button.addEventListener(&quot;click&quot;, feed);
 function feed() {
-    cat_image.style.width = (cat_image.offsetWidth + 30) + &#39;px&#39;;
+    cat_image.style.width = (cat_image.offsetWidth + 30.0) + &#39;px&#39;;
 };</code></pre>
 <div id="let-the-cat-work-out" class="challenge panel panel-success">
 <div class="panel-heading">
@@ -102,6 +102,10 @@ function feed() {
 <p>Create a second button 'run around the block', that makes the cat slimmer again.</p>
 </div>
 </div>
+<p>In javascript there are two main data types: strings (text, everything in quotes) and numbers. It's important to remember that you can't do maths with strings or append numbers together.</p>
+<p>For example: <code>5+5 = 10</code> but <code>'5'+'5' = '55'</code></p>
+<p>If one of the arguments is a string, the other one gets converted, too: <code>5 + '5' = '55'</code></p>
+<p>We've also just used that, when we concatenated <code>(cat_image.offsetWidth + 30.0) + 'px'</code>.</p>
 <div id="other-event-listeners-that-might-come-in-handy" class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Other event listeners, that might come in handy</h2>
@@ -115,7 +119,6 @@ function feed() {
 </ul>
 </div>
 </div>
-<p>... Isabell, I think after this is a good time to explain 'numbers vs. strings', 'functions', and 'object attributes' (i.e. the 'dot' notation).</p>
         </div>
       </div>
       <div class="footer">
