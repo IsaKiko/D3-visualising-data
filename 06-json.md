@@ -95,11 +95,10 @@ cat_list.push({weight = 6 , past_weight_values = [5.9, 5.3, 6.1], name = 'Snowba
 
 When we start creating our data for the plot, this is the structured 
 (and nicely annotated) data format that we want. 
-In order to store our data outside of the scripting environment, we need
-to convert them into a string.
+In order to store our variable outside of the scripting environment, we need
+to convert it into a string.
 
-JavaScript provides an easy way to do this. Data can get converted using 
-`JSON.stringify()`. 
+JavaScript provides an easy way to do this. Variables can get converted from objects/arrays to strings using `JSON.stringify()`. 
 To convert our list of cats to a string, type
 
 ~~~{.js}
@@ -111,7 +110,7 @@ read it in later.
 At this stage, we can't really create a file, because we're in a browser 
 and creating files would make it too easy to program a virus.
 
-So instead, let's have a look at our stringified data using the `alert()` function:
+So instead, let's have a look at our stringified variable using the `alert()` function:
 
 ~~~{.js}
 alert(cat_json);
@@ -122,7 +121,7 @@ We could now copy this string and save it manually in a `.json` file.
 > ## De-stringify  {.challenge}
 > Let's assume we read in a JSON formatted string from a file and want to 
 > retrieve the nice structure. This process is called parsing and we can 
-> use the JSON.parse() function. Convert the data back and store it in a 
+> use the JSON.parse() function. Convert the variable back and store it in a 
 > container called `new_cat_list`.
 
 We are now at a stage where we can have a look at the data file that we 
