@@ -24,8 +24,7 @@ Along the way, we will learn:
 * how to integrate graphical elements into our page
 * how to publish our page 
 * how to allow interaction with elements
-* ...and what happens to a cat when we feed it?
-
+* how to store data for the use in webpages
 
 > ## Prerequisites {.prereq}
 >
@@ -40,7 +39,7 @@ Along the way, we will learn:
 2.  [CSS](02-css.html)
 3.  [Images and SVG](03-images-and-svg.html) 
 4. 	[Publishing with Github](04-publishing-with-github.html)
-5. 	[Javascript](05-javascript.html)
-6.	[Json data format](06-json.html)
+5. 	[JavaScript](05-javascript.html)
+6.	[JSON data format](06-json.html)
 7.	[D3](07-d3.html)
 

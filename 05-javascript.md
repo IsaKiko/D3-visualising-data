@@ -1,21 +1,21 @@
 ---
 layout: page
-title: Javascript
+title: JavaScript
 subtitle: Feeding a cat
 minutes: 20
 ---
 
 > ## Learning Objectives {.objectives}
 >
-> * Linking to a javascript file
-> * Passing HTML element tags to javascript
-> * Manipulating HTML elements using javascript
+> * Linking to a JavaScript file
+> * Passing HTML element tags to JavaScript
+> * Manipulating HTML elements using JavaScript
 
 We've learned how to integrate text and graphical objects into our page and we also know how to publish it. 
 So far, we might as well just create a plot elsewhere and publish it as an image. 
 But wouldn't it be much better, if the user could interact with the data?
 Do do that, we need to learn a little scripting, and, again, HTML provides a scripting environment.
-Everything between &lt;script&gt; and &lt;/script&gt; within the body will be interpreted as javascript code. 
+Everything between &lt;script&gt; and &lt;/script&gt; within the body will be interpreted as JavaScript code. 
 Just like we did with styles, we can outsource our code into a separate file with the extension '.js'.
 
 So, let's go back to using the cat image for now. We want the cat to acknoweledge that we click on it. 
@@ -40,7 +40,7 @@ The ID is an attribute we can set for the image:
 </div>
 ~~~
 
-Using 'getElementByID', we can grab the element from the document (a magical object representing the entire page) and work with it in the javascript file.
+Using 'getElementByID', we can grab the element from the document (a magical object representing the entire page) and work with it in the JavaScript file.
 
 ~~~{.js}
 var cat_image = document.getElementByID('cat');
@@ -59,7 +59,7 @@ cat_image.addEventListener("click", meow);
 
 The last step is to write the meow function. 
 We want a pop-up window. 
-The javascript function alert() will give us one. 
+The JavaScript function alert() will give us one. 
 
 ~~~{.js}
 var cat_image = document.getElementByID('cat');
@@ -74,7 +74,7 @@ function meow() {
 > Use the alert() function to have the cat thank you.
 
 The next step to having a fully interactive page is to 
-change HTML elements using javascript. 
+change HTML elements using JavaScript. 
 
 We've created a button in the HTML file:
 
@@ -124,7 +124,7 @@ function feed() {
 > ## Let the cat work out  {.challenge}
 > Create a second button 'run around the block', that makes the cat slimmer again.
 
-In javascript there are two main data types: strings (text, everything in quotes) 
+In JavaScript there are two main data types: strings (text, everything in quotes) 
 and numbers. It's important to remember that you can't do maths with strings or 
 append numbers together.
 

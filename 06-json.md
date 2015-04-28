@@ -1,31 +1,31 @@
 ---
 layout: page
-title: json
+title: JSON
 subtitle: Everything is strings!
 minutes: 20
 ---
 
 > ## Learning Objectives {.objectives}
 >
-> * Understand javascript data types
-> * Converting javascript data to json format
-> * Converting json data to javascript format
+> * Understand JavaScript data types
+> * Converting JavaScript data to JSON format
+> * Converting JSON data to JavaScript format
 
 The goal of these lessons is to visualise data. 
 So far we haven't really dealt with any specific data, let alone 
 relatively big data files.
 In this lesson, we will learn about the basic data types used 
-by javascript and also talk about ways to conveniently convert 
+by JavaScript and also talk about ways to conveniently convert 
 variables into a text file so we can store it.
 
 
-There are two containers in javascript: 
+There are two containers in JavaScript: 
 arrays (`[]`-notation) and objects (`{}`-notation).
 
 In order to create a container, we have to declare it 
 first using the `var` keyword that we've already come across.
 
-~~~{.javascript}
+~~~{.js}
 var list_of_numbers;
 ~~~ 
 
@@ -35,7 +35,7 @@ We can now fill this array.
 A simple vector assigning numbers to the first three elements 
 could look like this:
 
-~~~{.javascript}
+~~~{.js}
 var list_of_numbers = [30, 2, 5];
 ~~~
 
@@ -43,21 +43,21 @@ Let’s use the console of the browser to look at the values of object
 by including some extra code:
 
 
-~~~{.javascript}
+~~~{.js}
 console.log(list_of_numbers)
 ~~~
 
 Or we can just address one field of the vector. Counting begins from zero, 
 so the third field has the index '2'.
 
-~~~{.javascript}
+~~~{.js}
 console.log(list_of_numbers[2])
 ~~~
 
 `list_of_numbers` is a vector that holds 3 numbers. 
 We can also have a variable that contains a string:
 
-~~~{.javascript}
+~~~{.js}
 var text = 'I love cats.';
 ~~~
 
@@ -65,11 +65,11 @@ We can address this string by using indices, so `console.log(text[2])`
 returns `l`.
 
 Different from many other programming languages, 
-javascript objects are very versatile and you don’t have to 
+JavaScript objects are very versatile and you don’t have to 
 call fields through their indices, but can give them names. 
 So we can create something more meaningful:
 
-~~~{.javascript}
+~~~{.js}
 var cat_object = {
 	weight : 5,
 	past_weight_values : [4.5, 5.1, 4.9],
@@ -87,7 +87,7 @@ using an index. In our case we might have multiple cats.
 Now if we want add a second cat, we can store both in the same array `cat_list`.
 We can append an array using the `push()` function
 
-~~~{.javascript}
+~~~{.js}
 var cat_list = [cat_object]; // initialising with the first field being cat_object
 cat_list.push({weight = 6 , past_weight_values = [5.9, 5.3, 6.1], name = 'Snowball'});
 ~~~
@@ -104,11 +104,11 @@ When we start creating our data for the plot, this is the structured
 In order to store our data outside of the scripting environment, we need
 to convert it into a string.
 
-Javascript provides an easy way to do this. Data can get converted using 
+JavaScript provides an easy way to do this. Data can get converted using 
 `JSON.stringify()`. 
 To create this specific string, type
 
-~~~{.javascript}
+~~~{.js}
 var cat_json = JSON.stringify(cat_list)
 ~~~ 
 
@@ -119,14 +119,14 @@ and creating files would make it too easy to program a virus.
 
 So instead, let's have a look at our stringified data using the `alert()` function:
 
-~~~{.javascript}
+~~~{.js}
 alert(cat_json);
 ~~~
 
 We could now copy this string and save it manually in a `.json` file. 
 
 > ## De-stringify  {.challenge}
-> Lets assume we read in a json formatted string from a file and want to 
+> Lets assume we read in a JSON formatted string from a file and want to 
 > retrieve the nice structure. This process is called parsing and we can 
 > use the JSON.parse() function. Convert the data back and store it in a 
 > container called new_cat_list.
