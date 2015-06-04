@@ -12,7 +12,7 @@ minutes: 20
 > * Manipulating HTML elements using JavaScript
 
 We've learned how to integrate text and graphical objects into our page and we also know how to publish it.
-So far, we might as well just create a plot elsewhere and publish it as an image. But wouldn't it be much better, if the user could interact with the data?To do that, we need to learn a little scripting, and, again, HTML provides a scripting environment.
+So far, we might as well just create a plot elsewhere and publish it as an image. But wouldn't it be much better, if the user could interact with the data? To do that, we need to learn a little scripting, and, again, HTML provides a scripting environment.
 Everything between &lt;script&gt; and &lt;/script&gt; within the body will be interpreted as JavaScript code.
 Just like we did with styles, we can outsource our code into a separate file with the extension '.js'.
 
