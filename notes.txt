@@ -1,0 +1,8 @@
+
+To load it using node:
+var nations = fs.readFileSync("resources/nations.json",{encoding:"UTF-8"})
+
+..parse.. 
+
+Filtering the data in node:
+var new_array = nations.filter(function(el){ return el.name[0] == "N";});

@@ -40,13 +40,60 @@
 </ul>
 </div>
 </div>
-<p>Planned topics:</p>
+<ol style="list-style-type: decimal">
+<li>create html page:</li>
+</ol>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
+<span class="kw">&lt;html&gt;</span>
+  <span class="kw">&lt;head&gt;</span>
+    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;title&gt;</span>The Wealth <span class="er">&amp;</span> Health of the N-Nations<span class="kw">&lt;/title&gt;</span>
+    <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="ot"> href=</span><span class="st">&quot;main.css&quot;</span> <span class="kw">/&gt;</span>
+  <span class="kw">&lt;/head&gt;</span>
+  <span class="kw">&lt;body&gt;</span>
+
+    <span class="kw">&lt;h1&gt;</span>The Wealth <span class="er">&amp;</span> Health of the N-Nations<span class="kw">&lt;/h1&gt;</span>
+
+    <span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;chart&quot;</span><span class="kw">&gt;&lt;/p&gt;</span>
+
+    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://d3js.org/d3.v3.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;main.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+  <span class="kw">&lt;/body&gt;</span>
+<span class="kw">&lt;/html&gt;</span></code></pre>
+<p>talk about: 1) pointing to css file 2) pointing to d3 library 3) Javascript file that contains our actual code 4) we create a html element (paragraph) with the id <code>chart</code>. for now, this is a placeholder and will be filled in through javascript.</p>
+<p>And now, let's write main.js.</p>
+<p>D3 is a Javascript library. This means that we can use all of the Javascript commands that we have already learned, but on top of these, there are a few new functions that will make our life easier.</p>
+<p>The main purpose of D3 is to create visualisations of data online. Because it uses Javascript, it is possible to make graphs interactive!</p>
+<p>Similar to the syntax we've already seen (<code>JSON.stringify</code>), D3-specific functions can be called using a <code>d3.</code>-syntax.</p>
+<p>Now we want to do is to read in the data that is stored in 'nations.json'.</p>
+<pre class="d3"><code>d3.json(&quot;resources/nations.json&quot;, function(nations) { }</code></pre>
 <ul>
-<li>what is D3? - .js file: collection of functions</li>
-<li>reading in .json file using d3 specific syntax</li>
-<li>the dot-syntax</li>
-<li>creating the canvas</li>
-<li>creating a scatter plot: x: income per capita, y: life expectancy</li>
+<li><code>d3.json()</code> - function call. A function that reads in a json file and parses it.</li>
+<li>&quot;resources/nations.json&quot; - first argument: what's the data we want to do this to?</li>
+<li><code>function(nations){...}</code> - callback function (inline function and it doesn't have a name - only object space, because it doesn't have a name --&gt; we can't call it from anywhere else in our code)</li>
+<li><code>nations</code> - as soon as the data is read, d3 assigns the name <code>nations</code> to the object it returns. we can only use 'nations' within this callback function ({..&lt;--everything that's in here knows what nations is--&gt;..})</li>
+<li>This line doesn't return anything. that's often the case.</li>
+</ul>
+<p>The next step is to think about what we want to happen between the curly brackets. For now, we want to:</p>
+<ul>
+<li>Link Javascript to html page</li>
+<li>Insert an svg canvas</li>
+<li>Create axes (x: income per capita, y: life expectancy)</li>
+<li>Display data points (scatter plot)</li>
+</ul>
+<pre class="js"><code>// Create the SVG container and set the origin.
+
+var chart = d3.select(&quot;#chart&quot;);
+var svg_canvas = chart.append(&quot;svg&quot;);</code></pre>
+<p>d3.select is selecting the first element on the html page that has the id 'chart'. In the next step, we append the element by an svg canvas. This is equivalent to writing</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;chart&quot;</span><span class="kw">&gt;</span> <span class="kw">&lt;svg&gt;</span> <span class="kw">&lt;/svg&gt;</span> <span class="kw">&lt;/p&gt;</span></code></pre>
+<p>in the html file. We chose to append because now we have access to the svg element without the need to select it by id again.</p>
+<p>Let's set up the dimensions of the chart:</p>
+<pre class="js"><code>// Chart dimensions.
+var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5};
+var width = 960 - margin.right;
+var height = 500 - margin.top - margin.bottom;</code></pre>
+<ul>
 <li>challenge: radius = population</li>
 <li>tool tips: country names</li>
 <li>challenge: colour code each contry in a different colour</li>

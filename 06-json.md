@@ -78,8 +78,8 @@ var cat_object = {
 ~~~
 
 > ## Creating new attributes {.challenge}
-> You can append the list of attributes using the dot-syntax `cat_object.attribute = ...`.
-> Create a new attribute `height` and assign a number! 
+> You can append the list of attributes using the dot-syntax `cat_object.attributename = ...`,
+> (`attributename` is a placeholder). Create a new attribute `height` and assign a number! 
 
 
 Sometimes we don't want to have objects of the same kind that we can address 
@@ -89,9 +89,8 @@ We can append an array using the `push()` function
 
 ~~~{.js}
 var cat_list = [cat_object]; // initializing with the first field being cat_object
-cat_list.push({weight = 6 , past_weight_values = [5.9, 5.3, 6.1], name = 'Snowball'});
+cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : 'Snowball'});
 ~~~
-
 This process is called 'nesting'.
 
 > # Nesting {.challenge}
@@ -99,14 +98,35 @@ This process is called 'nesting'.
 > 1. Do all animals have to have the same attribute fields?
 > 1. Use the console of your browser to read the values of your object. 
 
-When we start creating our data for the plot, this is the structured 
-(and nicely annotated) data format that we want. 
-In order to store our data outside of the scripting environment, we need
+
+> ## Object space and name space {.challenge}
+> Instead of pushing a new cat to the list, what happens if we initiate the list using cat_object twice? 
+>
+> Reinitialise the list:
+>
+>~~~{.js}
+>var cat_list2 = [cat_object, cat_object]; 
+>~~~
+> 
+> 1. Change the name of the first cat object `cat_list2[0]`. Look at the whole list again (`cat_list2`). What happened?
+> 1. Look at cat_object. What's going on??
+
+In Javascript, we have a name space and an object space. 
+The name space contains the names of the variables, the object space contains the actual content. 
+Normally, you would assume that each name points to one object (`cat_object.weight` --> `5`, `cat_object.name` --> 'Princess Caroline'). What we did, when we created our list is that we used three names to point to the same object (`cat_list[0]`, `cat_list[1]`, `cat_object` --> `{weight = 5 , past_weight_values = [4.5, 5.1, 4.9], name = 'Princess Caroline'}`).
+When we changed the name of `cat_list2[0]`, what we actually did was changing the content of the one object `cat_object` that they were all pointing to.
+
+<img src="img/namespace.png" alt="Name space and object space" width="500"/>
+
+
+When we start creating our data for the plot, we want it to be nicely structured 
+and annotated. Basically, we want a Javascript object that we can work with. 
+In order to store our data outside of the scripting environment though, we need
 to convert it into a string.
 
 JavaScript provides an easy way to do this. Data can get converted using 
 `JSON.stringify()`. 
-To create this specific string, type
+To create this specific string from our first cat list, type
 
 ~~~{.js}
 var cat_json = JSON.stringify(cat_list)
@@ -123,6 +143,12 @@ So instead, let's have a look at our stringified data using the `alert()` functi
 alert(cat_json);
 ~~~
 
+The output should look like this: 
+
+~~~{.out}
+[{"weight":5,"past_weight_values":[4.5,5.2,4.9],"name":"Princess Caroline"},{"weight":6,"past_weight_values":[5.9,5.3,6.1],"name":"Snowball"}]
+~~~
+
 We could now copy this string and save it manually in a `.json` file. 
 
 > ## De-stringify  {.challenge}
@@ -131,6 +157,39 @@ We could now copy this string and save it manually in a `.json` file.
 > use the JSON.parse() function. Convert the data back and store it in a 
 > container called new_cat_list.
 
-
 We are now at a stage where we can have a look at the data file that we 
 want to work with. Open 'nations.json'.
+
+Here is a snap-shot of our data. We have data from 10 different countries, describing income per capita, population, and life expectancy for different years between 1800 and 2009.
+Source: [gapminder](http://www.gapminder.org/data/)
+
+~~~{.out}
+[
+	{
+		"name": "Namibia",
+		"region": "Sub-Saharan Africa",
+		"income": [
+			[
+				1800,
+				350
+			],
+			...
+		],
+		"population": [
+			[
+				1800,
+				229000
+			],
+			...
+		],
+		"lifeExpectancy": [
+			[
+				1800,
+				32.4
+			],
+			...
+		]
+	},
+	...
+]
+~~~
