@@ -11,14 +11,12 @@ minutes: 20
 > * Passing HTML element tags to JavaScript
 > * Manipulating HTML elements using JavaScript
 
-We've learned how to integrate text and graphical objects into our page and we also know how to publish it. 
-So far, we might as well just create a plot elsewhere and publish it as an image. 
-But wouldn't it be much better, if the user could interact with the data?
-Do do that, we need to learn a little scripting, and, again, HTML provides a scripting environment.
-Everything between &lt;script&gt; and &lt;/script&gt; within the body will be interpreted as JavaScript code. 
+We've learned how to integrate text and graphical objects into our page and we also know how to publish it.
+So far, we might as well just create a plot elsewhere and publish it as an image. But wouldn't it be much better, if the user could interact with the data?To do that, we need to learn a little scripting, and, again, HTML provides a scripting environment.
+Everything between &lt;script&gt; and &lt;/script&gt; within the body will be interpreted as JavaScript code.
 Just like we did with styles, we can outsource our code into a separate file with the extension '.js'.
 
-So, let's go back to using the cat image for now. We want the cat to acknowledge that we click on it. 
+So, let's go back to using the cat image for now. We want the cat to acknowledge that we click on it.
 First we need to create our `interaction.js` file and link to it in the HTML body.
 
 ~~~{.html}
@@ -46,10 +44,10 @@ Using 'getElementByID', we can grab the element from the document (a magical obj
 var cat_image = document.getElementByID('cat');
 ~~~
 
-Now we want to detect if someone clicks on the cat image. 
-Event listeners help us by constantly checking if someone performs 
-a certain action. 
-The second argument determines what we want to happen. In our case, 
+Now we want to detect if someone clicks on the cat image.
+Event listeners help us by constantly checking if someone performs
+a certain action.
+The second argument determines what we want to happen. In our case,
 we want to execute a function called 'meow', that we haven't written yet.
 
 ~~~{.js}
@@ -57,9 +55,9 @@ var cat_image = document.getElementByID('cat');
 cat_image.addEventListener("click", meow);
 ~~~
 
-The last step is to write the meow function. 
-We want a pop-up window. 
-The JavaScript function alert() will give us one. 
+The last step is to write the meow function.
+We want a pop-up window.
+The JavaScript function alert() will give us one.
 
 ~~~{.js}
 var cat_image = document.getElementByID('cat');
@@ -70,16 +68,16 @@ function meow() {
 ~~~
 
 > ## Feed your pet cat {.challenge}
-> Create a button using the &lt;button&gt; element to feed the cat. 
+> Create a button using the &lt;button&gt; element to feed the cat.
 > Use the alert() function to have the cat thank you.
 
-The next step to having a fully interactive page is to 
-change HTML elements using JavaScript. 
+The next step to having a fully interactive page is to
+change HTML elements using JavaScript.
 
 We've created a button in the HTML file:
 
 ~~~{.html}
-<button id='feed_button'> 
+<button id='feed_button'>
 	FOOD!
 </button>
 ~~~
@@ -96,19 +94,19 @@ function feed() {
 };
 ~~~
 
-The goal now is to make the cat put on a little bit of weight when we feed it. 
-Again, we have to link to both the cat element and the food button so that 
-both files know what we're talking about. 
+The goal now is to make the cat put on a little bit of weight when we feed it.
+Again, we have to link to both the cat element and the food button so that
+both files know what we're talking about.
 
 We're setting the width by stringing a few words together:
 'cat_image.style.width'.
-We can think of 'cat_image' as having an attribute called 'style', which in turn has an attribute 
+We can think of 'cat_image' as having an attribute called 'style', which in turn has an attribute
 called 'width'.
-Let's add a couple of grams. 
-We have to retrieve the current object width. Our 'cat_image' object also has a 
+Let's add a couple of grams.
+We have to retrieve the current object width. Our 'cat_image' object also has a
 attribute called 'offsetWidth'. This will give us the current width as a number (as
-opposed to the string '200px'). 
-Google is your friend here. Use it to find out these handy functions. 
+opposed to the string '200px').
+Google is your friend here. Use it to find out these handy functions.
 Lastly we have to append the new value with 'px'.
 
 ~~~{.js}
@@ -124,19 +122,19 @@ function feed() {
 > ## Let the cat work out  {.challenge}
 > Create a second button 'run around the block', that makes the cat slimmer again.
 
-In JavaScript there are two main data types: strings (text, everything in quotes) 
-and numbers. It's important to remember that you can't do maths with strings or 
+In JavaScript there are two main data types: strings (text, everything in quotes)
+and numbers. It's important to remember that you can't do maths with strings or
 append numbers together.
 
 For example:
 `5+5 = 10`
-but 
+but
 `'5'+'5' = '55'`
 
 If one of the arguments is a string, the other one gets converted, too:
 `5 + '5' = '55'`
 
-We've also just used that, when we concatenated 
+We've also just used that, when we concatenated
 `(cat_image.offsetWidth + 30.0) + 'px'`.
 
 > ## Other event listeners, that might come in handy  {.callout}
