@@ -123,13 +123,32 @@ to convert it into a string.
 
 JavaScript provides an easy way to do this. Data can get converted using 
 `JSON.stringify()`. 
-To create this specific string from our first cat list, type
-=======
 
 > # Arrays of objects {.challenge}
 > 1. Append a third cat to the array, not entering a name or weight.
 > 1. Do all animals have to have the same attribute fields?
 > 1. Use the console of your browser to read the values of your object. 
+
+
+A good way of creating a new array that relates to an array we already have 
+can be done using the `map()` function. 
+
+~~~{.js}
+dog_list = cat_list.map( function(cat)
+{
+	return {
+	name: "Mr ".concat(cat.name);
+}	
+}
+)
+~~~
+
+FIXME: needs explanation
+
+> # How much do dogs weigh? {.challenge}
+> 1. Let's assume dog misters weigh twice as much as their feline version. Make 
+> the new array reflect this.
+
 
 When we start creating our data for the plot, this is the structured 
 (and nicely annotated) data format that we want. 
