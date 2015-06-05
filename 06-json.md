@@ -113,7 +113,7 @@ The name space contains the names of the variables, the object space contains th
 Normally, you would assume that each name points to one object (`cat_object.weight` --> `5`, `cat_object.name` --> 'Princess Caroline'). What we did, when we created our list is that we used three names to point to the same object (`cat_list[0]`, `cat_list[1]`, `cat_object` --> `{weight = 5 , past_weight_values = [4.5, 5.1, 4.9], name = 'Princess Caroline'}`).
 When we changed the name of `cat_list2[0]`, what we actually did was changing the content of the one object `cat_object` that they were all pointing to.
 
-<img src="img/namespace.png" alt="Name space and object space" width="500"/>
+<img src="img/namespace.png" alt="Name space and object space" width="500" />
 
 
 When we start creating our data for the plot, we want it to be nicely structured 

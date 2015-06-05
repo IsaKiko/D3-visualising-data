@@ -39,7 +39,7 @@
 </ul>
 </div>
 </div>
-<p>We've learned how to integrate text and graphical objects into our page and we also know how to publish it. So far, we might as well just create a plot elsewhere and publish it as an image. But wouldn't it be much better, if the user could interact with the data? Do do that, we need to learn a little scripting, and, again, HTML provides a scripting environment. Everything between &lt;script&gt; and &lt;/script&gt; within the body will be interpreted as JavaScript code. Just like we did with styles, we can outsource our code into a separate file with the extension '.js'.</p>
+<p>We've learned how to integrate text and graphical objects into our page and we also know how to publish it. So far, we might as well just create a plot elsewhere and publish it as an image. But wouldn't it be much better, if the user could interact with the data? To do that, we need to learn a little scripting, and, again, HTML provides a scripting environment. Everything between &lt;script&gt; and &lt;/script&gt; within the body will be interpreted as JavaScript code. Just like we did with styles, we can outsource our code into a separate file with the extension '.js'.</p>
 <p>So, let's go back to using the cat image for now. We want the cat to acknowledge that we click on it. First we need to create our <code>interaction.js</code> file and link to it in the HTML body.</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;interaction.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre>
 <p>We need to introduce the script to the HTML element, using these basic steps:</p>
@@ -74,7 +74,7 @@ function meow() {
 </div>
 <p>The next step to having a fully interactive page is to change HTML elements using JavaScript.</p>
 <p>We've created a button in the HTML file:</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;button</span><span class="ot"> id=</span><span class="st">&#39;feed_button&#39;</span><span class="kw">&gt;</span> 
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;button</span><span class="ot"> id=</span><span class="st">&#39;feed_button&#39;</span><span class="kw">&gt;</span>
     FOOD!
 <span class="kw">&lt;/button&gt;</span></code></pre>
 <p>This is what we all should be up to by now:</p>

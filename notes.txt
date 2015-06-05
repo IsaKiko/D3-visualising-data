@@ -6,3 +6,8 @@ var nations = fs.readFileSync("resources/nations.json",{encoding:"UTF-8"})
 
 Filtering the data in node:
 var new_array = nations.filter(function(el){ return el.name[0] == "N";});
+
+
+Thing we might want to include: 
+- how to convert an excel spreadsheet to json
+- end on the chart
