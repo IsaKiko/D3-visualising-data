@@ -1,0 +1,27 @@
+layout: page
+title: Beyond this content
+subtitle: ...and now what??
+minutes: 20
+---
+
+> ## Learning Objectives {.objectives}
+> 
+> * How do I make the plot I want?
+> * What are alternatives to using D3 to create pretty plots?
+
+If you go to [d3js.org](http://d3js.org), you will find pleny of beautiful examples 
+for plots that people have made. 
+
+<img src="img/d3_screeshot.png" alt="What we want.." width="700" />
+
+
+Choose the right chart:
+<img src="img/choose_right_chart.png" alt="What we want.." width="700" />
+
+[Source](https://www.flickr.com/photos/amit-agarwal/3196386402/)
+
+* http://www.highcharts.com/
+* https://plot.ly/feed/
+* http://nvd3.org/
+* http://www.cytoscape.org/
+* http://dimplejs.org/

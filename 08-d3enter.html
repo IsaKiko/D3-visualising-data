@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: D3 - Into the data</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">D3 - Into the data</h1>
+          <h2 class="subtitle">Actually plotting things</h2>
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Making axes</li>
+<li>Actually plotting data (d3.enter)</li>
+</ul>
+</div>
+</div>
+<ul>
+<li>Make scales and axes</li>
+</ul>
+<pre class="js"><code>// Various scales. These domains make assumptions of data, naturally.
+var xScale = d3.scale.log(); // income
+xScale.domain([300, 1e5]);
+xScale.range([0, canvas_width]);  
+
+
+// d3 has a subobject called scale. within scale, there are a number of functions to create scales.
+// e.g. log, linear, sqrt, category10 (e.g. 10 different colours)... 
+// we set the domain based on our data - min and max of the data
+// we set the range - range on the page
+// domain, range, log scale all determing data values are mapped to graph positions.
+
+var yScale = d3.scale.linear().domain([10, 85]).range([canvas_height, 0]);  // life expectancy
+
+// an alternative notation that d3 offers is to chain everything together using the dot-syntax 
+// (you&#39;ll see this a lot). The order is mostly arbitrary. 
+
+// Creating the x &amp; y axes.
+var xAxis = d3.svg.axis().orient(&quot;bottom&quot;).scale(xScale);
+var yAxis = d3.svg.axis().scale(yScale).orient(&quot;left&quot;);
+
+
+
+    // Next step: push the axes into the chart
+
+
+  // Add the x-axis.
+  canvas.append(&quot;g&quot;)
+  .attr(&quot;class&quot;, &quot;x axis&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(0,&quot; + canvas_height + &quot;)&quot;)
+    .call(xAxis);
+
+    // .call is the bit where the properties we just set are pushed to the object
+    // attribures are added to make it look pretty (class is used in the css file)
+
+
+  // Add the y-axis.
+  canvas.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;y axis&quot;)
+    .call(yAxis);
+</code></pre>
+<ul>
+<li>Put in some data - needs updated data</li>
+</ul>
+<pre class="js"><code>
+var data_2009 = nations.map( function(nation) {
+  return {
+    x : nation.income[nation.income.length-1][1],
+    y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1]
+  }
+});
+
+
+var dot = frame.append(&quot;g&quot;)
+      .attr(&quot;class&quot;, &quot;dots&quot;)
+    .selectAll(&quot;.dot&quot;)
+      .data(data_2009) // each of the points has the data_2009 element bound to it.
+    .enter().append(&quot;circle&quot;)
+      .attr(&quot;cx&quot;, function(d) { return xScale(d.x); }) // this is why attr knows to work with the data
+      .attr(&quot;cy&quot;, function(d) { return yScale(d.y); })
+      .attr(&quot;r&quot;, 5 );
+  </code></pre>
+<div id="a-new-dimension" class="challenge panel panel-success">
+<div class="panel-heading">
+<h1><span class="glyphicon glyphicon-pencil"></span>A new dimension</h1>
+</div>
+<div class="panel-body">
+<p>Change the code so that the radius of the circles represents the population</p>
+</div>
+</div>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

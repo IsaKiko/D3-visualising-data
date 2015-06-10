@@ -130,20 +130,24 @@ JavaScript provides an easy way to do this. Data can get converted using
 > 1. Use the console of your browser to read the values of your object. 
 
 
-A good way of creating a new array that relates to an array we already have 
+A good way of creating a new array (as in a new object, not just a new 
+name for the same one) that relates to an array we already have 
 can be done using the `map()` function. 
 
+As an example, we can create a list of dogs that have the same names as 
+our cats, only appended by "Mr.".
+
 ~~~{.js}
-dog_list = cat_list.map( function(cat)
-{
+dog_list = cat_list.map(function(cat) {
 	return {
-	name: "Mr ".concat(cat.name);
-}	
-}
-)
+		name: "Mr ".concat(cat.name);
+	};
+});
 ~~~
 
-FIXME: needs explanation
+When the map function is called using `cat_list.map`, it loops through all elements
+in `cat_list`, calls each temporarily `cat`, and creates a new list `dog_list`, which
+will have one dog per cat. The function `concat` simply concatenates two strings.
 
 > # How much do dogs weigh? {.challenge}
 > 1. Let's assume dog misters weigh twice as much as their feline version. Make 

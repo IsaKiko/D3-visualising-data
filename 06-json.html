@@ -113,15 +113,14 @@ cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : &#39;Sn
 </ol>
 </div>
 </div>
-<p>A good way of creating a new array that relates to an array we already have can be done using the <code>map()</code> function.</p>
-<pre class="js"><code>dog_list = cat_list.map( function(cat)
-{
+<p>A good way of creating a new array (as in a new object, not just a new name for the same one) that relates to an array we already have can be done using the <code>map()</code> function.</p>
+<p>As an example, we can create a list of dogs that have the same names as our cats, only appended by &quot;Mr.&quot;.</p>
+<pre class="js"><code>dog_list = cat_list.map(function(cat) {
     return {
-    name: &quot;Mr &quot;.concat(cat.name);
-}   
-}
-)</code></pre>
-<p>FIXME: needs explanation</p>
+        name: &quot;Mr &quot;.concat(cat.name);
+    };
+});</code></pre>
+<p>When the map function is called using <code>cat_list.map</code>, it loops through all elements in <code>cat_list</code>, calls each temporarily <code>cat</code>, and creates a new list <code>dog_list</code>, which will have one dog per cat. The function <code>concat</code> simply concatenates two strings.</p>
 <div id="how-much-do-dogs-weigh" class="challenge panel panel-success">
 <div class="panel-heading">
 <h1><span class="glyphicon glyphicon-pencil"></span>How much do dogs weigh?</h1>

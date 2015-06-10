@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
-    <title>Software Carpentry: </title>
+    <title>Software Carpentry: D3 setup</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
@@ -25,9 +25,8 @@
       </div>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h1 class="title"></h1>
-          
-<p>layout: page title: Setting up html for our data visualisation subtitle: Finally... minutes: 20 ---</p>
+          <h1 class="title">D3 setup</h1>
+          <h2 class="subtitle">Setting up html for our data visualisation</h2>
 <div id="learning-objectives" class="objectives panel panel-warning">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
@@ -116,118 +115,9 @@ canvas.attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;
 <h1><span class="glyphicon glyphicon-pencil"></span>Time for a challenge I think!</h1>
 </div>
 <div class="panel-body">
-
+<p>FIXME: come up with sensible challenge (maybe a 'what if?'-challenge?)</p>
 </div>
 </div>
-<p>This might need to be a new lesson(?):</p>
-<ul>
-<li>Make scales and axes</li>
-</ul>
-<pre class="js"><code>// Various scales. These domains make assumptions of data, naturally.
-var xScale = d3.scale.log(); // income
-xScale.domain([300, 1e5]);
-xScale.range([0, canvas_width]);  
-
-
-// d3 has a subobject called scale. within scale, there are a number of functions to create scales.
-// e.g. log, linear, sqrt, category10 (e.g. 10 different colours)... 
-// we set the domain based on our data - min and max of the data
-// we set the range - range on the page
-// domain, range, log scale all determing data values are mapped to graph positions.
-
-var yScale = d3.scale.linear().domain([10, 85]).range([canvas_height, 0]);  // life expectancy
-
-// an alternative notation that d3 offers is to chain everything together using the dot-syntax 
-// (you&#39;ll see this a lot). The order is mostly arbitrary. 
-
-// Creating the x &amp; y axes.
-var xAxis = d3.svg.axis().orient(&quot;bottom&quot;).scale(xScale);
-var yAxis = d3.svg.axis().scale(yScale).orient(&quot;left&quot;);
-
-
-
-    // Next step: push the axes into the chart
-
-
-  // Add the x-axis.
-  canvas.append(&quot;g&quot;)
-  .attr(&quot;class&quot;, &quot;x axis&quot;)
-    .attr(&quot;transform&quot;, &quot;translate(0,&quot; + canvas_height + &quot;)&quot;)
-    .call(xAxis);
-
-    // .call is the bit where the properties we just set are pushed to the object
-    // attribures are added to make it look pretty (class is used in the css file)
-
-
-  // Add the y-axis.
-  canvas.append(&quot;g&quot;)
-    .attr(&quot;class&quot;, &quot;y axis&quot;)
-    .call(yAxis);
-</code></pre>
-<ul>
-<li>Put in some data - needs updated data</li>
-</ul>
-<pre class="js"><code>
-var data_2009 = nations.map( function(nation) {
-  return {
-    x : nation.income[nation.income.length-1][1],
-    y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1]
-  }
-});
-
-
-var dot = frame.append(&quot;g&quot;)
-      .attr(&quot;class&quot;, &quot;dots&quot;)
-    .selectAll(&quot;.dot&quot;)
-      .data(data_2009) // each of the points has the data_2009 element bound to it.
-    .enter().append(&quot;circle&quot;)
-      .attr(&quot;cx&quot;, function(d) { return xScale(d.x); }) // this is why attr knows to work with the data
-      .attr(&quot;cy&quot;, function(d) { return yScale(d.y); })
-      .attr(&quot;r&quot;, 5 );
-  </code></pre>
-<div id="a-new-dimension" class="challenge panel panel-success">
-<div class="panel-heading">
-<h1><span class="glyphicon glyphicon-pencil"></span>A new dimension</h1>
-</div>
-<div class="panel-body">
-<p>Change the code so that the radius of the circles represents the population</p>
-</div>
-</div>
-<ul>
-<li>adding a filter - we only want bubbles for big countries</li>
-</ul>
-<div id="filtering-by-region" class="challenge panel panel-success">
-<div class="panel-heading">
-<h1><span class="glyphicon glyphicon-pencil"></span>Filtering by region</h1>
-</div>
-<div class="panel-body">
-<p>You might have noticed that our data contains information about the region in which a country is. 1. Create a filter so that you only display data points from &quot;Sub-Saharan Africa&quot;.</p>
-</div>
-</div>
-<ul>
-<li>Checkboxes (exit)</li>
-</ul>
-<p>Now, instead of displaying all the data all the time, we want to be able to choose which data we display.</p>
-<ul>
-<li>tool tips: country names</li>
-</ul>
-<div id="another-new-dimension" class="challenge panel panel-success">
-<div class="panel-heading">
-<h1><span class="glyphicon glyphicon-pencil"></span>Another new dimension</h1>
-</div>
-<div class="panel-body">
-<p>Have the colour of circles represent the region the country is in</p>
-</div>
-</div>
-<p>New lesson:</p>
-<ul>
-<li>transitions: create time steps and switch between different countries (?)</li>
-</ul>
-<p>New lesson:</p>
-<ul>
-<li>D3 page: how do I make the plot I want?</li>
-<li>What are alternatives to using D3?</li>
-</ul>
         </div>
       </div>
       <div class="footer">
