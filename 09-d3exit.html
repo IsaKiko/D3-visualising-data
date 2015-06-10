@@ -39,9 +39,10 @@
 </ul>
 </div>
 </div>
-<ul>
-<li>adding a filter - we only want bubbles for big countries</li>
-</ul>
+<p>Our plot is pretty busy. We might not want to display everythign all the time. The goal for this lesson is to update the plot based on what kind of data we want to display.</p>
+<p>First, we need to find a way to filter our data. We use the function <code>filter</code> to do this. Similar to previous functions, this function enters the array <code>nations</code> and loops through each element, temporarily calling it <code>nation</code>. It only returns an element to the new array <code>filtered_nations</code> if the population of a given nation in the first recorded year is larger than 10000000.</p>
+<pre class="js"><code>var filtered_nations = nations.filter(function(nation){ return nation.population[0] &gt; 10000000;});</code></pre>
+<p>FIXME: This filter needs to be integrateg into the script (and then commented out and updated to match the challenge).</p>
 <div id="filtering-by-region" class="challenge panel panel-success">
 <div class="panel-heading">
 <h1><span class="glyphicon glyphicon-pencil"></span>Filtering by region</h1>

@@ -38,71 +38,57 @@
 </ul>
 </div>
 </div>
-<ul>
-<li>Make scales and axes</li>
-</ul>
-<pre class="js"><code>// Various scales. These domains make assumptions of data, naturally.
+<p>We design our axes based on our data. This means we have to know the minimum and maximum values of our data and have to decide whether we want linear or logarithmic axes.</p>
+<pre class="js"><code>// Create a logarithmic scale for the income 
 var xScale = d3.scale.log(); // income
-xScale.domain([300, 1e5]);
-xScale.range([0, canvas_width]);  
-
-
-// d3 has a subobject called scale. within scale, there are a number of functions to create scales.
-// e.g. log, linear, sqrt, category10 (e.g. 10 different colours)... 
-// we set the domain based on our data - min and max of the data
-// we set the range - range on the page
-// domain, range, log scale all determing data values are mapped to graph positions.
-
-var yScale = d3.scale.linear().domain([10, 85]).range([canvas_height, 0]);  // life expectancy
-
-// an alternative notation that d3 offers is to chain everything together using the dot-syntax 
-// (you&#39;ll see this a lot). The order is mostly arbitrary. 
-
-// Creating the x &amp; y axes.
-var xAxis = d3.svg.axis().orient(&quot;bottom&quot;).scale(xScale);
-var yAxis = d3.svg.axis().scale(yScale).orient(&quot;left&quot;);
-
-
-
-    // Next step: push the axes into the chart
-
-
-  // Add the x-axis.
-  canvas.append(&quot;g&quot;)
-  .attr(&quot;class&quot;, &quot;x axis&quot;)
-    .attr(&quot;transform&quot;, &quot;translate(0,&quot; + canvas_height + &quot;)&quot;)
-    .call(xAxis);
-
-    // .call is the bit where the properties we just set are pushed to the object
-    // attribures are added to make it look pretty (class is used in the css file)
-
-
-  // Add the y-axis.
-  canvas.append(&quot;g&quot;)
-    .attr(&quot;class&quot;, &quot;y axis&quot;)
-    .call(yAxis);
-</code></pre>
-<ul>
-<li>Put in some data - needs updated data</li>
-</ul>
-<pre class="js"><code>
+xScale.domain([300, 1e5]); // set minimum and maximum value
+xScale.range([0, canvas_width]); // set minimum and maximum range on the page</code></pre>
+<p>D3's scale object provides a number of functions to create the scaling we want for our data. For example, we can choose between a logarithmic scale (<code>log</code>), a linear scale (<code>linear</code>), a square root scale (<code>sqrt</code>), or a categorical scale (e.g. <code>category10</code> could represent 10 different colours).</p>
+<p>The domain is set based on the minimum and maximum values of the data, range is the range on the page, basically the range our data gets mapped to.</p>
+<p>Instead of spreading this code over three lines, we often find another notation online that achieves the same thing:</p>
+<pre class="js"><code>var xScale = d3.scale.log().domain([300, 1e5]).range([0, canvas_width]);  </code></pre>
+<p>These two notations are interchangeable and it is entirely up to you to use the one that seems more intuitive to you. In the same way that we could switch setting up the domain and range in the more verbose notation, we can swap these two in the shorter notation without it making any difference.</p>
+<p>The next step is to create the actual axis and linking it to the scale we just created:</p>
+<pre class="js"><code>// Creating the x &amp; y axes.
+var xAxis = d3.svg.axis().orient(&quot;bottom&quot;).scale(xScale);</code></pre>
+<p>We also want to orient it horizontally, at the bottom of our canvas.</p>
+<p>So far, the xAxis exists, but it's not actually showing up anywhere on the page. To push the axis to our canvas, we create a new group element (using <code>.apend</code>).</p>
+<pre class="js"><code>// Add the x-axis.
+canvas.append(&quot;g&quot;)
+.attr(&quot;class&quot;, &quot;x axis&quot;)
+  .attr(&quot;transform&quot;, &quot;translate(0,&quot; + canvas_height + &quot;)&quot;)
+  .call(xAxis);</code></pre>
+<p><code>.call</code> calls the axis we just created and pushed it to the element. Attributes are added to make the axis look prettier. We also give it a class, just in case we might want to select the axis later in our code.</p>
+<p>FIXME: explain <code>.attr(&quot;transform&quot;, &quot;translate(0,&quot; + canvas_height + &quot;)&quot;)</code></p>
+<div id="we-might-need-a-y-axis-too" class="challenge panel panel-success">
+<div class="panel-heading">
+<h1><span class="glyphicon glyphicon-pencil"></span>We might need a y-axis, too</h1>
+</div>
+<div class="panel-body">
+<p>Create a linear scale for the y-axis, with 10 being the minimum and 85 being the maximum value. Then, add the axis to the canvas.</p>
+</div>
+</div>
+<p>We're slowly getting there. Having our two axes, we can now finally add our data. But we don't want to see all the data at once for now. Let's instead just look at the most recent data point (year 2009).</p>
+<p>We create a new array <code>data_2009</code> that contains only these data points using the <code>map</code> function we've learned about earlier:</p>
+<pre class="js"><code>// create new array that only contains the most recent data point
 var data_2009 = nations.map( function(nation) {
   return {
     x : nation.income[nation.income.length-1][1],
     y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1]
   }
-});
-
-
-var dot = frame.append(&quot;g&quot;)
+});</code></pre>
+<p><img src="img/mapping.png" alt="data mapping" width="700" /></p>
+<p>FIXME: image and mapping might need updating once we've restructured the data.</p>
+<p>And now we're ready to add one circle per data point!</p>
+<pre class="js"><code>var dot = frame.append(&quot;g&quot;)
       .attr(&quot;class&quot;, &quot;dots&quot;)
     .selectAll(&quot;.dot&quot;)
       .data(data_2009) // each of the points has the data_2009 element bound to it.
     .enter().append(&quot;circle&quot;)
       .attr(&quot;cx&quot;, function(d) { return xScale(d.x); }) // this is why attr knows to work with the data
       .attr(&quot;cy&quot;, function(d) { return yScale(d.y); })
-      .attr(&quot;r&quot;, 5 );
-  </code></pre>
+      .attr(&quot;r&quot;, 5 );</code></pre>
+<p>FIXME: Explain all of the above code...</p>
 <div id="a-new-dimension" class="challenge panel panel-success">
 <div class="panel-heading">
 <h1><span class="glyphicon glyphicon-pencil"></span>A new dimension</h1>

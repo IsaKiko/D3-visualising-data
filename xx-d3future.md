@@ -28,7 +28,7 @@ and modify it to suit your data. Some examples don't volunteer their code like t
 But through the beauty of the internet, all that code is online, too, and we can have a 
 look at it using the browser's developer tools (right click, 'inspect element').
 
-This lesson tries to give you the tools you need to download someone's code and 
+This workshop tries to give you the tools you need to download someone's code and 
 modify it for your needs. 
 There are of course other ways you can create plots. Some handy packages that are online are:
 

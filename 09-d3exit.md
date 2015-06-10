@@ -11,8 +11,21 @@ minutes: 20
 > * Creating checkboxes
 > * Adding and removing data points (d3.enter and d3.exit)
 
+Our plot is pretty busy. We might not want to display everythign all the time.
+The goal for this lesson is to update the plot based on what kind of data we want to 
+display. 
 
-* adding a filter - we only want bubbles for big countries
+First, we need to find a way to filter our data. We use the function `filter` to do this. 
+Similar to previous functions, this function enters the array `nations` and loops through
+each element, temporarily calling it `nation`. 
+It only returns an element to the new array `filtered_nations` if the population of a 
+given nation in the first recorded year is larger than 10000000.
+
+~~~{.js}
+var filtered_nations = nations.filter(function(nation){ return nation.population[0] > 10000000;});
+~~~
+
+FIXME: This filter needs to be integrateg into the script (and then commented out and updated to match the challenge).
 
 > # Filtering by region {.challenge}
 > You might have noticed that our data contains information about the region in 
