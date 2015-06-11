@@ -1,6 +1,7 @@
 // Load the data.
 d3.json("nations.json", function(nations) {
 
+	var filtered_nations = [];
 
 	// Create the SVG frame inside chart_area.
 	var chart_area = d3.select("#chart_area");
@@ -48,10 +49,9 @@ d3.json("nations.json", function(nations) {
 	var xAxis = d3.svg.axis().orient("bottom").scale(xScale);
     var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
+	var rScale = d3.scale.sqrt().domain([0, 5e8]).range([0, 40]); // life expectancy
 
     // Next step: push the axes into the chart
-
-
 	// Add the x-axis.
 	canvas.append("g")
 	.attr("class", "x axis")
@@ -76,26 +76,54 @@ d3.json("nations.json", function(nations) {
 //////////////////////FILL IN DATA//////////////////////////
 
 
-var data_2009 = nations.map( function(nation) {
+// var filtered_nations = nations.filter(function(nation){ return nation.population[nation.population.length-1][1] > 10000000;});
+
+// var data_2009 = filtered_nations.map( function(nation) {
+// 	return {
+// 		x : nation.income[nation.income.length-1][1],
+// 		y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1],
+// 		r : nation.population[nation.population.length-1][1]
+// 	}
+// });
+
+// var filtered_nations = nations.filter(function(nation){ return nation.region == "Sub-Saharan Africa";});
+
+// var data_2009 = filtered_nations.map( function(nation) {
+// 	return {
+// 		x : nation.income[nation.income.length-1][1],
+// 		y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1],
+// 		r : nation.population[nation.population.length-1][1]
+// 	}
+// });
+
+d3.selectAll(".region_cb").on("change", function () {
+	var type = this.value;
+	if (this.checked){
+ 	filtered_nations = nations.filter(function(nation){ return nation.region == type;});}
+ 	else{ // remove data points from the data that match the filter
+ 	filtered_nations = [];}//filtered_nations.filter(function(nation){ return nation.region != type;});}
+
+var data_2009 = filtered_nations.map( function(nation) {
 	return {
 		x : nation.income[nation.income.length-1][1],
 		y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1],
-		r : nation.population[nation.population.length-1][1]
+		r : nation.population[nation.population.length-1][1]]
 	}
 });
 
-
 var dot = canvas.append("g")
-      .attr("class", "dots")
+	.attr("class", "dots")
     .selectAll(".dot")
-      .data(data_2009) // each of the points has the data_2009 element bound to it.
-    .enter().append("circle")
+    .data(data_2009)
+
+dot.enter().append("circle")
     	.attr("cx", function(d) { return xScale(d.x); }) // this is why attr knows to work with the data
     	.attr("cy", function(d) { return yScale(d.y); })
-    	.attr("r", function(d) { return d.r/2000000; });
-  
+    	.attr("r", function(d) { return rScale(d.r); });
 
-
-
+dot.exit().remove();
 
 });
+
+});
+

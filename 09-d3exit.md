@@ -22,15 +22,15 @@ It only returns an element to the new array `filtered_nations` if the population
 given nation in the first recorded year is larger than 10000000.
 
 ~~~{.js}
-var filtered_nations = nations.filter(function(nation){ return nation.population[0] > 10000000;});
+var filtered_nations = nations.filter(function(nation){ return nation.population[nation.population.length-1][1] > 10000000;});
 ~~~
-
-FIXME: This filter needs to be integrateg into the script (and then commented out and updated to match the challenge).
 
 > # Filtering by region {.challenge}
 > You might have noticed that our data contains information about the region in 
 > which a country is. 
 > 1. Create a filter so that you only display data points from "Sub-Saharan Africa".
+
+We have now hardcoded a criterion for the data we want to display. Naturally, we might want to change the data using elements on our page. Let's create some checkboxes that let us tick, which regions we want to display. To do this, we will have to switch back to our html file for a while.
 
 * Checkboxes (exit)
 

@@ -81,7 +81,7 @@ But we don't want to see all the data at once for now. Let's instead just look a
 most recent data point (year 2009).
 
 We create a new array `data_2009` that contains only these data points using the `map`
-function we've learned about earlier:
+function we've learned about earlier. We are looking at the most recent data point (`[nation.income.length-1]`).
 
 ~~~{.js}
 // create new array that only contains the most recent data point
@@ -94,6 +94,7 @@ var data_2009 = nations.map( function(nation) {
 ~~~
 
 <img src="img/mapping.png" alt="data mapping" width="700" />
+
 
 FIXME: image and mapping might need updating once we've restructured the data.
 
@@ -123,9 +124,9 @@ data elements inside the set.
 And what we want to do is to create one circle for each data point. That's
 what the last four lines of code do. They are creating a circle, and then setting 
 the attributes `cx`, `cy`, and `r`. 
-`cx` and `cy` define where the circle should appear and are set to the income and life expectancy of the data point (that is temporarily called `d`). The radius is set to an 
-arbitrary number.. for now.
+`cx` and `cy` define the position of the circle and are based on the income and life expectancy of the data point (that is temporarily called `d`). The radius is set to an 
+arbitrary number... for now.
 
 
 > # A new dimension {.challenge}
-> Change the code so that the radius of the circles represents the population. (You might need to divide the value by 2000000 or so)
+> Change the code so that the radius of the circles represents the population. First, create a sqrt scale with a minimum of 0 and a maximum of 5e8. The range should be between 0 and 40. Also, don't forget to update the mapping function. 
