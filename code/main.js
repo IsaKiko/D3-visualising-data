@@ -69,61 +69,61 @@ d3.json("nations.json", function(nations) {
 
 
 
-//////////////////////AXES CREATED//////////////////////////
+	//////////////////////AXES CREATED//////////////////////////
 
 
 
-//////////////////////FILL IN DATA//////////////////////////
+	//////////////////////FILL IN DATA//////////////////////////
 
 
-// var filtered_nations = nations.filter(function(nation){ return nation.population[nation.population.length-1][1] > 10000000;});
+	// var filtered_nations = nations.filter(function(nation){ return nation.population[nation.population.length-1][1] > 10000000;});
 
-// var data_2009 = filtered_nations.map( function(nation) {
-// 	return {
-// 		x : nation.income[nation.income.length-1][1],
-// 		y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1],
-// 		r : nation.population[nation.population.length-1][1]
-// 	}
-// });
+	// var data_2009 = filtered_nations.map( function(nation) {
+	// 	return {
+	// 		x : nation.income[nation.income.length-1][1],
+	// 		y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1],
+	// 		r : nation.population[nation.population.length-1][1]
+	// 	}
+	// });
 
-// var filtered_nations = nations.filter(function(nation){ return nation.region == "Sub-Saharan Africa";});
+	// var filtered_nations = nations.filter(function(nation){ return nation.region == "Sub-Saharan Africa";});
 
-// var data_2009 = filtered_nations.map( function(nation) {
-// 	return {
-// 		x : nation.income[nation.income.length-1][1],
-// 		y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1],
-// 		r : nation.population[nation.population.length-1][1]
-// 	}
-// });
+	// var data_2009 = filtered_nations.map( function(nation) {
+	// 	return {
+	// 		x : nation.income[nation.income.length-1][1],
+	// 		y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1],
+	// 		r : nation.population[nation.population.length-1][1]
+	// 	}
+	// });
 
-d3.selectAll(".region_cb").on("change", function () {
-	var type = this.value;
-	if (this.checked){
- 	filtered_nations = nations.filter(function(nation){ return nation.region == type;});}
- 	else{ // remove data points from the data that match the filter
- 	filtered_nations = [];}//filtered_nations.filter(function(nation){ return nation.region != type;});}
 
-var data_2009 = filtered_nations.map( function(nation) {
-	return {
-		x : nation.income[nation.income.length-1][1],
-		y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1],
-		r : nation.population[nation.population.length-1][1]]
-	}
-});
-
-var dot = canvas.append("g")
+	var dots = canvas.append("g")
 	.attr("class", "dots")
-    .selectAll(".dot")
-    .data(data_2009)
 
-dot.enter().append("circle")
-    	.attr("cx", function(d) { return xScale(d.x); }) // this is why attr knows to work with the data
-    	.attr("cy", function(d) { return yScale(d.y); })
-    	.attr("r", function(d) { return rScale(d.r); });
+	d3.selectAll(".region_cb").on("change", function () {
+		var type = this.value;
+		if (this.checked){ // adding data points (not quite right yet)
+			filtered_nations = nations.filter(function(nation){ return nation.region == type;});}
+		else{ // remove data points from the data that match the filter
+			filtered_nations = [];}//filtered_nations.filter(function(nation){ return nation.region != type;});}
 
-dot.exit().remove();
+		var data_2009 = filtered_nations.map( function(nation) {
+			return {
+				x : nation.income[nation.income.length-1][1],
+				y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1],
+				r : nation.population[nation.population.length-1][1]
+			}
+		});
+		var dot = dots.selectAll(".dot")
+		.data(data_2009);
 
-});
+		dot.enter().append("circle")
+		.attr("cx", function(d) { return xScale(d.x); }) // this is why attr knows to work with the data
+		.attr("cy", function(d) { return yScale(d.y); })
+		.attr("r", function(d) { return rScale(d.r); });
+
+		dot.exit().remove();
+	});
 
 });
 
