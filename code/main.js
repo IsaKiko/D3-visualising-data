@@ -109,13 +109,14 @@ d3.json("nations.json", function(nations) {
 
 		var data_2009 = filtered_nations.map( function(nation) {
 			return {
+				name : nation.name,
 				x : nation.income[nation.income.length-1][1],
 				y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1],
 				r : nation.population[nation.population.length-1][1]
 			}
 		});
 		var dot = dots.selectAll(".dot")
-		.data(data_2009);
+		.data(data_2009, function(d){return d.name;});
 
 		dot.enter().append("circle")
 		.attr("cx", function(d) { return xScale(d.x); }) // this is why attr knows to work with the data
