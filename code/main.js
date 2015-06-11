@@ -2,10 +2,12 @@
 d3.json("nations.json", function(nations) {
 
 
-	// Create the SVG container inside chart element.
+	// Create the SVG frame inside chart_area.
 	var chart_area = d3.select("#chart_area");
 	var frame = chart_area.append("svg");
 
+	// Create canvas inside frame.
+	var canvas = frame.append("g");
 
 	// Set margins, width, and height.
 	var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5};
@@ -14,16 +16,10 @@ d3.json("nations.json", function(nations) {
 	var canvas_width = frame_width - margin.left - margin.right;
 	var canvas_height = frame_height - margin.top - margin.bottom;
 
-	// innerHeight and innerWidth are how much axes will be shifted in so there is
-
-
+	
 	// Set svg attributes width and height.
 	frame.attr("width", frame_width);
 	frame.attr("height", frame_height);
-
-
-	// Create chart inside svg element.
-	var canvas = frame.append("g");
 
 
 	// Shift the chart and make it slightly smaller than the svg canvas.
@@ -83,19 +79,20 @@ d3.json("nations.json", function(nations) {
 var data_2009 = nations.map( function(nation) {
 	return {
 		x : nation.income[nation.income.length-1][1],
-		y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1]
+		y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1],
+		r : nation.population[nation.population.length-1][1]
 	}
 });
 
 
-var dot = frame.append("g")
+var dot = canvas.append("g")
       .attr("class", "dots")
     .selectAll(".dot")
       .data(data_2009) // each of the points has the data_2009 element bound to it.
     .enter().append("circle")
     	.attr("cx", function(d) { return xScale(d.x); }) // this is why attr knows to work with the data
     	.attr("cy", function(d) { return yScale(d.y); })
-    	.attr("r", 5 );
+    	.attr("r", function(d) { return d.r/2000000; });
   
 
 

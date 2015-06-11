@@ -80,21 +80,22 @@ var data_2009 = nations.map( function(nation) {
 <p><img src="img/mapping.png" alt="data mapping" width="700" /></p>
 <p>FIXME: image and mapping might need updating once we've restructured the data.</p>
 <p>And now we're ready to add one circle per data point!</p>
-<pre class="js"><code>var dot = frame.append(&quot;g&quot;)
-      .attr(&quot;class&quot;, &quot;dots&quot;)
-    .selectAll(&quot;.dot&quot;)
+<pre class="js"><code>var dot = canvas.append(&quot;g&quot;)
+      .attr(&quot;class&quot;, &quot;data_canvas&quot;)
+      .selectAll(&quot;.dot&quot;)
       .data(data_2009) // each of the points has the data_2009 element bound to it.
-    .enter().append(&quot;circle&quot;)
-      .attr(&quot;cx&quot;, function(d) { return xScale(d.x); }) // this is why attr knows to work with the data
-      .attr(&quot;cy&quot;, function(d) { return yScale(d.y); })
-      .attr(&quot;r&quot;, 5 );</code></pre>
-<p>FIXME: Explain all of the above code...</p>
+      .enter()
+      .append(&quot;circle&quot;)
+      .attr(&quot;cx&quot;, function(d) { return xScale(d.x); }) // income
+      .attr(&quot;cy&quot;, function(d) { return yScale(d.y); }) // life expectancy
+      .attr(&quot;r&quot;, 5 );                                  // generic radius (for now)</code></pre>
+<p>We're starting this bit by adding a <code>g</code> element to our canvas. This group is going to be our data canvas, so that's the class name we give it. We then select everything of the class <code>dot</code>. This is an empty set at the moment, since we haven't created any dots, yet. We are then telling our page where to find the data, using <code>.data(data_2009)</code>. Now comes the interesting part: <code>.enter()</code> is entering the dataset and does everything after for each of the data elements inside the set. And what we want to do is to create one circle for each data point. That's what the last four lines of code do. They are creating a circle, and then setting the attributes <code>cx</code>, <code>cy</code>, and <code>r</code>. <code>cx</code> and <code>cy</code> define where the circle should appear and are set to the income and life expectancy of the data point (that is temporarily called <code>d</code>). The radius is set to an arbitrary number.. for now.</p>
 <div id="a-new-dimension" class="challenge panel panel-success">
 <div class="panel-heading">
 <h1><span class="glyphicon glyphicon-pencil"></span>A new dimension</h1>
 </div>
 <div class="panel-body">
-<p>Change the code so that the radius of the circles represents the population</p>
+<p>Change the code so that the radius of the circles represents the population. (You might need to divide the value by 2000000 or so)</p>
 </div>
 </div>
         </div>

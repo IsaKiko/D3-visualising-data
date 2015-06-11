@@ -101,17 +101,31 @@ FIXME: image and mapping might need updating once we've restructured the data.
 And now we're ready to add one circle per data point! 
 
 ~~~{.js}
-var dot = frame.append("g")
-      .attr("class", "dots")
-    .selectAll(".dot")
+var dot = canvas.append("g")
+      .attr("class", "data_canvas")
+      .selectAll(".dot")
       .data(data_2009) // each of the points has the data_2009 element bound to it.
-    .enter().append("circle")
-      .attr("cx", function(d) { return xScale(d.x); }) // this is why attr knows to work with the data
-      .attr("cy", function(d) { return yScale(d.y); })
-      .attr("r", 5 );
+      .enter()
+      .append("circle")
+      .attr("cx", function(d) { return xScale(d.x); }) // income
+      .attr("cy", function(d) { return yScale(d.y); }) // life expectancy
+      .attr("r", 5 );                                  // generic radius (for now)
 ~~~
 
-FIXME: Explain all of the above code...
+We're starting this bit by adding a `g` element to our canvas.
+This group is going to be our data canvas, so that's the class name we give it.
+We then select everything of the class `dot`. This is an empty set at the moment,
+since we haven't created any dots, yet.
+We are then telling our page where to find the data, using `.data(data_2009)`.
+Now comes the interesting part:
+`.enter()` is entering the dataset and does everything after for each of the 
+data elements inside the set. 
+And what we want to do is to create one circle for each data point. That's
+what the last four lines of code do. They are creating a circle, and then setting 
+the attributes `cx`, `cy`, and `r`. 
+`cx` and `cy` define where the circle should appear and are set to the income and life expectancy of the data point (that is temporarily called `d`). The radius is set to an 
+arbitrary number.. for now.
+
 
 > # A new dimension {.challenge}
-> Change the code so that the radius of the circles represents the population
+> Change the code so that the radius of the circles represents the population. (You might need to divide the value by 2000000 or so)
