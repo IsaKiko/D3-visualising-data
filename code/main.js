@@ -87,16 +87,18 @@ d3.json("nations.json", function(nations) {
 
 	d3.selectAll(".region_cb").on("change", function () {
 		var type = this.value;
-		if (this.checked){ // adding data points (not quite right yet)
+		if (this.checked) { // adding data points (not quite right yet)
 			var new_nations = nations.filter(function(nation){ return nation.region == type;});
-			for (idx=0; idx< new_nations.length; idx++){
-				filtered_nations.push(new_nations[idx]);}
+			for (var idx=0; idx<new_nations.length; idx++){
+				filtered_nations.push(new_nations[idx]);
+			}
 		}
 		else{ // remove data points from the data that match the filter
-			filtered_nations = filtered_nations.filter(function(nation){ return nation.region != type;});}
+			filtered_nations = filtered_nations.filter(function(nation){ return nation.region != type;});
+		}
 
 		var dot = dots.selectAll(".dot")
-		.data(filtered_nations);
+		.data(filtered_nations, function(d){return d.name});
 
 		dot.enter().append("circle").attr("class","dot")
 		.attr("cx", function(d) { return xScale(d.income[d.income.length-1][1]); }) // this is why attr knows to work with the data
