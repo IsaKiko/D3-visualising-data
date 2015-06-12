@@ -26,7 +26,7 @@ xScale.range([0, canvas_width]); // set minimum and maximum range on the page
 D3's scale object provides a number of functions to create the scaling we want 
 for our data. For example, we can choose between a logarithmic scale (`log`), a 
 linear scale (`linear`), a square root scale (`sqrt`), or a categorical scale 
-(e.g. `category10` could represent 10 different colours).
+(e.g. `category20` could represent 20 different colours).
 
 The domain is set based on the minimum and maximum values of the data, range is 
 the range on the page, basically the range our data gets mapped to.
