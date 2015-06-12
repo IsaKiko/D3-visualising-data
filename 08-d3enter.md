@@ -73,58 +73,46 @@ We also give it a class, just in case we might want to select the axis later in 
 FIXME: explain `.attr("transform", "translate(0," + canvas_height + ")")`
 
 > # We might need a y-axis, too {.challenge}
-> Create a linear scale for the y-axis, with 10 being the minimum and 85 being the maximum value. Then, add the axis to the canvas.
-
+> 1. Create a linear scale for the y-axis, with 10 being the minimum and 85 being the maximum value. Then, add the axis to the canvas.
 
 We're slowly getting there. Having our two axes, we can now finally add our data. 
-But we don't want to see all the data at once for now. Let's instead just look at the 
-most recent data point (year 2009).
-
-We create a new array `data_2009` that contains only these data points using the `map`
-function we've learned about earlier. We are looking at the most recent data point (`[nation.income.length-1]`).
-
-~~~{.js}
-// create new array that only contains the most recent data point
-var data_2009 = nations.map( function(nation) {
-  return {
-    x : nation.income[nation.income.length-1][1],
-    y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1]
-  }
-});
-~~~
-
-<img src="img/mapping.png" alt="data mapping" width="700" />
-
-
-FIXME: image and mapping might need updating once we've restructured the data.
-
 
 And now we're ready to add one circle per data point! 
+We don't want to see all the data at once for now. Let's instead just look at the 
+most recent data point (year 2009).
+
+<img src="img/data_structure.png" alt="data structure" width="500" />
+
 
 ~~~{.js}
-var dot = canvas.append("g")
-      .attr("class", "data_canvas")
-      .selectAll(".dot")
-      .data(data_2009) // each of the points has the data_2009 element bound to it.
-      .enter()
-      .append("circle")
-      .attr("cx", function(d) { return xScale(d.x); }) // income
-      .attr("cy", function(d) { return yScale(d.y); }) // life expectancy
-      .attr("r", 5 );                                  // generic radius (for now)
+var dots = canvas.append("g")
+  .attr("class", "dots")
+      
+var dot = dots.selectAll(".dot")
+  .data(filtered_nations, function(d){return d.name});
+
+dot.enter().append("circle").attr("class","dot")
+  .attr("cx", function(d) { return xScale(d.income[d.income.length-1][1]); }) 
+  .attr("cy", function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1][1]); })
+  .attr("r", 5)
 ~~~
 
 We're starting this bit by adding a `g` element to our canvas.
 This group is going to be our data canvas, so that's the class name we give it.
 We then select everything of the class `dot`. This is an empty set at the moment,
 since we haven't created any dots, yet.
-We are then telling our page where to find the data, using `.data(data_2009)`.
+We are then telling our page where to find the data, using `.data(filtered_nations)`.
+
+We are also inserting what is called a key function `.data(filtered_nations, function(d){return d.name});` This function will help D3 keep track of the data when we start changing it (and the objects' order).
+
 Now comes the interesting part:
 `.enter()` is entering the dataset and does everything after for each of the 
-data elements inside the set. 
-And what we want to do is to create one circle for each data point. That's
+data elements inside the set. These new dots need to be added to the class 'dot', so next time we update the data through our key function, it knows how to select them.
+
+What we want to do is to create one circle for each data point. That's
 what the last four lines of code do. They are creating a circle, and then setting 
 the attributes `cx`, `cy`, and `r`. 
-`cx` and `cy` define the position of the circle and are based on the income and life expectancy of the data point (that is temporarily called `d`). The radius is set to an 
+`cx` and `cy` define the position of the circle and are based on the income (We are looking at the most recent data point: `[nation.income.length-1]`.) and life expectancy of the data point (that is temporarily called `d`). The radius is set to an 
 arbitrary number... for now.
 
 

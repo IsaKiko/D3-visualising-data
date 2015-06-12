@@ -65,31 +65,28 @@ canvas.append(&quot;g&quot;)
 <h1><span class="glyphicon glyphicon-pencil"></span>We might need a y-axis, too</h1>
 </div>
 <div class="panel-body">
-<p>Create a linear scale for the y-axis, with 10 being the minimum and 85 being the maximum value. Then, add the axis to the canvas.</p>
+<ol style="list-style-type: decimal">
+<li>Create a linear scale for the y-axis, with 10 being the minimum and 85 being the maximum value. Then, add the axis to the canvas.</li>
+</ol>
 </div>
 </div>
-<p>We're slowly getting there. Having our two axes, we can now finally add our data. But we don't want to see all the data at once for now. Let's instead just look at the most recent data point (year 2009).</p>
-<p>We create a new array <code>data_2009</code> that contains only these data points using the <code>map</code> function we've learned about earlier. We are looking at the most recent data point (<code>[nation.income.length-1]</code>).</p>
-<pre class="js"><code>// create new array that only contains the most recent data point
-var data_2009 = nations.map( function(nation) {
-  return {
-    x : nation.income[nation.income.length-1][1],
-    y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1]
-  }
-});</code></pre>
-<p><img src="img/mapping.png" alt="data mapping" width="700" /></p>
-<p>FIXME: image and mapping might need updating once we've restructured the data.</p>
-<p>And now we're ready to add one circle per data point!</p>
-<pre class="js"><code>var dot = canvas.append(&quot;g&quot;)
-      .attr(&quot;class&quot;, &quot;data_canvas&quot;)
-      .selectAll(&quot;.dot&quot;)
-      .data(data_2009) // each of the points has the data_2009 element bound to it.
-      .enter()
-      .append(&quot;circle&quot;)
-      .attr(&quot;cx&quot;, function(d) { return xScale(d.x); }) // income
-      .attr(&quot;cy&quot;, function(d) { return yScale(d.y); }) // life expectancy
-      .attr(&quot;r&quot;, 5 );                                  // generic radius (for now)</code></pre>
-<p>We're starting this bit by adding a <code>g</code> element to our canvas. This group is going to be our data canvas, so that's the class name we give it. We then select everything of the class <code>dot</code>. This is an empty set at the moment, since we haven't created any dots, yet. We are then telling our page where to find the data, using <code>.data(data_2009)</code>. Now comes the interesting part: <code>.enter()</code> is entering the dataset and does everything after for each of the data elements inside the set. And what we want to do is to create one circle for each data point. That's what the last four lines of code do. They are creating a circle, and then setting the attributes <code>cx</code>, <code>cy</code>, and <code>r</code>. <code>cx</code> and <code>cy</code> define the position of the circle and are based on the income and life expectancy of the data point (that is temporarily called <code>d</code>). The radius is set to an arbitrary number... for now.</p>
+<p>We're slowly getting there. Having our two axes, we can now finally add our data.</p>
+<p>And now we're ready to add one circle per data point! We don't want to see all the data at once for now. Let's instead just look at the most recent data point (year 2009).</p>
+<p><img src="img/data_structure.png" alt="data structure" width="500" /></p>
+<pre class="js"><code>var dots = canvas.append(&quot;g&quot;)
+  .attr(&quot;class&quot;, &quot;dots&quot;)
+      
+var dot = dots.selectAll(&quot;.dot&quot;)
+  .data(filtered_nations, function(d){return d.name});
+
+dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
+  .attr(&quot;cx&quot;, function(d) { return xScale(d.income[d.income.length-1][1]); }) 
+  .attr(&quot;cy&quot;, function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1][1]); })
+  .attr(&quot;r&quot;, 5)</code></pre>
+<p>We're starting this bit by adding a <code>g</code> element to our canvas. This group is going to be our data canvas, so that's the class name we give it. We then select everything of the class <code>dot</code>. This is an empty set at the moment, since we haven't created any dots, yet. We are then telling our page where to find the data, using <code>.data(filtered_nations)</code>.</p>
+<p>We are also inserting what is called a key function <code>.data(filtered_nations, function(d){return d.name});</code> This function will help D3 keep track of the data when we start changing it (and the objects' order).</p>
+<p>Now comes the interesting part: <code>.enter()</code> is entering the dataset and does everything after for each of the data elements inside the set. These new dots need to be added to the class 'dot', so next time we update the data through our key function, it knows how to select them.</p>
+<p>What we want to do is to create one circle for each data point. That's what the last four lines of code do. They are creating a circle, and then setting the attributes <code>cx</code>, <code>cy</code>, and <code>r</code>. <code>cx</code> and <code>cy</code> define the position of the circle and are based on the income (We are looking at the most recent data point: <code>[nation.income.length-1]</code>.) and life expectancy of the data point (that is temporarily called <code>d</code>). The radius is set to an arbitrary number... for now.</p>
 <div id="a-new-dimension" class="challenge panel panel-success">
 <div class="panel-heading">
 <h1><span class="glyphicon glyphicon-pencil"></span>A new dimension</h1>

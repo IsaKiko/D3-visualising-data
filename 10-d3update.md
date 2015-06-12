@@ -12,7 +12,6 @@ minutes: 20
 
 * transition: Add a slider 
 
-New lesson:
 
-* D3 page: how do I make the plot I want?
-* What are alternatives to using D3?
+* tool tips: country names
+* legends

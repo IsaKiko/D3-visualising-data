@@ -31,7 +31,6 @@ d3.json("nations.json", function(nations) {
 	var xScale = d3.scale.log(); // income
 	xScale.domain([300, 1e5]);
 	xScale.range([0, canvas_width]);  
-
     
     // d3 has a subobject called scale. within scale, there are a number of functions to create scales.
     // e.g. log, linear, sqrt, category10 (e.g. 10 different colours)... 
@@ -40,6 +39,7 @@ d3.json("nations.json", function(nations) {
     // domain, range, log scale all determing data values are mapped to graph positions.
 
     var yScale = d3.scale.linear().domain([10, 85]).range([canvas_height, 0]);  // life expectancy
+    var colorScale = d3.scale.category20();
 
     // an alternative notation that d3 offers is to chain everything together using the dot-syntax 
     // (you'll see this a lot). The order is mostly arbitrary. 
@@ -103,7 +103,8 @@ d3.json("nations.json", function(nations) {
 		dot.enter().append("circle").attr("class","dot")
 		.attr("cx", function(d) { return xScale(d.income[d.income.length-1][1]); }) // this is why attr knows to work with the data
 		.attr("cy", function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1][1]); })
-		.attr("r", function(d) { return rScale(d.population[d.population.length-1][1]); });
+		.attr("r", function(d) { return rScale(d.population[d.population.length-1][1]); })
+      	.style("fill", function(d) { return colorScale(d.region); });
 
 		dot.exit().remove();
 	});
