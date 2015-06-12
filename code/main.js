@@ -78,23 +78,8 @@ d3.json("nations.json", function(nations) {
 
 	// var filtered_nations = nations.filter(function(nation){ return nation.population[nation.population.length-1][1] > 10000000;});
 
-	// var data_2009 = filtered_nations.map( function(nation) {
-	// 	return {
-	// 		x : nation.income[nation.income.length-1][1],
-	// 		y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1],
-	// 		r : nation.population[nation.population.length-1][1]
-	// 	}
-	// });
-
 	// var filtered_nations = nations.filter(function(nation){ return nation.region == "Sub-Saharan Africa";});
 
-	// var data_2009 = filtered_nations.map( function(nation) {
-	// 	return {
-	// 		x : nation.income[nation.income.length-1][1],
-	// 		y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1],
-	// 		r : nation.population[nation.population.length-1][1]
-	// 	}
-	// });
 
 
 	var dots = canvas.append("g")
@@ -103,25 +88,20 @@ d3.json("nations.json", function(nations) {
 	d3.selectAll(".region_cb").on("change", function () {
 		var type = this.value;
 		if (this.checked){ // adding data points (not quite right yet)
-			filtered_nations = nations.filter(function(nation){ return nation.region == type;});}
+			var new_nations = nations.filter(function(nation){ return nation.region == type;});
+			for (idx=0; idx< new_nations.length; idx++){
+				filtered_nations.push(new_nations[idx]);}
+		}
 		else{ // remove data points from the data that match the filter
-			filtered_nations = [];}//filtered_nations.filter(function(nation){ return nation.region != type;});}
+			filtered_nations = filtered_nations.filter(function(nation){ return nation.region != type;});}
 
-		var data_2009 = filtered_nations.map( function(nation) {
-			return {
-				name : nation.name,
-				x : nation.income[nation.income.length-1][1],
-				y : nation.lifeExpectancy[nation.lifeExpectancy.length-1][1],
-				r : nation.population[nation.population.length-1][1]
-			}
-		});
 		var dot = dots.selectAll(".dot")
-		.data(data_2009, function(d){return d.name;});
+		.data(filtered_nations);
 
-		dot.enter().append("circle")
-		.attr("cx", function(d) { return xScale(d.x); }) // this is why attr knows to work with the data
-		.attr("cy", function(d) { return yScale(d.y); })
-		.attr("r", function(d) { return rScale(d.r); });
+		dot.enter().append("circle").attr("class","dot")
+		.attr("cx", function(d) { return xScale(d.income[d.income.length-1][1]); }) // this is why attr knows to work with the data
+		.attr("cy", function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1][1]); })
+		.attr("r", function(d) { return rScale(d.population[d.population.length-1][1]); });
 
 		dot.exit().remove();
 	});
