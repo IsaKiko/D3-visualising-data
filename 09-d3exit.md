@@ -11,20 +11,18 @@ minutes: 20
 > * Creating checkboxes
 > * Adding and removing data points (d3.enter and d3.exit)
 
-Our plot is pretty busy. We might not want to display everythign all the time.
+Our plot is pretty busy. We might not want to display everything all the time.
 The goal for this lesson is to update the plot based on what kind of data we want to 
 display. 
 
 First, we need to find a way to filter our data. We use the function `filter` to do this. 
-Similar to previous functions, this function enters the array `nations` and loops through
-each element, temporarily calling it `nation`. 
-It only returns an element to the new array `filtered_nations` if the population of a 
-given nation in the first recorded year is larger than 10000000.
-It is good style to initialise the variable with an empty array before we start using it. 
+Similar to previous functions (e.g. `map`), this function iterates over each of the elements in the array `nations`, temporarily calling it `nation`. 
+It only includes elements in the new array `filtered_nations` if the function evaluates to 'true' for that element. Here this will be the case for nations whose population in 2009 was larger than 10,000,000.
 
 ~~~{.js}
-var filtered_nations = [];
-filtered_nations = nations.filter(function(nation){ return nation.population[nation.population.length-1][1] > 10000000;});
+var filtered_nations = nations.filter(function(nation){ 
+	return nation.population[nation.population.length-1][1] > 10000000;
+});
 ~~~
 
 > # Filtering by region {.challenge}
@@ -32,31 +30,31 @@ filtered_nations = nations.filter(function(nation){ return nation.population[nat
 > which a country is. 
 > 1. Create a filter so that you only display data points from "Sub-Saharan Africa".
 
-We have now hardcoded a criterion for the data we want to display. Naturally, we might want to change the data using elements on our page. Let's create some checkboxes that let us tick, which regions we want to display. To do this, we will have to switch back to our HTML file for a while.
+We have now hard-coded a criterion for the data we want to display. Naturally, we might want to change the data that gets displayed using elements on our page. Let's create some checkboxes that let us add and remove the regions that we want to include. To do this, we will have to switch back to our HTML file for a while.
 
 * Checkboxes (exit)
 
 Now, instead of displaying all the data all the time, we want to be able to choose which
 data we display. We will create a checkbox for each region and only display the data
-of the regions that are checked.
+for the regions that are checked.
 
-Checkboxes will need to be added in the HTMLh page. Since we want to add and remove data, we'll have to add one checkbox for each region like the following one:
+Checkboxes will need to be added in the HTML page. Since we want to add and remove data, we'll have to add a checkbox for each region like the following one:
 
 ~~~{.html}
-<input type="checkbox" name="region" class="region_cb" value="Sub-Saharan Africa"> Sub-Saharan Africa<br>
+<label><input type="checkbox" name="region" class="region_cb" value="Sub-Saharan Africa" /> Sub-Saharan Africa</label>
 ~~~
 
 The next step is to add an event listener to the JavaScript file. Luckily D3 provides us with some nice options. The `value` needs to be set to the region, because this is the value we want to filter our data by later. 
 
 ~~~{.js}
-d3.selectAll(".region_cb").on("change", function () { <--- stuff happens here --->});
+d3.selectAll(".region_cb").on("change", function () { <--- stuff happens here ---> });
 ~~~
 
 This line listens to all checkboxes that have the class `region_cb`. 
 Every time a checkbox's status changes from checked to unchecked or unchecked to checked, the following function is executed. 
-We want to start this bit right after we appended our canvas by a `g` element with the class 'dots'.
+We want to include some of our code from before here, starting from right after we appended the 'data_canvas' element to our canvas.
 
-Inside this function, we want to decide what happens based on which of the checkboxes got checked or unchecked. The first step to doing this is to read out the value of the checkbox. We set this value to the region string earlier. Reading it can be done using the `this` keyword. `this` inside a function refers to the element through which the function got called, in our case a checkbox. 
+Inside this function, we want to decide what happens based on which of the checkboxes got checked or unchecked. The first step to doing this is to read out the value of the checkbox. We set this value to the region string earlier. Reading it can be done using the `this` keyword. `this` inside a function refers to the element through which the function got called, in our case the checkbox. 
 
 ~~~{.js}
   var type = this.value;
@@ -78,14 +76,19 @@ First, we filter the nations we want to add, calling them `new_nations`. Next, w
 
 Once the data is added, the key function helps us to update our link to the graph. 
 
-So far we can add elements, but we might want to remove them, too. Removing elements in D3 is done using the `exit()` function. This function is called every time our data set gets smaller. We then have to tell our program what to do with the data points that have disappeared. Let's remove them:
+So far we can add elements by checking a checkbox, but we might also want to remove them. Removing elements in D3 is done using the `exit()` function. 
 
 ~~~{.js}
 dot.exit().remove();
 ~~~
 
+Whereas before `enter()` was used to append new elements to the plot, `exit()` is used to remove elements from the plot that are no longer in the dataset. Both functions compare the data that has been specified to what elements are in the plot (on the page). As for `enter()`, everything that follows `exit()` is performed for each of the elements that no longer have data points corresponding to them. Here (and in most cases) we remove these elements. 
+
+A good, brief explanation of this linking between data and elements on the page can be found [here](http://bost.ocks.org/mike/join/). This article discusses the three important functions used for this: `enter`, `exit`, and a third function `update` that we get to shortly. 
+
+
 > # Removing elements {.challenge}
-> 1. Using an `else` case after the `if` statement, create a filter, that removes elements from `filtered_data` as soon as a checkbox is unchecked. `else{ filtered_nations = <--- fill in this bit --->}`. 
+> 1. Using an `else` case after the `if` statement, create a filter, that removes elements from `filtered_data` as soon as a checkbox is unchecked. `else { filtered_nations = <--- fill in this bit --->}`. 
 
 
 > # Another new dimension {.challenge}
