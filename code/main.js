@@ -80,8 +80,6 @@ d3.json("nations.json", function(nations) {
 
 	// var filtered_nations = nations.filter(function(nation){ return nation.region == "Sub-Saharan Africa";});
 
-
-
 	var dots = canvas.append("g")
 	.attr("class", "dots")
 
