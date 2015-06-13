@@ -44,7 +44,7 @@ var xScale = d3.scale.log(); // income
 xScale.domain([300, 1e5]); // set minimum and maximum value
 xScale.range([0, canvas_width]); // set minimum and maximum range on the page</code></pre>
 <p>D3's scale object provides a number of functions to create the scaling we want for our data. For example, we can choose between a logarithmic scale (<code>log</code>), a linear scale (<code>linear</code>), a square root scale (<code>sqrt</code>), or a categorical scale (e.g. <code>category20</code> could represent 20 different colours).</p>
-<p>The domain is set based on the minimum and maximum values of the data, range is the range on the page, basically the range our data gets mapped to.</p>
+<p>The domain consists of the data values that will get mapped to the minimum and maximum positions on the page specified by the range. Often, the domain would be set to the minimum and maximum values of the data and the range to the edges of the plotting area.</p>
 <p>Instead of spreading this code over three lines, we often find another notation online that achieves the same thing:</p>
 <pre class="js"><code>var xScale = d3.scale.log().domain([300, 1e5]).range([0, canvas_width]);  </code></pre>
 <p>These two notations are interchangeable and it is entirely up to you to use the one that seems more intuitive to you. In the same way that we could switch setting up the domain and range in the more verbose notation, we can swap these two in the shorter notation without it making any difference.</p>
@@ -52,14 +52,13 @@ xScale.range([0, canvas_width]); // set minimum and maximum range on the page</c
 <pre class="js"><code>// Creating the x &amp; y axes.
 var xAxis = d3.svg.axis().orient(&quot;bottom&quot;).scale(xScale);</code></pre>
 <p>We also want to orient it horizontally, at the bottom of our canvas.</p>
-<p>So far, the xAxis exists, but it's not actually showing up anywhere on the page. To push the axis to our canvas, we create a new group element (using <code>.apend</code>).</p>
+<p>So far, the xAxis exists, but it's not actually showing up anywhere on the page. To push the axis to our canvas, we create a new group element (using <code>.append</code>).</p>
 <pre class="js"><code>// Add the x-axis.
 canvas.append(&quot;g&quot;)
-.attr(&quot;class&quot;, &quot;x axis&quot;)
+    .attr(&quot;class&quot;, &quot;x axis&quot;)
   .attr(&quot;transform&quot;, &quot;translate(0,&quot; + canvas_height + &quot;)&quot;)
   .call(xAxis);</code></pre>
-<p><code>.call</code> calls the axis we just created and pushed it to the element. Attributes are added to make the axis look prettier. We also give it a class, just in case we might want to select the axis later in our code.</p>
-<p>FIXME: explain <code>.attr(&quot;transform&quot;, &quot;translate(0,&quot; + canvas_height + &quot;)&quot;)</code></p>
+<p><code>.call</code> calls the axis we just created and pushed it to the element. We add a transform attribute to move the axis to the bottom of the plotting area (instead of having it across the top). There are a number of transform options, but here we are just using <code>translate</code> and pass in the amount to shift the axis in the x and y directions, respectively. Here we shift it only in the y direction (i.e. down) by an amount given by height of the canvas.<br />We also give it a class, just in case we might want to select the axis later in our code.</p>
 <div id="we-might-need-a-y-axis-too" class="challenge panel panel-success">
 <div class="panel-heading">
 <h1><span class="glyphicon glyphicon-pencil"></span>We might need a y-axis, too</h1>
@@ -71,12 +70,12 @@ canvas.append(&quot;g&quot;)
 </div>
 </div>
 <p>We're slowly getting there. Having our two axes, we can now finally add our data.</p>
-<p>And now we're ready to add one circle per data point! We don't want to see all the data at once for now. Let's instead just look at the most recent data point (year 2009).</p>
+<p>And now we're ready to add one circle per data point! We don't want to see all the data at once for now. Let's instead just look at the most recent data point (data for 2009).</p>
 <p><img src="img/data_structure.png" alt="data structure" width="500" /></p>
-<pre class="js"><code>var dots = canvas.append(&quot;g&quot;)
-  .attr(&quot;class&quot;, &quot;dots&quot;)
+<pre class="js"><code>var data_canvas = canvas.append(&quot;g&quot;)
+  .attr(&quot;class&quot;, &quot;data_canvas&quot;)
       
-var dot = dots.selectAll(&quot;.dot&quot;)
+var dot = data_canvas.selectAll(&quot;.dot&quot;)
   .data(filtered_nations, function(d){return d.name});
 
 dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
@@ -84,15 +83,15 @@ dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
   .attr(&quot;cy&quot;, function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1][1]); })
   .attr(&quot;r&quot;, 5)</code></pre>
 <p>We're starting this bit by adding a <code>g</code> element to our canvas. This group is going to be our data canvas, so that's the class name we give it. We then select everything of the class <code>dot</code>. This is an empty set at the moment, since we haven't created any dots, yet. We are then telling our page where to find the data, using <code>.data(filtered_nations)</code>.</p>
-<p>We are also inserting what is called a key function <code>.data(filtered_nations, function(d){return d.name});</code> This function will help D3 keep track of the data when we start changing it (and the objects' order).</p>
-<p>Now comes the interesting part: <code>.enter()</code> is entering the dataset and does everything after for each of the data elements inside the set. These new dots need to be added to the class 'dot', so next time we update the data through our key function, it knows how to select them. A good but brief explanation of how D3 handles data can also be found <a href="http://bost.ocks.org/mike/circles/">here</a>.</p>
-<p>What we want to do is to create one circle for each data point. That's what the last four lines of code do. They are creating a circle, and then setting the attributes <code>cx</code>, <code>cy</code>, and <code>r</code>. <code>cx</code> and <code>cy</code> define the position of the circle and are based on the income (We are looking at the most recent data point: <code>[nation.income.length-1]</code>.) and life expectancy of the data point (that is temporarily called <code>d</code>). The radius is set to an arbitrary number... for now.</p>
+<p>We are also inserting what is called a key function <code>.data(filtered_nations, function(d){return d.name});</code>. This function will help D3 keep track of the data when we start changing it (and the order of the objects).</p>
+<p>Now comes the interesting part: The function <code>enter()</code> takes each element in the dataset and does everything that follows afterwards for each of these elements we're adding in. These new dots need to be added with the class 'dot', so that next time we call <code>data_canvas.selectAll(&quot;.dot&quot;)</code> we get the dots that have already been added to our plot.</p>
+<p>What we want to do is to create one circle for each data point. That's what the last four lines of code do. They are creating the circle, and then setting the attributes <code>cx</code>, <code>cy</code>, and <code>r</code>. The attributes <code>cx</code> and <code>cy</code> define the position of the centre of the circle and are based on the income (we are looking at the most recent data point: <code>[nation.income.length-1]</code>.) and life expectancy of the data point (that is temporarily called <code>d</code>). The radius is set to an arbitrary number... for now.</p>
 <div id="a-new-dimension" class="challenge panel panel-success">
 <div class="panel-heading">
 <h1><span class="glyphicon glyphicon-pencil"></span>A new dimension</h1>
 </div>
 <div class="panel-body">
-<p>Change the code so that the radius of the circles represents the population. First, create a sqrt scale with a minimum of 0 and a maximum of 5e8. The range should be between 0 and 40. Also, don't forget to update the mapping function.</p>
+<p>Change the code so that the radius of the circles represents the population. First, create a 'sqrt' scale with a minimum of 0 and a maximum of 5e8. The range should be between 0 and 40. Also, don't forget to include a mapping function for the scale for population.</p>
 </div>
 </div>
         </div>

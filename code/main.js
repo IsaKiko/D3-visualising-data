@@ -80,8 +80,8 @@ d3.json("nations.json", function(nations) {
 
 	// var filtered_nations = nations.filter(function(nation){ return nation.region == "Sub-Saharan Africa";});
 
-	var dots = canvas.append("g")
-	.attr("class", "dots")
+	var data_canvas = canvas.append("g")
+	.attr("class", "data_canvas")
 
 	d3.selectAll(".region_cb").on("change", function () {
 		var type = this.value;
@@ -95,7 +95,7 @@ d3.json("nations.json", function(nations) {
 			filtered_nations = filtered_nations.filter(function(nation){ return nation.region != type;});
 		}
 
-		var dot = dots.selectAll(".dot")
+		var dot = data_canvas.selectAll(".dot")
 		.data(filtered_nations, function(d){return d.name});
 
 		dot.enter().append("circle").attr("class","dot")
