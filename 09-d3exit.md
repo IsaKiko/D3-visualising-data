@@ -32,7 +32,7 @@ filtered_nations = nations.filter(function(nation){ return nation.population[nat
 > which a country is. 
 > 1. Create a filter so that you only display data points from "Sub-Saharan Africa".
 
-We have now hardcoded a criterion for the data we want to display. Naturally, we might want to change the data using elements on our page. Let's create some checkboxes that let us tick, which regions we want to display. To do this, we will have to switch back to our html file for a while.
+We have now hardcoded a criterion for the data we want to display. Naturally, we might want to change the data using elements on our page. Let's create some checkboxes that let us tick, which regions we want to display. To do this, we will have to switch back to our HTML file for a while.
 
 * Checkboxes (exit)
 
@@ -40,13 +40,13 @@ Now, instead of displaying all the data all the time, we want to be able to choo
 data we display. We will create a checkbox for each region and only display the data
 of the regions that are checked.
 
-Checkboxes will need to be added in the html page. Since we want to add and remove data, we'll have to add one checkbox for each region like the following one:
+Checkboxes will need to be added in the HTMLh page. Since we want to add and remove data, we'll have to add one checkbox for each region like the following one:
 
 ~~~{.html}
 <input type="checkbox" name="region" class="region_cb" value="Sub-Saharan Africa"> Sub-Saharan Africa<br>
 ~~~
 
-The next step is to add an event listener to the Javascript file. Luckily D3 provides us with some nice options. The `value` needs to be set to the region, because this is the value we want to filter our data by later. 
+The next step is to add an event listener to the JavaScript file. Luckily D3 provides us with some nice options. The `value` needs to be set to the region, because this is the value we want to filter our data by later. 
 
 ~~~{.js}
 d3.selectAll(".region_cb").on("change", function () { <--- stuff happens here --->});

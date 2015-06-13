@@ -108,6 +108,7 @@ We are also inserting what is called a key function `.data(filtered_nations, fun
 Now comes the interesting part:
 `.enter()` is entering the dataset and does everything after for each of the 
 data elements inside the set. These new dots need to be added to the class 'dot', so next time we update the data through our key function, it knows how to select them.
+A good but brief explanation of how D3 handles data can also be found [here](http://bost.ocks.org/mike/circles/).
 
 What we want to do is to create one circle for each data point. That's
 what the last four lines of code do. They are creating a circle, and then setting 

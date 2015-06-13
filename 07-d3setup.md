@@ -12,9 +12,9 @@ minutes: 20
 > * Structuring the html content
 
 We've finally learned everything we need to know to start using D3. 
-D3 is a Javascript library. This means that we can use all of the Javascript commands that we have already learned, but on top of these, there are a few new functions that will make our life easier.
+D3 is a JavaScript library. This means that we can use all of the JavaScript commands that we have already learned, but on top of these, there are a few new functions that will make our life easier.
 
-The main purpose of D3 is to create visualisations of data online. Because it uses Javascript, it is possible to make graphs interactive! 
+The main purpose of D3 is to create visualisations of data online. Because it uses JavaScript, it is possible to make graphs interactive! 
 
 As a little refresher, we will repeat a little bit html to set up our page. 
 
@@ -41,11 +41,11 @@ Create `index.html` containing the following:
 ~~~
 
 There are a few things in this file that look new:
-'<link rel="stylesheet" type="text/css" href="main.css" />' is linking the local css file (that can just be an empty file for now). `<script src="main.js"></script>` is linking the Javascript file, the file in which all the action will happen. 
+'<link rel="stylesheet" type="text/css" href="main.css" />' is linking the local CSS file (that can just be an empty file for now). `<script src="main.js"></script>` is linking the JavaScript file, the file in which all the action will happen. 
 
 Additionally, we now need to link d3 using `<script src="http://d3js.org/d3.v3.min.js"></script>`. 
 
-The last bit, that's important here is an html element (paragraph) we create. We give it an id `chart_area`. This is the area we reserve for our pretty chart. We will use Javascript (and D3) to fill it in. 
+The last bit, that's important here is an HTML element (paragraph) we create. We give it an id `chart_area`. This is the area we reserve for our pretty chart. We will use JavaScript (and D3) to fill it in. 
 
 
 Now, let's write main.js.
@@ -71,7 +71,7 @@ This line probably needs a little explanation and we'll go through it bit by bit
 So naturally, the next step is to think about what we want to happen between the curly brackets.
 For now, we want to:
 
-* Link Javascript to html page
+* Link JavaScript to HTML page
 * Insert an SVG canvas
 * Create axes (x: income per capita, y: life expectancy)
 * Display data points (scatter plot)
@@ -80,13 +80,13 @@ First, let's draw a little schematic of how we want the page to be structured.
 
 <img src="img/chart_area.png" alt="What we want.." width="700" />
 
-We already set up our html page to contain a chart area. That's the space we want to 
+We already set up our HTML page to contain a chart area. That's the space we want to 
 fill now. 
 We'll have a picture frame (an SVG-element), our drawing area (a g-element), and in 
 that drawing area, we'll have separate elements for both axes and the area for our circles.
 
-Firt, we need to link the Javascript and html environement so that we have writing access
-to the html.
+Firt, we need to link the JavaScript and HTML environement so that we have writing access
+to the HTML.
 To do this, we use the `.select()`. This lets us grab an element by specifying its ID.
 
 ~~~{.js} 
@@ -106,7 +106,7 @@ This is equivalent to writing:
 <p id="chart_area"> <svg> </svg> </p>
 ~~~
 
-in the html file. We chose to append because we now have access to the SVG element without the need to seperately select it by ID.
+in the HTML file. We chose to append because we now have access to the SVG element without the need to seperately select it by ID.
 
 We also create the canvas inside the frame:
 

@@ -43,7 +43,7 @@
 var xScale = d3.scale.log(); // income
 xScale.domain([300, 1e5]); // set minimum and maximum value
 xScale.range([0, canvas_width]); // set minimum and maximum range on the page</code></pre>
-<p>D3's scale object provides a number of functions to create the scaling we want for our data. For example, we can choose between a logarithmic scale (<code>log</code>), a linear scale (<code>linear</code>), a square root scale (<code>sqrt</code>), or a categorical scale (e.g. <code>category10</code> could represent 10 different colours).</p>
+<p>D3's scale object provides a number of functions to create the scaling we want for our data. For example, we can choose between a logarithmic scale (<code>log</code>), a linear scale (<code>linear</code>), a square root scale (<code>sqrt</code>), or a categorical scale (e.g. <code>category20</code> could represent 20 different colours).</p>
 <p>The domain is set based on the minimum and maximum values of the data, range is the range on the page, basically the range our data gets mapped to.</p>
 <p>Instead of spreading this code over three lines, we often find another notation online that achieves the same thing:</p>
 <pre class="js"><code>var xScale = d3.scale.log().domain([300, 1e5]).range([0, canvas_width]);  </code></pre>
@@ -85,7 +85,7 @@ dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
   .attr(&quot;r&quot;, 5)</code></pre>
 <p>We're starting this bit by adding a <code>g</code> element to our canvas. This group is going to be our data canvas, so that's the class name we give it. We then select everything of the class <code>dot</code>. This is an empty set at the moment, since we haven't created any dots, yet. We are then telling our page where to find the data, using <code>.data(filtered_nations)</code>.</p>
 <p>We are also inserting what is called a key function <code>.data(filtered_nations, function(d){return d.name});</code> This function will help D3 keep track of the data when we start changing it (and the objects' order).</p>
-<p>Now comes the interesting part: <code>.enter()</code> is entering the dataset and does everything after for each of the data elements inside the set. These new dots need to be added to the class 'dot', so next time we update the data through our key function, it knows how to select them.</p>
+<p>Now comes the interesting part: <code>.enter()</code> is entering the dataset and does everything after for each of the data elements inside the set. These new dots need to be added to the class 'dot', so next time we update the data through our key function, it knows how to select them. A good but brief explanation of how D3 handles data can also be found <a href="http://bost.ocks.org/mike/circles/">here</a>.</p>
 <p>What we want to do is to create one circle for each data point. That's what the last four lines of code do. They are creating a circle, and then setting the attributes <code>cx</code>, <code>cy</code>, and <code>r</code>. <code>cx</code> and <code>cy</code> define the position of the circle and are based on the income (We are looking at the most recent data point: <code>[nation.income.length-1]</code>.) and life expectancy of the data point (that is temporarily called <code>d</code>). The radius is set to an arbitrary number... for now.</p>
 <div id="a-new-dimension" class="challenge panel panel-success">
 <div class="panel-heading">

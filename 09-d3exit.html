@@ -51,14 +51,14 @@ filtered_nations = nations.filter(function(nation){ return nation.population[nat
 <p>You might have noticed that our data contains information about the region in which a country is. 1. Create a filter so that you only display data points from &quot;Sub-Saharan Africa&quot;.</p>
 </div>
 </div>
-<p>We have now hardcoded a criterion for the data we want to display. Naturally, we might want to change the data using elements on our page. Let's create some checkboxes that let us tick, which regions we want to display. To do this, we will have to switch back to our html file for a while.</p>
+<p>We have now hardcoded a criterion for the data we want to display. Naturally, we might want to change the data using elements on our page. Let's create some checkboxes that let us tick, which regions we want to display. To do this, we will have to switch back to our HTML file for a while.</p>
 <ul>
 <li>Checkboxes (exit)</li>
 </ul>
 <p>Now, instead of displaying all the data all the time, we want to be able to choose which data we display. We will create a checkbox for each region and only display the data of the regions that are checked.</p>
-<p>Checkboxes will need to be added in the html page. Since we want to add and remove data, we'll have to add one checkbox for each region like the following one:</p>
+<p>Checkboxes will need to be added in the HTMLh page. Since we want to add and remove data, we'll have to add one checkbox for each region like the following one:</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;checkbox&quot;</span><span class="ot"> name=</span><span class="st">&quot;region&quot;</span><span class="ot"> class=</span><span class="st">&quot;region_cb&quot;</span><span class="ot"> value=</span><span class="st">&quot;Sub-Saharan Africa&quot;</span><span class="kw">&gt;</span> Sub-Saharan Africa<span class="kw">&lt;br&gt;</span></code></pre>
-<p>The next step is to add an event listener to the Javascript file. Luckily D3 provides us with some nice options. The <code>value</code> needs to be set to the region, because this is the value we want to filter our data by later.</p>
+<p>The next step is to add an event listener to the JavaScript file. Luckily D3 provides us with some nice options. The <code>value</code> needs to be set to the region, because this is the value we want to filter our data by later.</p>
 <pre class="js"><code>d3.selectAll(&quot;.region_cb&quot;).on(&quot;change&quot;, function () { &lt;--- stuff happens here ---&gt;});</code></pre>
 <p>This line listens to all checkboxes that have the class <code>region_cb</code>. Every time a checkbox's status changes from checked to unchecked or unchecked to checked, the following function is executed. We want to start this bit right after we appended our canvas by a <code>g</code> element with the class 'dots'.</p>
 <p>Inside this function, we want to decide what happens based on which of the checkboxes got checked or unchecked. The first step to doing this is to read out the value of the checkbox. We set this value to the region string earlier. Reading it can be done using the <code>this</code> keyword. <code>this</code> inside a function refers to the element through which the function got called, in our case a checkbox.</p>

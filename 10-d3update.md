@@ -8,7 +8,7 @@ minutes: 20
 > ## Learning Objectives {.objectives}
 > 
 > * Using a slider 
-> * Updating data points (d3.update)
+> * Updating data points
 
 * transition: Add a slider 
 * tool tips: country names

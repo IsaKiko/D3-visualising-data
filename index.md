@@ -15,7 +15,7 @@ We want to:
 
 * Display our data on a website to increase visibility and accessibility of our research.
 
-Our goal is to create a so-called bubble plot and publish it on the internet.
+Our goal is to create a dynamic bubble plot (a prettier version of a scatter plot) and publish it on the internet.
 
 Along the way, we will learn:
 
@@ -25,11 +25,13 @@ Along the way, we will learn:
 * how to publish our page 
 * how to allow interaction with elements
 * how to store data for the use in webpages
+* how to create a graph in D3
 
 > ## Prerequisites {.prereq}
 >
 > * Github account and Github client for your operating system (Windows, Linux, iOS)
 > * Participation in at least one SWC workshop
+> * Familiarity with at least one programming language: concept of loops, functions, and conditionals
 > * Familiarity with your favorite text editor (Sublime 2 is a good option)
 
 
