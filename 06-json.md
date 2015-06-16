@@ -64,7 +64,7 @@ returns `l`.
 
 Unlike arrays for which for need to call elements using their indices, 
 JavaScript objects allow you to index elements using names. 
-This let's us create something like this:
+This lets us create something like this:
 
 ~~~{.js}
 var cat_object = {
