@@ -2,6 +2,8 @@
 d3.json("nations.json", function(nations) {
 
 	var filtered_nations = [];
+	var year = document.getElementByID("year_slider").value;
+
 
 	// Create the SVG frame inside chart_area.
 	var chart_area = d3.select("#chart_area");
@@ -82,6 +84,11 @@ d3.json("nations.json", function(nations) {
 
 	var data_canvas = canvas.append("g")
 	.attr("class", "data_canvas")
+	d3.select("#year_slider").on("change", function () {
+		year = this.value
+	});
+
+// dot is class, hash is ID
 
 	d3.selectAll(".region_cb").on("change", function () {
 		var type = this.value;
@@ -109,3 +116,4 @@ d3.json("nations.json", function(nations) {
 
 });
 
+// year - 1800
