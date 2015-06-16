@@ -51,7 +51,7 @@ An SVG is just another element in the HTML file, used in the same way as a divis
 </svg>
 ~~~
 
-Here, we've creates an SVG canvas, using the styles of the class 'chart'.
+Here, we've created an SVG canvas, using the styles of the class 'chart'.
 Within this element, we've created a circle, using the styles of the class 'circ1'.
 Both of these classes need to also be defined in our CSS file:
 

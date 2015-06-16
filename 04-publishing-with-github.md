@@ -19,7 +19,7 @@ As you might remember, Github is a version control software that is used to trac
 changes in text documents. This alone makes it perfect for hosting our code and 
 enables us to travel back in time and undo errors that we might introduce. 
 
-On Github you can create so-called repositories in your folders. This folder and it's 
+On Github you can create so-called repositories in your folders. This folder and its 
 subfolders are then tracked and Github tells you immediately if and what has changed 
 in the files that are contained within the repository. 
 You can 'commit' to a change you made and synchronize your local folder with 
@@ -49,7 +49,7 @@ to your repository ('Publish' button in the GUI).
 Right now, our code is on the web, but we haven't told the Github to publish it yet. 
 To do this, we create a branch called 'gh-pages'.
 
-* To create this branch, navigate to your repository and click on where it says "branch:master" first (...and then some more things??...). You will find your webpage at www.username.github.io/reposotoryname. From now on, remember to only commit to your gh-pages branch. Otherwise changes will not show up.
+* To create this branch, navigate to your repository and click on where it says "branch:master" first (...and then some more things??...). You will find your webpage at www.username.github.io/repositoryname. From now on, remember to only commit to your gh-pages branch. Otherwise changes will not show up.
 
 > ## Show us your art work! {.challenge}
 >
