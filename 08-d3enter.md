@@ -89,8 +89,8 @@ var dot = data_canvas.selectAll(".dot")
   .data(filtered_nations, function(d){return d.name});
 
 dot.enter().append("circle").attr("class","dot")
-  .attr("cx", function(d) { return xScale(d.income[d.income.length-1][1]); }) 
-  .attr("cy", function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1][1]); })
+  .attr("cx", function(d) { return xScale(d.income[d.income.length-1]); }) 
+  .attr("cy", function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1]); })
   .attr("r", 5);
 ~~~
 
