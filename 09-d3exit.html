@@ -102,9 +102,9 @@
 
     dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)                
                   .style(&quot;fill&quot;, function(d) { return colorScale(d.region); });
-                  .attr(&quot;cx&quot;, function(d) { return xScale(d.income[[nation.income.length-1]]); }) // this is why attr knows to work with the data
-                  .attr(&quot;cy&quot;, function(d) { return yScale(d.lifeExpectancy[[nation.lifeExpectancy.length-1]]); })
-                  .attr(&quot;r&quot;, function(d) { return rScale(d.population[[nation.population.length-1]]); });
+                  .attr(&quot;cx&quot;, function(d) { return xScale(d.income[d.income.length-1]); }) // this is why attr knows to work with the data
+                  .attr(&quot;cy&quot;, function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1]); })
+                  .attr(&quot;r&quot;, function(d) { return rScale(d.population[d.population.length-1]); });
 
     dot.exit().remove();
   }  

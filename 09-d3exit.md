@@ -102,9 +102,9 @@ As a last step, let's move `enter()` and `exit()` into a separate function. This
 
     dot.enter().append("circle").attr("class","dot")                
                   .style("fill", function(d) { return colorScale(d.region); });
-                  .attr("cx", function(d) { return xScale(d.income[[nation.income.length-1]]); }) // this is why attr knows to work with the data
-                  .attr("cy", function(d) { return yScale(d.lifeExpectancy[[nation.lifeExpectancy.length-1]]); })
-                  .attr("r", function(d) { return rScale(d.population[[nation.population.length-1]]); });
+                  .attr("cx", function(d) { return xScale(d.income[d.income.length-1]); }) // this is why attr knows to work with the data
+                  .attr("cy", function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1]); })
+                  .attr("r", function(d) { return rScale(d.population[d.population.length-1]); });
 
     dot.exit().remove();
   }  
