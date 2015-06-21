@@ -183,3 +183,9 @@ We've also just used that, when we concatenated
 > * contextmenu - Right click
 > * mouseover - Mouse moved over an element
 > * keypress - Key pressed on keyboard
+
+
+By the end of this lesson, your page should look something like this:
+
+<iframe src="http://isakiko.github.io/D3-visualising-data/code/meow.html" width="1000" height="600"></iframe>
+

@@ -144,6 +144,4 @@ canvas.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 > # Time for a challenge I think! {.challenge}
 > FIXME: come up with sensible challenge (maybe a 'what if?'-challenge?)
-
-
-<iframe src="http://isakiko.github.io/D3-visualising-data/code/index07.html" width="1000" height="600"></iframe>
+]
