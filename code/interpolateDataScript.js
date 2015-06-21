@@ -2,7 +2,7 @@ var fs = require('fs');
 var args = process.argv.slice(2);
 
 var years = [];
-for (var year = 1950; year <= 2009; year++) {
+for (var year = 1950; year <= 2008; year++) {
 	years.push(year);
 }
 
@@ -42,11 +42,15 @@ var processedData = data.map(function(nation) {
 		lifeExpectancy: interpolateYears(nation.lifeExpectancy, years)
 	};
 	var excludeNation = false;
-	excludeNation = excludeNation || (processedNation.income.length == 0);
-	excludeNation = excludeNation || (processedNation.population.length == 0);
-	excludeNation = excludeNation || (processedNation.lifeExpectancy.length == 0);
+	excludeNation = excludeNation || (processedNation.income.length != years.length);
+	excludeNation = excludeNation || (processedNation.population.length != years.length);
+	excludeNation = excludeNation || (processedNation.lifeExpectancy.length != years.length);
 	if (excludeNation) {
 		console.log('Excluding "' + nation.name + '" because of lack of data.');
+		// console.log(years.length);
+		// console.log(processedNation.income.length);
+		// console.log(processedNation.population.length);
+		// console.log(processedNation.lifeExpectancy.length);
 		return undefined;
 	} else {
 		return processedNation;
