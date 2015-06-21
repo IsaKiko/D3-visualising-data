@@ -84,17 +84,17 @@ d3.json("nations.json", function(nations) {
 	var data_canvas = canvas.append("g")
 	.attr("class", "data_canvas")
 
- update();
+	update();
 
 	// slider
-
 	d3.select("#year_slider").on("input", function () {
 		year_idx = parseInt(this.value) - 1950;
 		update();
 	});
 
-// dot is class, hash is ID
+	// dot is finding a class, hash an ID
 
+	// check boxes
 	d3.selectAll(".region_cb").on("change", function() {
 		var type = this.value;
 		if (this.checked) { // adding data points (not quite right yet)
@@ -109,8 +109,9 @@ d3.json("nations.json", function(nations) {
 		update();
 	});
 
+	// update the plot, includes enter, exit, and transition
 	function update() {
-		var dot = data_canvas.selectAll(".dot")
+		var dot = data_canvas.selectAll(".dot")  // magic! 
 		.data(filtered_nations, function(d){return d.name});
 
 		dot.enter().append("circle").attr("class","dot")				      	
@@ -126,8 +127,6 @@ d3.json("nations.json", function(nations) {
 						.attr("cy", function(d) { return yScale(d.lifeExpectancy[year_idx]); })
 						.attr("r", function(d) { return rScale(d.population[year_idx]); });
 
-		//var m = calc_mean(d);
-		//console.log(m);
 	}
 
 	var tooltip = d3.select("body")
@@ -136,23 +135,28 @@ d3.json("nations.json", function(nations) {
 		.style("z-index", "10")
 		.style("visibility", "hidden");
 
+	var m = [];
+	for (var nation_idx=0; nation_idx<nations.length; nation_idx++){ //this shouldn't be all nations, but unique regions!
+		m[nation_idx] =	calc_mean(nations[nation_idx]);
+	}
+	console.log(m);
+
 	function calc_mean(dataset) {
 		console.log(dataset)
 		var mean = [];
-		var sum = 0;
+		var sum_income = 0;
+		var sum_le = 0;
 
 		for( var i = 0; i < dataset.income.length; i++ ){
-		    sum += parseInt( dataset.income[i], 10 ); //don't forget to add the base
+		    sum_income += parseInt( dataset.income[i], 10 ); //don't forget to add the base
 		}
 
 		for( var j = 0; j < dataset.lifeExpectancy.length; j++ ){
-		    sum += parseInt( dataset.lifeExpectancy[j], 10 ); //don't forget to add the base
+		    sum_le += parseInt( dataset.lifeExpectancy[j], 10 ); //don't forget to add the base
 		}
 
-
-		var mean_income = sum/dataset.income.length;
-		var mean_le = sum/dataset.lifeExpectancy.length;
-
+		var mean_income = sum_income/dataset.income.length;
+		var mean_le = sum_le/dataset.lifeExpectancy.length;
 
 		mean = [mean_income,mean_le];
 		return mean

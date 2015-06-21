@@ -41,7 +41,7 @@
 <p>We design our axes based on our data. This means we have to know the minimum and maximum values of our data and have to decide whether we want linear or logarithmic axes.</p>
 <pre class="js"><code>// Create a logarithmic scale for the income 
 var xScale = d3.scale.log(); // income
-xScale.domain([300, 1e5]); // set minimum and maximum value
+xScale.domain([250, 1e5]); // set minimum and maximum value
 xScale.range([0, canvas_width]); // set minimum and maximum range on the page</code></pre>
 <p>D3's scale object provides a number of functions to create the scaling we want for our data. For example, we can choose between a logarithmic scale (<code>log</code>), a linear scale (<code>linear</code>), a square root scale (<code>sqrt</code>), or a categorical scale (e.g. <code>category20</code> could represent 20 different colours).</p>
 <p>The domain consists of the data values that will get mapped to the minimum and maximum positions on the page specified by the range. Often, the domain would be set to the minimum and maximum values of the data and the range to the edges of the plotting area.</p>

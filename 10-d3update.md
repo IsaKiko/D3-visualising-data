@@ -77,7 +77,7 @@ var tooltip = d3.select("body")
 
 ~~~
 
-and then create event listeners for moving the mouse into a circle and out of one. Different from the example on the web page, we want to display the specific country we are looking at.
+and then create event listeners for moving the mouse into a circle and out of one. Different from the example on the web page, we want to display the specific country we are looking at. When we move the mouse, we want the tool tip to move with it. And the moment we leave a circle, we want the tool tip to hide again.
 
 ~~~{.js}
 

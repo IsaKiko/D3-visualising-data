@@ -19,7 +19,7 @@ axes.
 ~~~{.js}
 // Create a logarithmic scale for the income 
 var xScale = d3.scale.log(); // income
-xScale.domain([300, 1e5]); // set minimum and maximum value
+xScale.domain([250, 1e5]); // set minimum and maximum value
 xScale.range([0, canvas_width]); // set minimum and maximum range on the page
 ~~~
 
