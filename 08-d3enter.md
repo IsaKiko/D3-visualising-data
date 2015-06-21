@@ -86,7 +86,7 @@ var data_canvas = canvas.append("g")
   .attr("class", "data_canvas");
       
 var dot = data_canvas.selectAll(".dot")
-  .data(filtered_nations, function(d){return d.name});
+  .data(nations, function(d){return d.name});
 
 dot.enter().append("circle").attr("class","dot")
   .attr("cx", function(d) { return xScale(d.income[d.income.length-1]); }) 
@@ -98,9 +98,9 @@ We're starting this bit by adding a `g` element to our canvas.
 This group is going to be our data canvas, so that's the class name we give it.
 We then select everything of the class `dot`. This is an empty set at the moment,
 since we haven't created any dots, yet.
-We are then telling our page where to find the data, using `.data(filtered_nations)`.
+We are then telling our page where to find the data, using `.data(nations)`.
 
-We are also inserting what is called a key function `.data(filtered_nations, function(d){return d.name});`. This function will help D3 keep track of the data when we start changing it (and the order of the objects).
+We are also inserting what is called a key function `.data(nations, function(d){return d.name});`. This function will help D3 keep track of the data when we start changing it (and the order of the objects). It's important to keep the identifier unique, which is why we return only the name of the current element.
 
 Now comes the interesting part:
 The function `enter()` takes each element in the dataset and does everything that follows afterwards for each of these elements we're adding in. These new dots need to be added with the class 'dot', so that next time we call `data_canvas.selectAll(".dot")` we get the dots that have already been added to our plot.
@@ -114,3 +114,6 @@ arbitrary number... for now.
 
 > # A new dimension {.challenge}
 > Change the code so that the radius of the circles represents the population. First, create a 'sqrt' scale with a minimum of 0 and a maximum of 5e8. The range should be between 0 and 40. Also, don't forget to include a mapping function for the scale for population. 
+
+
+<iframe src="http://isakiko.github.io/D3-visualising-data/code/index08.html" width="1000" height="600"></iframe>
