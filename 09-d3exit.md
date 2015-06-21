@@ -138,4 +138,4 @@ By the end of this lesson, your page should look something like this:
 
 <img src="img/screenshot1.png" alt="screenshot1" width="900" />
 
-<iframe src="http://isakiko.github.io/D3-visualising-data/code/"></iframe>
+<iframe src="http://isakiko.github.io/D3-visualising-data/code/" width="900" height="600"></iframe>
