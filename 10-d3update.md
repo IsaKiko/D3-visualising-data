@@ -101,3 +101,7 @@ FIXME: write code to compute the mean values here.
 FIXME:
 
 * axis labels?
+
+By the end of this lesson, your page should look something like this:
+
+<iframe src="http://isakiko.github.io/D3-visualising-data/code/index.html" width="1000" height="600"></iframe>
