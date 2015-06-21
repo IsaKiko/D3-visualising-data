@@ -136,6 +136,4 @@ In order to create the plot when we first load the page, we will also have to ca
 
 By the end of this lesson, your page should look something like this:
 
-<img src="img/screenshot1.png" alt="screenshot1" width="900" />
-
-<iframe src="http://isakiko.github.io/D3-visualising-data/code/" width="1100" height="600"></iframe>
+<iframe src="http://isakiko.github.io/D3-visualising-data/code/" width="1000" height="600"></iframe>
