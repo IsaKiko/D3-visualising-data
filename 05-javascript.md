@@ -94,6 +94,14 @@ cat_image.addEventListener("click", function() {
 });
 ~~~
 
+
+> ## Debugging in a browser {.callout}
+> If we right click anywhere on our page and select "Inspect Element", the browser takes us to the developer tools.
+> Here, we have different tabs. The three most important ones are:
+> * Console - The console alerts us to things going wrong in out code by showing us an error and telling us in what line the error ocurred. We can also display the values of variables by including `colsole.log(x)` in our code.
+> * Elements - If we want to know if our HTML elements are all in the right spot, this is where we need to look. Hovering over any part of the page will highlight the according element and we can look at how they are styled and temporarily change attributes. 
+> * Sources - Here, we can look at the files that are used by our page. And even better, if we navigate to the JavaScript file, we can add breakpoints that stay in place when we reload the page. This allows us to investigate values of variables on the spot.
+
 > ## Feed your pet cat {.challenge}
 > Create a button using the &lt;button&gt; element to feed the cat.
 > Use the alert() function to have the cat thank you.

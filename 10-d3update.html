@@ -81,8 +81,7 @@
 <pre class="js"><code>
 var tooltip = d3.select(&quot;body&quot;)
     .append(&quot;div&quot;)
-    .style(&quot;position&quot;, &quot;absolute&quot;)
-    .style(&quot;z-index&quot;, &quot;10&quot;)
+    .style(&quot;position&quot;, &quot;absolute&quot;)  
     .style(&quot;visibility&quot;, &quot;hidden&quot;);
 </code></pre>
 <p>and then create event listeners for moving the mouse into a circle and out of one. Different from the example on the web page, we want to display the specific country we are looking at. When we move the mouse, we want the tool tip to move with it. And the moment we leave a circle, we want the tool tip to hide again.</p>
@@ -92,6 +91,18 @@ dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
                             .on(&quot;mouseover&quot;, function(d){return tooltip.style(&quot;visibility&quot;, &quot;visible&quot;).text(d.name);})
                             .on(&quot;mousemove&quot;, function(){return tooltip.style(&quot;top&quot;, (event.pageY-10)+&quot;px&quot;).style(&quot;left&quot;,(event.pageX+10)+&quot;px&quot;);})
                             .on(&quot;mouseout&quot;, function(){return tooltip.style(&quot;visibility&quot;, &quot;hidden&quot;);});</code></pre>
+<div id="we-have-used-some-special-objects-given-to-us-by-the-browser" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>We have used some special objects given to us by the browser</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>document.x - selecting things within the page (getElementById)</li>
+<li>console.x - interact with the browser's console (log)</li>
+<li>event.x - only interesting in the scope of an event like &quot;mouseover&quot;, &quot;mousemove&quot;, &quot;keydown&quot;. Returns information about the event (pageX - where on the page did this event occur?).</li>
+</ul>
+</div>
+</div>
 <p>Like any programming language, JavaScript can also be used to compute new values. As an example, let's compute the mean life expectancy and income for the different regions.</p>
 <p>...</p>
 <p>FIXME: write code to compute the mean values here.</p>
@@ -106,6 +117,7 @@ dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
 <p>FIXME:</p>
 <ul>
 <li>axis labels?</li>
+<li>debugging tricks</li>
 </ul>
 <p>By the end of this lesson, your page should look something like this:</p>
 <iframe src="http://isakiko.github.io/D3-visualising-data/code/index.html" width="1000" height="600"></iframe>

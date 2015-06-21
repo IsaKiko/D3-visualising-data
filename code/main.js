@@ -131,8 +131,7 @@ d3.json("nations.json", function(nations) {
 
 	var tooltip = d3.select("body")
 		.append("div")
-		.style("position", "absolute")
-		.style("z-index", "10")
+		.style("position", "absolute") 
 		.style("visibility", "hidden");
 
 	// 1) find unique regions

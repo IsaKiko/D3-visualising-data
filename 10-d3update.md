@@ -71,8 +71,7 @@ We need to first create the variable tooltip:
 
 var tooltip = d3.select("body")
 	.append("div")
-	.style("position", "absolute")
-	.style("z-index", "10")
+	.style("position", "absolute")  
 	.style("visibility", "hidden");
 
 ~~~
@@ -89,6 +88,12 @@ dot.enter().append("circle").attr("class","dot")
 ~~~
 
 
+> ## We have used some special objects given to us by the browser {.callout}
+> * document.x - selecting things within the page (getElementById)
+> * console.x - interact with the browser's console (log)
+> * event.x - only interesting in the scope of an event like "mouseover", "mousemove", "keydown". Returns information about the event (pageX - where on the page did this event occur?).
+
+
 Like any programming language, JavaScript can also be used to compute new values. As an example, let's compute the mean life expectancy and income for the different regions. 
 
 ...
@@ -101,6 +106,7 @@ FIXME: write code to compute the mean values here.
 FIXME:
 
 * axis labels?
+* debugging tricks
 
 By the end of this lesson, your page should look something like this:
 
