@@ -1,9 +1,8 @@
 // Load the data.
 d3.json("nations.json", function(nations) {
 
-	var filtered_nations = [];
-	var year = document.getElementByID("year_slider").value;
-
+	var filtered_nations = nations;
+	var year_idx = parseInt(document.getElementById("year_slider").value)-1950;
 
 	// Create the SVG frame inside chart_area.
 	var chart_area = d3.select("#chart_area");
@@ -31,7 +30,7 @@ d3.json("nations.json", function(nations) {
 
 	// Various scales. These domains make assumptions of data, naturally.
 	var xScale = d3.scale.log(); // income
-	xScale.domain([300, 1e5]);
+	xScale.domain([250, 1e5]);
 	xScale.range([0, canvas_width]);  
     
     // d3 has a subobject called scale. within scale, there are a number of functions to create scales.
@@ -84,13 +83,19 @@ d3.json("nations.json", function(nations) {
 
 	var data_canvas = canvas.append("g")
 	.attr("class", "data_canvas")
-	d3.select("#year_slider").on("change", function () {
-		year = this.value
+
+ update();
+
+	// slider
+
+	d3.select("#year_slider").on("input", function () {
+		year_idx = parseInt(this.value) - 1950;
+		update();
 	});
 
 // dot is class, hash is ID
 
-	d3.selectAll(".region_cb").on("change", function () {
+	d3.selectAll(".region_cb").on("change", function() {
 		var type = this.value;
 		if (this.checked) { // adding data points (not quite right yet)
 			var new_nations = nations.filter(function(nation){ return nation.region == type;});
@@ -101,19 +106,21 @@ d3.json("nations.json", function(nations) {
 		else{ // remove data points from the data that match the filter
 			filtered_nations = filtered_nations.filter(function(nation){ return nation.region != type;});
 		}
+		update();
+	});
 
+	function update() {
 		var dot = data_canvas.selectAll(".dot")
 		.data(filtered_nations, function(d){return d.name});
 
-		dot.enter().append("circle").attr("class","dot")
-		.attr("cx", function(d) { return xScale(d.income[d.income.length-1][1]); }) // this is why attr knows to work with the data
-		.attr("cy", function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1][1]); })
-		.attr("r", function(d) { return rScale(d.population[d.population.length-1][1]); })
-      	.style("fill", function(d) { return colorScale(d.region); });
-
+		dot.enter().append("circle").attr("class","dot")				      	
+									.style("fill", function(d) { return colorScale(d.region); });
 		dot.exit().remove();
-	});
+
+		dot.transition().ease("linear").duration(200)
+						.attr("cx", function(d) { return xScale(d.income[year_idx]); }) // this is why attr knows to work with the data
+						.attr("cy", function(d) { return yScale(d.lifeExpectancy[year_idx]); })
+						.attr("r", function(d) { return rScale(d.population[year_idx]); });
+	}
 
 });
-
-// year - 1800

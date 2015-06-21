@@ -21,7 +21,7 @@ It only includes elements in the new array `filtered_nations` if the function ev
 
 ~~~{.js}
 var filtered_nations = nations.filter(function(nation){ 
-	return nation.population[nation.population.length-1][1] > 10000000;
+	return nation.population[nation.population.length-1] > 10000000;
 });
 ~~~
 
@@ -32,16 +32,14 @@ var filtered_nations = nations.filter(function(nation){
 
 We have now hard-coded a criterion for the data we want to display. Naturally, we might want to change the data that gets displayed using elements on our page. Let's create some checkboxes that let us add and remove the regions that we want to include. To do this, we will have to switch back to our HTML file for a while.
 
-* Checkboxes (exit)
-
 Now, instead of displaying all the data all the time, we want to be able to choose which
 data we display. We will create a checkbox for each region and only display the data
 for the regions that are checked.
 
-Checkboxes will need to be added in the HTML page. Since we want to add and remove data, we'll have to add a checkbox for each region like the following one:
+Checkboxes will need to be added in the HTML page. Since we want to add and remove data, we'll have to add a checkbox for each region like the following one. Initially, we want all checkboxes to be checked.
 
 ~~~{.html}
-<label><input type="checkbox" name="region" class="region_cb" value="Sub-Saharan Africa" /> Sub-Saharan Africa</label>
+<label><input type="checkbox" name="region" class="region_cb" value="Sub-Saharan Africa" checked="checked"/> Sub-Saharan Africa</label>
 ~~~
 
 The next step is to add an event listener to the JavaScript file. Luckily D3 provides us with some nice options. The `value` needs to be set to the region, because this is the value we want to filter our data by later. 
@@ -93,6 +91,48 @@ A good, brief explanation of this linking between data and elements on the page 
 
 > # Another new dimension {.challenge}
 > 1. Have the colour of circles represent the region. Use category20() to make a scale. You will then need to add `.style("fill", function(d) { <-- fill in this bit ---> });` to the enter() function.
+
+As a last step, let's move `enter()` and `exit()` into a separate function. This will become useful when we want to update the data from different elements on the page. 
+
+~~~{.js}
+
+  function update() {
+    var dot = data_canvas.selectAll(".dot")
+    .data(filtered_nations, function(d){return d.name});
+
+    dot.enter().append("circle").attr("class","dot")                
+                  .style("fill", function(d) { return colorScale(d.region); });
+                  .attr("cx", function(d) { return xScale(d.income[[nation.income.length-1]]); }) // this is why attr knows to work with the data
+                  .attr("cy", function(d) { return yScale(d.lifeExpectancy[[nation.lifeExpectancy.length-1]]); })
+                  .attr("r", function(d) { return rScale(d.population[[nation.population.length-1]]); });
+
+    dot.exit().remove();
+  }  
+
+~~~
+
+This means that we now have to call the update function from our event listener after updating `filtered_nations` based on the checkbox change:
+
+~~~{.js}
+
+  d3.selectAll(".region_cb").on("change", function() {
+    var type = this.value;
+    if (this.checked) { // adding data points (not quite right yet)
+      var new_nations = nations.filter(function(nation){ return nation.region == type;});
+      for (var idx=0; idx<new_nations.length; idx++){
+        filtered_nations.push(new_nations[idx]);
+      }
+    }
+    else{ // remove data points from the data that match the filter
+      filtered_nations = filtered_nations.filter(function(nation){ return nation.region != type;});
+    }
+    update();
+  });
+
+~~~
+
+In order to create the plot when we first load the page, we will also have to call `update()` outside of our event listeners once. 
+
 
 By the end of this lesson, your page should look something like this:
 

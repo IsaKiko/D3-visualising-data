@@ -59,12 +59,39 @@ The last step is to write the meow function.
 We want a pop-up window.
 The JavaScript function alert() will give us one.
 
+
 ~~~{.js}
 var cat_image = document.getElementByID('cat');
 cat_image.addEventListener("click", meow);
+~~~
+
+Our event listener takes two arguments: the type of event and what we want it to do. 
+We want to execute a function called `meow()`, that we still need to write.
+
+~~~{.js}
 function meow() {
 	alert("Meow!");
 };
+~~~
+
+If we want to execute a sequence of functions, we can also create something that's called `inline` function, that is only defined in the scope of this specific callback. Within this function, we can call `meow()`, but also othe functions, like `sleep()` (which doesn't exist, yet).
+
+~~~{.js}
+var cat_image = document.getElementByID('cat');
+cat_image.addEventListener("click", function() {
+	meow();	
+	sleep();
+});
+~~~
+
+Obviously, we can also drop the `meow()` function, if we don't want to use it ever again:
+
+~~~{.js}
+var cat_image = document.getElementByID('cat');
+cat_image.addEventListener("click", function() {
+	alert("Meow!");	
+	sleep();
+});
 ~~~
 
 > ## Feed your pet cat {.challenge}
@@ -116,7 +143,21 @@ var feed_button = document.getElementById('feed_button');
 feed_button.addEventListener("click", feed);
 function feed() {
 	cat_image.style.width = (cat_image.offsetWidth + 30.0) + 'px';
-};
+}
+~~~
+
+We could also pass an argument into the function by writing it in the brackets.
+We might, for example, want the use to be able to decide the meal size the cat eats.
+
+We can also return a value and assign it to a variable (just like we do with any function we used so far, e.g. var element = document.getElementById("someID");): 
+
+~~~{.js}
+var new_width = feed(10);
+
+function feed(mealsize) {
+		cat_image.style.width = (cat_image.offsetWidth + parseInt(mealsize)) + 'px';
+		return cat_image.style.width;
+}
 ~~~
 
 > ## Let the cat work out  {.challenge}

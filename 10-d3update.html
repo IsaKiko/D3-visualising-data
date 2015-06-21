@@ -34,14 +34,63 @@
 <div class="panel-body">
 <ul>
 <li>Using a slider</li>
-<li>Updating data points</li>
+<li>Updating data points using d3.transition</li>
 </ul>
 </div>
 </div>
+<p>At the moment, the year that we are looking at in the data is hardcoded. Naturally, we want the user to be able to see how the data changes over time.</p>
+<p>The first thing we need is a slider in the user interface, our website. The slider element has the type <code>range</code>. We give it a ID in order to be able to select is from our JavaScript script, a class to style it (if we choose to), and a minimum, maximum, and step size that depend on our data. <code>value</code> is what we read out in order to know the position of the slider. We initialise it somewhere in the middle (1979).</p>
+<pre class="sourceCode html"><code class="sourceCode html">  <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;range&quot;</span><span class="ot"> name=</span><span class="st">&quot;range&quot;</span><span class="ot"> class=</span><span class="st">&quot;slider&quot;</span><span class="ot"> id=</span><span class="st">&quot;year_slider&quot;</span><span class="ot"> value=</span><span class="st">&quot;1979&quot;</span><span class="ot"> min=</span><span class="st">&quot;1950&quot;</span><span class="ot"> max=</span><span class="st">&quot;2008&quot;</span><span class="ot"> step=</span><span class="st">&quot;1&quot;</span> <span class="kw">&gt;&lt;br&gt;</span></code></pre>
+<p>In our script, we now want the year to be a variable, so we need to initialise it. Because the value is a string, we need to parse it to an integer using <code>parseInt()</code>. To get the index, we can simply subtract the first year 1950.</p>
+<pre class="js"><code>var year_idx = parseInt(document.getElementById(&quot;year_slider&quot;).value)-1950;</code></pre>
+<p>Updating the year becomes quite simple. All we need to do is add another event listener that changes the year the moment we touch the slider. The listener is called <code>&quot;input&quot;</code>. We then execute the <code>update()</code> function we wrote earlier.</p>
+<pre class="js"><code>d3.select(&quot;#year_slider&quot;).on(&quot;input&quot;, function () {
+    year_idx = parseInt(this.value) - 1950;
+    update();
+});</code></pre>
+<p>So far, the update function only knows how to handle new data (<code>.enter</code>) and removed data (<code>.exit</code>), but not what to do when we update data. In addition to <code>d3.enter()</code> and <code>d3.exit()</code> D3 also offers <code>d3.transition</code> to handle updating data. First, we need to define how to transition between data points. We might want to interpolate between to values linearly over the duration of 200 ms.</p>
+<pre class="js"><code>dot.transition().ease(&quot;linear&quot;).duration(200);</code></pre>
+<p>Now we know how it's gonna happen, but not what's happening, yet. We can simply move the part of our code that updates the circle attributes from our <code>enter</code> function to our <code>transition</code> function. Now, instead of using a hardcoded index for the year, we use the index <code>year_idx</code> that we updated in our event listener earlier.</p>
+<pre class="js"><code>        dot.transition().ease(&quot;linear&quot;).duration(200)
+                        .attr(&quot;cx&quot;, function(d) { return xScale(d.income[year_idx]); }) // this is why attr knows to work with the data
+                        .attr(&quot;cy&quot;, function(d) { return yScale(d.lifeExpectancy[year_idx]); })
+                        .attr(&quot;r&quot;, function(d) { return rScale(d.population[year_idx]); });</code></pre>
+<div id="other-transition-functions-you-might-want" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Other transition functions you might want</h2>
+</div>
+<div class="panel-body">
 <ul>
-<li>transition: Add a slider</li>
-<li>tool tips: country names</li>
-<li>legends</li>
+<li>sin - applies the trigonometric function sin.</li>
+<li>exp - raises 2 to a power based on t.</li>
+<li>bounce - simulates a bouncy collision.</li>
+<li>elastic(a, p) - simulates an elastic band; may extend slightly beyond 0 and 1.</li>
+<li><a href="https://github.com/mbostock/d3/wiki/Transitions#d3_ease">more here</a></li>
+</ul>
+</div>
+</div>
+<div id="play-time" class="challenge panel panel-success">
+<div class="panel-heading">
+<h1><span class="glyphicon glyphicon-pencil"></span>Play time</h1>
+</div>
+<div class="panel-body">
+<p>D3 is incredible versatile. Try out different transitions and if you have time, maybe try drawing rectangles instead of circles.</p>
+</div>
+</div>
+<p>Like any programming language, JavaScript can also be used to compute new values. As an example, let's compute the mean life expectancy and income for the different regions. ...</p>
+<p>FIXME: write code to compute the mean values here.</p>
+<div id="the-master-challenge" class="challenge panel panel-success">
+<div class="panel-heading">
+<h1><span class="glyphicon glyphicon-pencil"></span>The master challenge</h1>
+</div>
+<div class="panel-body">
+<p>It's time to put everything you've learned together. Write code that displays (and updates) the mean values that we just computed as little crosses in the graph for the different regions.</p>
+</div>
+</div>
+<p>FIXME:</p>
+<ul>
+<li>tool tips?</li>
+<li>axis labels?</li>
 </ul>
         </div>
       </div>

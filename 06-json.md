@@ -205,31 +205,34 @@ Source: [gapminder](http://www.gapminder.org/data/)
 
 ~~~{.out}
 [
-	{
-		"name": "Namibia",
-		"region": "Sub-Saharan Africa",
-		"income": [
-			[
-				1800,
-				350
-			],
-			...
-		],
-		"population": [
-			[
-				1800,
-				229000
-			],
-			...
-		],
-		"lifeExpectancy": [
-			[
-				1800,
-				32.4
-			],
-			...
-		]
-	},
-	...
+  {
+    "name": "Angola",
+    "region": "Sub-Saharan Africa",
+    "years": [
+      1950,
+      1951,
+      1952,
+	  ...
+    ],
+    "income": [
+      3363.02,
+      3440.9,
+      3520.61,
+	  ...
+	],
+    "population": [
+      4117617,
+      4173095,
+      4232095,
+	  ...
+   	],
+    "lifeExpectancy": [
+      29.22,
+      29.42,
+      29.81,
+	  ...
+	]
+  },
+  { ... }
 ]
 ~~~

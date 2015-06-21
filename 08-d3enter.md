@@ -83,7 +83,7 @@ most recent data point (data for 2009).
 
 ~~~{.js}
 var data_canvas = canvas.append("g")
-  .attr("class", "data_canvas")
+  .attr("class", "data_canvas");
       
 var dot = data_canvas.selectAll(".dot")
   .data(filtered_nations, function(d){return d.name});
@@ -91,7 +91,7 @@ var dot = data_canvas.selectAll(".dot")
 dot.enter().append("circle").attr("class","dot")
   .attr("cx", function(d) { return xScale(d.income[d.income.length-1][1]); }) 
   .attr("cy", function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1][1]); })
-  .attr("r", 5)
+  .attr("r", 5);
 ~~~
 
 We're starting this bit by adding a `g` element to our canvas.

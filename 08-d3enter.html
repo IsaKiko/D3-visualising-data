@@ -73,7 +73,7 @@ canvas.append(&quot;g&quot;)
 <p>And now we're ready to add one circle per data point! We don't want to see all the data at once for now. Let's instead just look at the most recent data point (data for 2009).</p>
 <p><img src="img/data_structure.png" alt="data structure" width="500" /></p>
 <pre class="js"><code>var data_canvas = canvas.append(&quot;g&quot;)
-  .attr(&quot;class&quot;, &quot;data_canvas&quot;)
+  .attr(&quot;class&quot;, &quot;data_canvas&quot;);
       
 var dot = data_canvas.selectAll(&quot;.dot&quot;)
   .data(filtered_nations, function(d){return d.name});
@@ -81,7 +81,7 @@ var dot = data_canvas.selectAll(&quot;.dot&quot;)
 dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
   .attr(&quot;cx&quot;, function(d) { return xScale(d.income[d.income.length-1][1]); }) 
   .attr(&quot;cy&quot;, function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1][1]); })
-  .attr(&quot;r&quot;, 5)</code></pre>
+  .attr(&quot;r&quot;, 5);</code></pre>
 <p>We're starting this bit by adding a <code>g</code> element to our canvas. This group is going to be our data canvas, so that's the class name we give it. We then select everything of the class <code>dot</code>. This is an empty set at the moment, since we haven't created any dots, yet. We are then telling our page where to find the data, using <code>.data(filtered_nations)</code>.</p>
 <p>We are also inserting what is called a key function <code>.data(filtered_nations, function(d){return d.name});</code>. This function will help D3 keep track of the data when we start changing it (and the order of the objects).</p>
 <p>Now comes the interesting part: The function <code>enter()</code> takes each element in the dataset and does everything that follows afterwards for each of these elements we're adding in. These new dots need to be added with the class 'dot', so that next time we call <code>data_canvas.selectAll(&quot;.dot&quot;)</code> we get the dots that have already been added to our plot.</p>

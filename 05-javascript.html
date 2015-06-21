@@ -60,10 +60,23 @@
 cat_image.addEventListener(&quot;click&quot;, meow);</code></pre>
 <p>The last step is to write the meow function. We want a pop-up window. The JavaScript function alert() will give us one.</p>
 <pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);
-cat_image.addEventListener(&quot;click&quot;, meow);
-function meow() {
+cat_image.addEventListener(&quot;click&quot;, meow);</code></pre>
+<p>Our event listener takes two arguments: the type of event and what we want it to do. We want to execute a function called <code>meow()</code>, that we still need to write.</p>
+<pre class="js"><code>function meow() {
     alert(&quot;Meow!&quot;);
 };</code></pre>
+<p>If we want to execute a sequence of functions, we can also create something that's called <code>inline</code> function, that is only defined in the scope of this specific callback. Within this function, we can call <code>meow()</code>, but also othe functions, like <code>sleep()</code> (which doesn't exist, yet).</p>
+<pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);
+cat_image.addEventListener(&quot;click&quot;, function() {
+    meow(); 
+    sleep();
+});</code></pre>
+<p>Obviously, we can also drop the <code>meow()</code> function, if we don't want to use it ever again:</p>
+<pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);
+cat_image.addEventListener(&quot;click&quot;, function() {
+    alert(&quot;Meow!&quot;); 
+    sleep();
+});</code></pre>
 <div id="feed-your-pet-cat" class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Feed your pet cat</h2>
@@ -93,7 +106,15 @@ var feed_button = document.getElementById(&#39;feed_button&#39;);
 feed_button.addEventListener(&quot;click&quot;, feed);
 function feed() {
     cat_image.style.width = (cat_image.offsetWidth + 30.0) + &#39;px&#39;;
-};</code></pre>
+}</code></pre>
+<p>We could also pass an argument into the function by writing it in the brackets. We might, for example, want the use to be able to decide the meal size the cat eats.</p>
+<p>We can also return a value and assign it to a variable (just like we do with any function we used so far, e.g. var element = document.getElementById(&quot;someID&quot;);):</p>
+<pre class="js"><code>var new_width = feed(10);
+
+function feed(mealsize) {
+        cat_image.style.width = (cat_image.offsetWidth + parseInt(mealsize)) + &#39;px&#39;;
+        return cat_image.style.width;
+}</code></pre>
 <div id="let-the-cat-work-out" class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Let the cat work out</h2>
