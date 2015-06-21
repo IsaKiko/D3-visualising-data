@@ -114,13 +114,48 @@ d3.json("nations.json", function(nations) {
 		.data(filtered_nations, function(d){return d.name});
 
 		dot.enter().append("circle").attr("class","dot")				      	
-									.style("fill", function(d) { return colorScale(d.region); });
+									.style("fill", function(d) { return colorScale(d.region); })
+									.on("mouseover", function(d){return tooltip.style("visibility", "visible").text(d.name);})
+									.on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
+									.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+
 		dot.exit().remove();
 
 		dot.transition().ease("linear").duration(200)
 						.attr("cx", function(d) { return xScale(d.income[year_idx]); }) // this is why attr knows to work with the data
 						.attr("cy", function(d) { return yScale(d.lifeExpectancy[year_idx]); })
 						.attr("r", function(d) { return rScale(d.population[year_idx]); });
+
+		//var m = calc_mean(d);
+		//console.log(m);
+	}
+
+	var tooltip = d3.select("body")
+		.append("div")
+		.style("position", "absolute")
+		.style("z-index", "10")
+		.style("visibility", "hidden");
+
+	function calc_mean(dataset) {
+		console.log(dataset)
+		var mean = [];
+		var sum = 0;
+
+		for( var i = 0; i < dataset.income.length; i++ ){
+		    sum += parseInt( dataset.income[i], 10 ); //don't forget to add the base
+		}
+
+		for( var j = 0; j < dataset.lifeExpectancy.length; j++ ){
+		    sum += parseInt( dataset.lifeExpectancy[j], 10 ); //don't forget to add the base
+		}
+
+
+		var mean_income = sum/dataset.income.length;
+		var mean_le = sum/dataset.lifeExpectancy.length;
+
+
+		mean = [mean_income,mean_le];
+		return mean
 	}
 
 });

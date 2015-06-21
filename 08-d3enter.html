@@ -79,8 +79,8 @@ var dot = data_canvas.selectAll(&quot;.dot&quot;)
   .data(filtered_nations, function(d){return d.name});
 
 dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
-  .attr(&quot;cx&quot;, function(d) { return xScale(d.income[d.income.length-1][1]); }) 
-  .attr(&quot;cy&quot;, function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1][1]); })
+  .attr(&quot;cx&quot;, function(d) { return xScale(d.income[d.income.length-1]); }) 
+  .attr(&quot;cy&quot;, function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1]); })
   .attr(&quot;r&quot;, 5);</code></pre>
 <p>We're starting this bit by adding a <code>g</code> element to our canvas. This group is going to be our data canvas, so that's the class name we give it. We then select everything of the class <code>dot</code>. This is an empty set at the moment, since we haven't created any dots, yet. We are then telling our page where to find the data, using <code>.data(filtered_nations)</code>.</p>
 <p>We are also inserting what is called a key function <code>.data(filtered_nations, function(d){return d.name});</code>. This function will help D3 keep track of the data when we start changing it (and the order of the objects).</p>

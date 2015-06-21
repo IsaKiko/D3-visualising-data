@@ -77,7 +77,23 @@
 <p>D3 is incredible versatile. Try out different transitions and if you have time, maybe try drawing rectangles instead of circles.</p>
 </div>
 </div>
-<p>Like any programming language, JavaScript can also be used to compute new values. As an example, let's compute the mean life expectancy and income for the different regions. ...</p>
+<p>Next, we might want to create a tooltip. Let's go have a look at what's already out there. The creator of D3 has put up some code for pretty much everything you can imaging. The example for a simple tooltip can be found <a href="http://bl.ocks.org/biovisualize/1016860">here</a>. We need to first create the variable tooltip:</p>
+<pre class="js"><code>
+var tooltip = d3.select(&quot;body&quot;)
+    .append(&quot;div&quot;)
+    .style(&quot;position&quot;, &quot;absolute&quot;)
+    .style(&quot;z-index&quot;, &quot;10&quot;)
+    .style(&quot;visibility&quot;, &quot;hidden&quot;);
+</code></pre>
+<p>and then create event listeners for moving the mouse into a circle and out of one. Different from the example on the web page, we want to display the specific country we are looking at.</p>
+<pre class="js"><code>
+dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)                        
+                            .style(&quot;fill&quot;, function(d) { return colorScale(d.region); })
+                            .on(&quot;mouseover&quot;, function(d){return tooltip.style(&quot;visibility&quot;, &quot;visible&quot;).text(d.name);})
+                            .on(&quot;mousemove&quot;, function(){return tooltip.style(&quot;top&quot;, (event.pageY-10)+&quot;px&quot;).style(&quot;left&quot;,(event.pageX+10)+&quot;px&quot;);})
+                            .on(&quot;mouseout&quot;, function(){return tooltip.style(&quot;visibility&quot;, &quot;hidden&quot;);});</code></pre>
+<p>Like any programming language, JavaScript can also be used to compute new values. As an example, let's compute the mean life expectancy and income for the different regions.</p>
+<p>...</p>
 <p>FIXME: write code to compute the mean values here.</p>
 <div id="the-master-challenge" class="challenge panel panel-success">
 <div class="panel-heading">
@@ -89,7 +105,6 @@
 </div>
 <p>FIXME:</p>
 <ul>
-<li>tool tips?</li>
 <li>axis labels?</li>
 </ul>
         </div>

@@ -63,9 +63,35 @@ We can simply move the part of our code that updates the circle attributes from 
 > # Play time {.challenge}
 > D3 is incredible versatile. Try out different transitions and if you have time, maybe try drawing rectangles instead of circles.
 
+Next, we might want to create a tooltip. Let's go have a look at what's already out there. 
+The creator of D3 has put up some code for pretty much everything you can imaging. The example for a simple tooltip can be found [here](http://bl.ocks.org/biovisualize/1016860).
+We need to first create the variable tooltip:
+
+~~~{.js}
+
+var tooltip = d3.select("body")
+	.append("div")
+	.style("position", "absolute")
+	.style("z-index", "10")
+	.style("visibility", "hidden");
+
+~~~
+
+and then create event listeners for moving the mouse into a circle and out of one. Different from the example on the web page, we want to display the specific country we are looking at.
+
+~~~{.js}
+
+dot.enter().append("circle").attr("class","dot")				      	
+							.style("fill", function(d) { return colorScale(d.region); })
+							.on("mouseover", function(d){return tooltip.style("visibility", "visible").text(d.name);})
+							.on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
+							.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+~~~
+
 
 Like any programming language, JavaScript can also be used to compute new values. As an example, let's compute the mean life expectancy and income for the different regions. 
- ...
+
+...
 
 FIXME: write code to compute the mean values here.
 
@@ -74,5 +100,4 @@ FIXME: write code to compute the mean values here.
 
 FIXME:
 
-* tool tips?
 * axis labels?
