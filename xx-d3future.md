@@ -37,5 +37,6 @@ There are of course other ways you can create plots. Some handy packages that ar
 * [nvd3](http://nvd3.org/)
 * [cytoscape](http://www.cytoscape.org/)
 * [dimplejs](http://dimplejs.org/)
+* [metricsgraphics](http://metricsgraphicsjs.org/)
 
 Not all of them are free and not all of them are completely customisable, but they often offer a quicker and easier ways to create plots that you can then put online. 
