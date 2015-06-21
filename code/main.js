@@ -135,6 +135,11 @@ d3.json("nations.json", function(nations) {
 		.style("z-index", "10")
 		.style("visibility", "hidden");
 
+	// 1) find unique regions
+	// 2) filter data by those regions and then run calc_mean on the regions
+	// 3) store in array of objects similar to original data: [{"region": "Sub-Saharan Africa","years": [1950,1951,...],"mean income":[..,..],"mean life expectancy":[..., ... ]},{...}]
+
+
 	var m = [];
 	for (var nation_idx=0; nation_idx<nations.length; nation_idx++){ //this shouldn't be all nations, but unique regions!
 		m[nation_idx] =	calc_mean(nations[nation_idx]);
