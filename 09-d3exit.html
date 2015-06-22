@@ -70,6 +70,8 @@
   }</code></pre>
 <p>This <code>if</code>-statement gets executed every time a checkbox is checked. To add the data points, we can use the <code>push</code>-function, which adds one object to an array at a time. First, we filter the nations we want to add, calling them <code>new_nations</code>. Next, we are looping through all new nations and add one at a time to the array <code>filtered_nations</code>.</p>
 <p>Once the data is added, the key function helps us to update our link to the graph.</p>
+<p>We also have to initialise <code>filtered_nations</code> at the top of our script. Remember that there is a difference between the object and the name space, so in order to keep <code>nations</code> the way it is, we need to map the values instead of just using <code>=</code>.</p>
+<pre class="js"><code>  var filtered_nations = nations.map(function(nation) { return nation;});</code></pre>
 <p>So far we can add elements by checking a checkbox, but we might also want to remove them. Removing elements in D3 is done using the <code>exit()</code> function.</p>
 <pre class="js"><code>dot.exit().remove();</code></pre>
 <p>Whereas before <code>enter()</code> was used to append new elements to the plot, <code>exit()</code> is used to remove elements from the plot that are no longer in the dataset. Both functions compare the data that has been specified to what elements are in the plot (on the page). As for <code>enter()</code>, everything that follows <code>exit()</code> is performed for each of the elements that no longer have data points corresponding to them. Here (and in most cases) we remove these elements.</p>

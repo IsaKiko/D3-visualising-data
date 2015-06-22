@@ -104,8 +104,50 @@ dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
 </div>
 </div>
 <p>Like any programming language, JavaScript can also be used to compute new values. As an example, let's compute the mean life expectancy and income for the different regions.</p>
-<p>...</p>
-<p>FIXME: write code to compute the mean values here.</p>
+<p>First, we need to loop through all the data and group them by the region they are in:</p>
+<pre class="js"><code>    // Calculate the averages for each region.
+    var region_names = [&quot;Sub-Saharan Africa&quot;, &quot;South Asia&quot;, &quot;Middle East &amp; North Africa&quot;, &quot;America&quot;, &quot;East Asia &amp; Pacific&quot;, &quot;Europe &amp; Central Asia&quot;];
+
+    var region_data = [];
+    for( var i = 0; i &lt; region_names.length; i++ ){
+        var filtered_nations_by_regions = nations.filter(function(nation){
+            return (nation.region == region_names[i]); 
+        });
+        region_data[i] = calc_mean(filtered_nations_by_regions);
+    }
+
+    var filtered_reg_nations = region_data.map(function(region) { return region;});</code></pre>
+<p>Next, we write a function that returns an array of objects region_data. We want it to contain the mean income and life for each year across all nations, weighted by population.</p>
+<pre class="js"><code>    function calc_mean(region_data) {
+        var mean_income = [];
+        var mean_lifeExpectancy = [];
+
+        for( var year_idx2 = 0; year_idx2 &lt; region_data[0].years.length; year_idx2++ ){
+            var sum_income = 0;
+            var sum_lifeExpectancy = 0;
+            var sum_population = 0;
+
+            for( var k = 0; k &lt; region_data.length; k++ ){
+                var kpop = region_data[k].population[year_idx2];
+                var kincome = region_data[k].income[year_idx2];
+                var klife = region_data[k].lifeExpectancy[year_idx2];
+                sum_income += kpop*kincome; 
+                sum_lifeExpectancy += kpop*klife;
+                sum_population += kpop;             
+            }
+
+            mean_income[year_idx2] = sum_income/sum_population;
+            mean_lifeExpectancy[year_idx2] = sum_lifeExpectancy/sum_population;
+        }
+        averageData = {
+            region: region_data[0].region,
+            years: region_data[0].years,
+            mean_income: mean_income,
+            mean_lifeExpectancy: mean_lifeExpectancy
+        };
+
+        return averageData;
+    }</code></pre>
 <div id="the-master-challenge" class="challenge panel panel-success">
 <div class="panel-heading">
 <h1><span class="glyphicon glyphicon-pencil"></span>The master challenge</h1>
@@ -114,13 +156,16 @@ dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
 <p>It's time to put everything you've learned together. Write code that displays (and updates) the mean values that we just computed as little crosses in the graph for the different regions.</p>
 </div>
 </div>
-<p>FIXME:</p>
-<ul>
-<li>axis labels?</li>
-<li>debugging tricks</li>
-</ul>
+<div id="style" class="challenge panel panel-success">
+<div class="panel-heading">
+<h1><span class="glyphicon glyphicon-pencil"></span>...style!</h1>
+</div>
+<div class="panel-body">
+<p>Add axis labels and make the fonts pretty.</p>
+</div>
+</div>
 <p>By the end of this lesson, your page should look something like this:</p>
-<iframe src="http://isakiko.github.io/D3-visualising-data/code/index.html" width="1000" height="600"></iframe>
+<iframe src="http://isakiko.github.io/D3-visualising-data/code/index10.html" width="1000" height="600"></iframe>
         </div>
       </div>
       <div class="footer">
