@@ -9,6 +9,7 @@ minutes: 20
 > 
 > * Using a slider 
 > * Updating data points using d3.transition
+> * Putting it all together by adding regional averages in a master challenge!
 
 At the moment, the year that we are looking at in the data is hardcoded. 
 Naturally, we want the user to be able to see how the data changes over time. 
@@ -152,7 +153,7 @@ Next, we write a function that returns an array of objects region_data. We want 
 > It's time to put everything you've learned together. Write code that displays (and updates) the mean values that we just computed as little crosses in the graph for the different regions.
 
 > # ...style! {.challenge}
-> Add axis labels and make the fonts pretty.
+> Add axis labels and make the fonts pretty. 
 
 
 By the end of this lesson, your page should look something like this:
