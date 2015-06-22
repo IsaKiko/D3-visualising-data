@@ -50,3 +50,4 @@ Along the way, we will learn:
 xx. [What now?](xx-d3future.html)
 
 We are using [gapminder data](http://gapminder.orf) and the later lessons are based on an example by [Mike Bostock](http://bost.ocks.org/mike/nations/).
+Lessons created by [Isabell Kiral-Kornek](https://github.com/isakiko) and [Robert Kerr](https://github.com/robrkerr).
