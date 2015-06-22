@@ -68,6 +68,11 @@ This line probably needs a little explanation and we'll go through it bit by bit
 * What seems unusual, but is actually quite common, is that this function call doesn't return anything. It is simply executed and displayed (if we tell it to), but no value is returned. 
 
 
+> ## What else can I read in conveniently? {.callout}
+> D3 offers the possibility to also read in csv (comma-separated values) files directly. See [here](https://github.com/mbostock/d3/wiki/CSV) for an example. Also available are functions to read in tab-separated values (tsv) and files with arbitrary delimiter (dsv).
+
+
+
 So naturally, the next step is to think about what we want to happen between the curly brackets.
 For now, we want to:
 

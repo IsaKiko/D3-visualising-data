@@ -4,6 +4,16 @@ d3.json("nations.json", function(nations) {
 	var filtered_nations = nations;
 	var year_idx = parseInt(document.getElementById("year_slider").value)-1950;
 
+	// Calculate the averages for each region.
+	var region_data = [];
+	region_names = ["Sub-Saharan Africa", "South Asia", "Middle East & North Africa", "America", "East Asia & Pacific", "Europe & Central Asia"];
+	for( var i = 0; i < 6; i++ ){
+		filtered_nations_by_regions = nations.filter(function(nation){
+			 return nation.region == region_names[i]; });
+		region_data[i] = calc_mean(filtered_nations_by_regions);	
+	}
+	var filtered_reg_nations = region_data;
+
 	// Create the SVG frame inside chart_area.
 	var chart_area = d3.select("#chart_area");
 	var frame = chart_area.append("svg");
@@ -70,6 +80,8 @@ d3.json("nations.json", function(nations) {
 
 
 
+
+
 	//////////////////////AXES CREATED//////////////////////////
 
 
@@ -99,12 +111,18 @@ d3.json("nations.json", function(nations) {
 		var type = this.value;
 		if (this.checked) { // adding data points (not quite right yet)
 			var new_nations = nations.filter(function(nation){ return nation.region == type;});
+			var new_reg_nations = region_data.filter(function(nation){return nation.region == type;});
 			for (var idx=0; idx<new_nations.length; idx++){
 				filtered_nations.push(new_nations[idx]);
 			}
+			for (var idx=0; idx<new_reg_nations.length; idx++){
+				filtered_reg_nations.push(new_reg_nations[idx]);
+			}
+
 		}
 		else{ // remove data points from the data that match the filter
 			filtered_nations = filtered_nations.filter(function(nation){ return nation.region != type;});
+			filtered_reg_nations = filtered_reg_nations.filter(function(nation){ return nation.region != type;});
 		}
 		update();
 	});
@@ -127,6 +145,61 @@ d3.json("nations.json", function(nations) {
 						.attr("cy", function(d) { return yScale(d.lifeExpectancy[year_idx]); })
 						.attr("r", function(d) { return rScale(d.population[year_idx]); });
 
+
+		var cross = data_canvas.selectAll(".cross")
+		.data(filtered_reg_nations, function(d){return d.region});
+
+		// cross.enter().append("path").attr("class","cross");
+
+		// cross.exit().remove();
+
+		// cross.transition().ease("linear").duration(200)
+		// 				.style("stroke", function(d) { return colorScale(d.region); })
+		// 				.style("stroke-width", 2)
+		// 				.attr("d", function(d){ 
+		// 					var posx = xScale(d.mean_income[year_idx]);
+		// 					var posy = yScale(d.mean_lifeExpectancy[year_idx]);
+		// 					var posx10u = posx+10;
+		// 					var posy10u = posy+10;
+		// 					var posx10d = posx-10;
+		// 					var posy10d = posy-10;
+		// 					var pathstring = "M " + posx + " " + posy + " L " + posx + " " + posy10u +
+		// 					"M " + posx + " " + posy + " L " + posx + " " + posy10d +
+		// 					"M " + posx + " " + posy + " L " + posx10d + " " + posy +
+		// 					"M " + posx + " " + posy + " L " + posx10u + " " + posy;
+		// 					return pathstring; 
+		// 				})				      	
+
+		var g_enter = cross.enter().append("g").attr("class","cross");
+		g_enter.append("path").attr("class","cross-backing")
+					.style("stroke", "black")
+					.style("stroke-width", 3)
+					.style("stroke-linecap", "round");
+		g_enter.append("path").attr("class","cross-inside")
+					.style("stroke", function(d) { return colorScale(d.region); })
+					.style("stroke-width", 2)
+					.style("stroke-linecap", "round");
+
+		cross.exit().remove();
+
+		function crossPath(d) { 
+			var posx = xScale(d.mean_income[year_idx]);
+			var posy = yScale(d.mean_lifeExpectancy[year_idx]);
+			var posx10u = posx+10;
+			var posy10u = posy+10;
+			var posx10d = posx-10;
+			var posy10d = posy-10;
+			var pathstring = "M " + posx + " " + posy + " L " + posx + " " + posy10u +
+			"M " + posx + " " + posy + " L " + posx + " " + posy10d +
+			"M " + posx + " " + posy + " L " + posx10d + " " + posy +
+			"M " + posx + " " + posy + " L " + posx10u + " " + posy;
+			return pathstring; 
+		}
+
+		var g_transition = cross.transition().ease("linear").duration(200);
+		g_transition.select(".cross-backing").attr("d", crossPath);
+		g_transition.select(".cross-inside").attr("d", crossPath);
+
 	}
 
 	var tooltip = d3.select("body")
@@ -134,39 +207,39 @@ d3.json("nations.json", function(nations) {
 		.style("position", "absolute") 
 		.style("visibility", "hidden");
 
-	var region_data = [];
-	region_names = ["Sub-Saharan Africa", "South Asia", "Middle East & North Africa", "America", "East Asia & Pacific", "Europe & Central Asia"];
-	for( var i = 0; i < 6; i++ ){
-		filtered_nations_by_regions = nations.filter(function(nation){
-			 return nation.region == region_names[i]; });
-		region_data[i] = calc_mean(filtered_nations_by_regions);	
-	}
-	console.log(region_data);
+	// get region specific mean 
+
+	
 	
 	function calc_mean(region_data) {
 		var mean_income = [];
 		var mean_lifeExpectancy = [];
-		var sum_income = 0;
-		var sum_lifeExpectancy = 0;
 
-		for( var year_idx = 0; year_idx < region_data[0].years.length; year_idx++ ){
+		for( var year_idx2 = 0; year_idx2 < region_data[0].years.length; year_idx2++ ){
+			var sum_income = 0;
+			var sum_lifeExpectancy = 0;
+			var sum_population = 0;
+
 			for( var k = 0; k < region_data.length; k++ ){
-			    sum_income += parseInt( region_data[k].income[year_idx], 10 ); //don't forget to add the base
+				var kpop = region_data[k].population[year_idx2];
+				var kincome = region_data[k].income[year_idx2];
+				var klife = region_data[k].lifeExpectancy[year_idx2];
+			    sum_income += kpop*kincome; 
+			    sum_lifeExpectancy += kpop*klife;
+			    sum_population += kpop;			    
 			}
-			for( var l = 0; l < region_data.length; l++ ){
-			    sum_lifeExpectancy += parseInt( region_data[l].lifeExpectancy[year_idx], 10 ); //don't forget to add the base
-			}
-			mean_income[year_idx] = sum_income/region_data.length;
-			mean_lifeExpectancy[year_idx] = sum_lifeExpectancy/region_data.length;
-			}
+
+			mean_income[year_idx2] = sum_income/sum_population;
+			mean_lifeExpectancy[year_idx2] = sum_lifeExpectancy/sum_population;
+		}
 		averageData = {
-		region: region_data[0].region,
-		years: region_data[0].years,
-		mean_income: mean_income,
-		mean_lifeExpectancy: mean_lifeExpectancy
+			region: region_data[0].region,
+			years: region_data[0].years,
+			mean_income: mean_income,
+			mean_lifeExpectancy: mean_lifeExpectancy
 		};
 
-	return averageData;
+		return averageData;
 	}
 
 
