@@ -96,18 +96,65 @@ dot.enter().append("circle").attr("class","dot")
 
 Like any programming language, JavaScript can also be used to compute new values. As an example, let's compute the mean life expectancy and income for the different regions. 
 
-...
+First, we need to loop through all the data and group them by the region they are in:
 
-FIXME: write code to compute the mean values here.
+~~~{.js}
+	// Calculate the averages for each region.
+	var region_names = ["Sub-Saharan Africa", "South Asia", "Middle East & North Africa", "America", "East Asia & Pacific", "Europe & Central Asia"];
+
+	var region_data = [];
+	for( var i = 0; i < region_names.length; i++ ){
+		var filtered_nations_by_regions = nations.filter(function(nation){
+			return (nation.region == region_names[i]); 
+		});
+		region_data[i] = calc_mean(filtered_nations_by_regions);
+	}
+
+	var filtered_reg_nations = region_data.map(function(region) { return region;});
+~~~
+
+Next, we write a function that returns an array of objects region_data. We want it to contain the mean income and life for each year across all nations, weighted by population.
+
+~~~{.js}
+	function calc_mean(region_data) {
+		var mean_income = [];
+		var mean_lifeExpectancy = [];
+
+		for( var year_idx2 = 0; year_idx2 < region_data[0].years.length; year_idx2++ ){
+			var sum_income = 0;
+			var sum_lifeExpectancy = 0;
+			var sum_population = 0;
+
+			for( var k = 0; k < region_data.length; k++ ){
+				var kpop = region_data[k].population[year_idx2];
+				var kincome = region_data[k].income[year_idx2];
+				var klife = region_data[k].lifeExpectancy[year_idx2];
+			    sum_income += kpop*kincome; 
+			    sum_lifeExpectancy += kpop*klife;
+			    sum_population += kpop;			    
+			}
+
+			mean_income[year_idx2] = sum_income/sum_population;
+			mean_lifeExpectancy[year_idx2] = sum_lifeExpectancy/sum_population;
+		}
+		averageData = {
+			region: region_data[0].region,
+			years: region_data[0].years,
+			mean_income: mean_income,
+			mean_lifeExpectancy: mean_lifeExpectancy
+		};
+
+		return averageData;
+	}
+~~~
 
 > # The master challenge {.challenge}
 > It's time to put everything you've learned together. Write code that displays (and updates) the mean values that we just computed as little crosses in the graph for the different regions.
 
-FIXME:
+> # ...style! {.challenge}
+> Add axis labels and make the fonts pretty.
 
-* axis labels?
-* debugging tricks
 
 By the end of this lesson, your page should look something like this:
 
-<iframe src="http://isakiko.github.io/D3-visualising-data/code/index.html" width="1000" height="600"></iframe>
+<iframe src="http://isakiko.github.io/D3-visualising-data/code/index10.html" width="1000" height="600"></iframe>

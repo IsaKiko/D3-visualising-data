@@ -74,6 +74,14 @@ First, we filter the nations we want to add, calling them `new_nations`. Next, w
 
 Once the data is added, the key function helps us to update our link to the graph. 
 
+
+We also have to initialise `filtered_nations` at the top of our script. Remember that there is a difference between the object and the name space, so in order to keep `nations` the way it is, we need to map the values instead of just using `=`.
+
+~~~{.js}
+  var filtered_nations = nations.map(function(nation) { return nation;});
+~~~
+
+
 So far we can add elements by checking a checkbox, but we might also want to remove them. Removing elements in D3 is done using the `exit()` function. 
 
 ~~~{.js}

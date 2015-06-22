@@ -1,18 +1,22 @@
 // Load the data.
 d3.json("nations.json", function(nations) {
 
-	var filtered_nations = nations;
+	var filtered_nations = nations.map(function(nation) { return nation;});
 	var year_idx = parseInt(document.getElementById("year_slider").value)-1950;
 
 	// Calculate the averages for each region.
+	var region_names = ["Sub-Saharan Africa", "South Asia", "Middle East & North Africa", "America", "East Asia & Pacific", "Europe & Central Asia"];
+
+
 	var region_data = [];
-	region_names = ["Sub-Saharan Africa", "South Asia", "Middle East & North Africa", "America", "East Asia & Pacific", "Europe & Central Asia"];
-	for( var i = 0; i < 6; i++ ){
-		filtered_nations_by_regions = nations.filter(function(nation){
-			 return nation.region == region_names[i]; });
-		region_data[i] = calc_mean(filtered_nations_by_regions);	
+	for( var i = 0; i < region_names.length; i++ ){
+		var filtered_nations_by_regions = nations.filter(function(nation){
+			return (nation.region == region_names[i]); 
+		});
+		region_data[i] = calc_mean(filtered_nations_by_regions);
 	}
-	var filtered_reg_nations = region_data;
+
+	var filtered_reg_nations = region_data.map(function(region) { return region;});;
 
 	// Create the SVG frame inside chart_area.
 	var chart_area = d3.select("#chart_area");
@@ -67,7 +71,13 @@ d3.json("nations.json", function(nations) {
 	canvas.append("g")
 	.attr("class", "x axis")
     .attr("transform", "translate(0," + canvas_height + ")")
-    .call(xAxis);
+    .call(xAxis)
+    .append("text")
+    .attr("class", "x label")
+    .attr("text-anchor", "end")
+    .attr("x", canvas_width)
+    .attr("y", - 6)
+    .text("income per capita, inflation-adjusted (dollars)");
 
     // .call is the bit where the properties we just set are pushed to the object
     // attribures are added to make it look pretty (class is used in the css file)
@@ -76,7 +86,14 @@ d3.json("nations.json", function(nations) {
 	// Add the y-axis.
 	canvas.append("g")
     .attr("class", "y axis")
-    .call(yAxis);
+    .call(yAxis)
+    .append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "end")
+    .attr("y", 6)
+    .attr("dy", ".75em")
+    .attr("transform", "rotate(-90)")
+    .text("life expectancy (years)");;
 
 
 
@@ -149,56 +166,26 @@ d3.json("nations.json", function(nations) {
 		var cross = data_canvas.selectAll(".cross")
 		.data(filtered_reg_nations, function(d){return d.region});
 
-		// cross.enter().append("path").attr("class","cross");
-
-		// cross.exit().remove();
-
-		// cross.transition().ease("linear").duration(200)
-		// 				.style("stroke", function(d) { return colorScale(d.region); })
-		// 				.style("stroke-width", 2)
-		// 				.attr("d", function(d){ 
-		// 					var posx = xScale(d.mean_income[year_idx]);
-		// 					var posy = yScale(d.mean_lifeExpectancy[year_idx]);
-		// 					var posx10u = posx+10;
-		// 					var posy10u = posy+10;
-		// 					var posx10d = posx-10;
-		// 					var posy10d = posy-10;
-		// 					var pathstring = "M " + posx + " " + posy + " L " + posx + " " + posy10u +
-		// 					"M " + posx + " " + posy + " L " + posx + " " + posy10d +
-		// 					"M " + posx + " " + posy + " L " + posx10d + " " + posy +
-		// 					"M " + posx + " " + posy + " L " + posx10u + " " + posy;
-		// 					return pathstring; 
-		// 				})				      	
-
-		var g_enter = cross.enter().append("g").attr("class","cross");
-		g_enter.append("path").attr("class","cross-backing")
-					.style("stroke", "black")
-					.style("stroke-width", 3)
-					.style("stroke-linecap", "round");
-		g_enter.append("path").attr("class","cross-inside")
-					.style("stroke", function(d) { return colorScale(d.region); })
-					.style("stroke-width", 2)
-					.style("stroke-linecap", "round");
+		cross.enter().append("path").attr("class","cross");
 
 		cross.exit().remove();
 
-		function crossPath(d) { 
-			var posx = xScale(d.mean_income[year_idx]);
-			var posy = yScale(d.mean_lifeExpectancy[year_idx]);
-			var posx10u = posx+10;
-			var posy10u = posy+10;
-			var posx10d = posx-10;
-			var posy10d = posy-10;
-			var pathstring = "M " + posx + " " + posy + " L " + posx + " " + posy10u +
-			"M " + posx + " " + posy + " L " + posx + " " + posy10d +
-			"M " + posx + " " + posy + " L " + posx10d + " " + posy +
-			"M " + posx + " " + posy + " L " + posx10u + " " + posy;
-			return pathstring; 
-		}
-
-		var g_transition = cross.transition().ease("linear").duration(200);
-		g_transition.select(".cross-backing").attr("d", crossPath);
-		g_transition.select(".cross-inside").attr("d", crossPath);
+		cross.transition().ease("linear").duration(200)
+						.style("stroke", function(d) { return colorScale(d.region); })
+						.style("stroke-width", 2)
+						.attr("d", function(d){ 
+							var posx = xScale(d.mean_income[year_idx]);
+							var posy = yScale(d.mean_lifeExpectancy[year_idx]);
+							var posx10u = posx+10;
+							var posy10u = posy+10;
+							var posx10d = posx-10;
+							var posy10d = posy-10;
+							var pathstring = "M " + posx + " " + posy + " L " + posx + " " + posy10u +
+							"M " + posx + " " + posy + " L " + posx + " " + posy10d +
+							"M " + posx + " " + posy + " L " + posx10d + " " + posy +
+							"M " + posx + " " + posy + " L " + posx10u + " " + posy;
+							return pathstring; 
+						})				      	
 
 	}
 
