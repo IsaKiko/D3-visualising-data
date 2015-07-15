@@ -1,7 +1,7 @@
 // Load the data.
 d3.json("nations.json", function(nations) {
 
-	var filtered_nations = nations;
+	var filtered_nations = nations.map(function(nation) { return nation; });
 
 	// Create the SVG frame inside chart_area.
 	var chart_area = d3.select("#chart_area");
@@ -95,8 +95,7 @@ d3.json("nations.json", function(nations) {
 			for (var idx=0; idx<new_nations.length; idx++){
 				filtered_nations.push(new_nations[idx]);
 			}
-		}
-		else{ // remove data points from the data that match the filter
+		} else{ // remove data points from the data that match the filter
 			filtered_nations = filtered_nations.filter(function(nation){ return nation.region != type;});
 		}
 		update();
