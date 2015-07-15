@@ -106,9 +106,9 @@ d3.json("nations.json", function(nations) {
     var dot = data_canvas.selectAll(".dot")
     .data(filtered_nations, function(d){return d.name});
 
-    dot.enter().append("circle").attr("class","dot")                
+    dot.enter().append("circle").attr("class","dot")
                   .style("fill", function(d) { return colorScale(d.region); })
-                  .attr("cx", function(d) { return xScale(d.income[d.income.length-1]); }) // this is why attr knows to work with the data
+                  .attr("cx", function(d) { return xScale(d.income[d.income.length-1]); }) // this is how attr knows to work with the data
                   .attr("cy", function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1]); })
                   .attr("r", function(d) { return rScale(d.population[d.population.length-1]); });
 

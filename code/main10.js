@@ -158,7 +158,7 @@ d3.json("nations.json", function(nations) {
 		dot.exit().remove();
 
 		dot.transition().ease("linear").duration(200)
-						.attr("cx", function(d) { return xScale(d.income[year_idx]); }) // this is why attr knows to work with the data
+						.attr("cx", function(d) { return xScale(d.income[year_idx]); }) // this is how attr knows to work with the data
 						.attr("cy", function(d) { return yScale(d.lifeExpectancy[year_idx]); })
 						.attr("r", function(d) { return rScale(d.population[year_idx]); });
 
@@ -196,8 +196,6 @@ d3.json("nations.json", function(nations) {
 
 	// get region specific mean 
 
-	
-	
 	function calc_mean(region_data) {
 		var mean_income = [];
 		var mean_lifeExpectancy = [];

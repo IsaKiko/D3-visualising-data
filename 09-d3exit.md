@@ -36,7 +36,7 @@ Now, instead of displaying all the data all the time, we want to be able to choo
 data we display. We will create a checkbox for each region and only display the data
 for the regions that are checked.
 
-Checkboxes will need to be added to the HTML page. Since we want to add and remove data, we'll have to add a checkbox for each region like the following one. Initially, we want all checkboxes to be checked. We do this by setting the `checked` attribute of the element to 'checked'. 
+Checkboxes will need to be added to the HTML page. Since we want to add and remove data, we'll have to add a checkbox for each region like the following one. Checkbox elements are actually `input` elements with type `checkbox`. Initially, we want all checkboxes to be checked. We do this by setting the `checked` attribute of the element to 'checked'. 
 
 ~~~{.html}
 <label><input type="checkbox" name="region" class="region_cb" value="Sub-Saharan Africa" checked="checked"/> Sub-Saharan Africa</label>
@@ -102,7 +102,7 @@ function update() {
 
   dot.enter().append("circle").attr("class","dot")                
                 .style("fill", function(d) { return colorScale(d.region); });
-                .attr("cx", function(d) { return xScale(d.income[d.income.length-1]); }) // this is why attr knows to work with the data
+                .attr("cx", function(d) { return xScale(d.income[d.income.length-1]); }) // this is how attr knows to work with the data
                 .attr("cy", function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1]); })
                 .attr("r", function(d) { return rScale(d.population[d.population.length-1]); });
 
