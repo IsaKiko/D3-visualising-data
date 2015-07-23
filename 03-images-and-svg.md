@@ -47,7 +47,7 @@ An SVG is just another element in the HTML file, used in the same way as a divis
 ~~~{.html}
 <svg class="chart">
  	<circle cx="25" cy="25" r="15" class="circ1">
- 	</cirlce>
+ 	</circle>
 </svg>
 ~~~
 
