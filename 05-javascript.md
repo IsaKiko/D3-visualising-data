@@ -38,10 +38,10 @@ The ID is an attribute we can set for the image:
 </div>
 ~~~
 
-Using 'getElementByID', we can grab the element from the document (a magical object representing the entire page) and work with it in the JavaScript file.
+Using 'getElementByIl', we can grab the element from the document (a magical object representing the entire page) and work with it in the JavaScript file.
 
 ~~~{.js}
-var cat_image = document.getElementByID('cat');
+var cat_image = document.getElementById('cat');
 ~~~
 
 Now we want to detect if someone clicks on the cat image.
@@ -51,7 +51,7 @@ The second argument determines what we want to happen. In our case,
 we want to execute a function called 'meow', that we haven't written yet.
 
 ~~~{.js}
-var cat_image = document.getElementByID('cat');
+var cat_image = document.getElementById('cat');
 cat_image.addEventListener("click", meow);
 ~~~
 
@@ -61,7 +61,7 @@ The JavaScript function alert() will give us one.
 
 
 ~~~{.js}
-var cat_image = document.getElementByID('cat');
+var cat_image = document.getElementById('cat');
 cat_image.addEventListener("click", meow);
 ~~~
 
@@ -77,7 +77,7 @@ function meow() {
 If we want to execute a sequence of functions, we can also create something that's called `inline` function, that is only defined in the scope of this specific callback. Within this function, we can call `meow()`, but also othe functions, like `sleep()` (which doesn't exist, yet).
 
 ~~~{.js}
-var cat_image = document.getElementByID('cat');
+var cat_image = document.getElementById('cat');
 cat_image.addEventListener("click", function() {
 	meow();	
 	sleep();
@@ -87,7 +87,7 @@ cat_image.addEventListener("click", function() {
 Obviously, we can also drop the `meow()` function, if we don't want to use it ever again:
 
 ~~~{.js}
-var cat_image = document.getElementByID('cat');
+var cat_image = document.getElementById('cat');
 cat_image.addEventListener("click", function() {
 	alert("Meow!");	
 	sleep();
@@ -121,7 +121,7 @@ We've created a button in the HTML file:
 This is what we all should be up to by now:
 
 ~~~{.js}
-var cat_image = document.getElementByID('cat');
+var cat_image = document.getElementById('cat');
 var feed_button = document.getElementById('feed_button');
 
 feed_button.addEventListener("click", feed);
@@ -146,7 +146,7 @@ Google is your friend here. Use it to find out these handy functions.
 Lastly we have to append the new value with 'px'.
 
 ~~~{.js}
-var cat_image = document.getElementByID('cat');
+var cat_image = document.getElementById('cat');
 var feed_button = document.getElementById('feed_button');
 
 feed_button.addEventListener("click", feed);
@@ -156,7 +156,7 @@ function feed() {
 ~~~
 
 We could also pass an argument into the function by writing it in the brackets.
-We might, for example, want the use to be able to decide the meal size the cat eats.
+We might, for example, want the user to be able to decide the meal size the cat eats.
 
 We can also return a value and assign it to a variable (just like we do with any function we used so far, e.g. var element = document.getElementById("someID");): 
 
