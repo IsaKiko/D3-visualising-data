@@ -152,7 +152,7 @@ var feed_button = document.getElementById('feed_button');
 feed_button.addEventListener("click", feed);
 function feed() {
 	cat_image.style.width = (cat_image.offsetWidth + 30.0) + 'px';
-}
+};
 ~~~
 
 We could also pass an argument into the function by writing it in the brackets.
@@ -166,7 +166,7 @@ var new_width = feed(10);
 function feed(mealsize) {
 		cat_image.style.width = (cat_image.offsetWidth + parseInt(mealsize)) + 'px';
 		return cat_image.style.width;
-}
+};
 ~~~
 
 > ## Let the cat work out  {.challenge}
