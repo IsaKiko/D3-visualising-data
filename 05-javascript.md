@@ -55,18 +55,8 @@ var cat_image = document.getElementById('cat');
 cat_image.addEventListener("click", meow);
 ~~~
 
-The last step is to write the meow function.
-We want a pop-up window.
-The JavaScript function alert() will give us one.
-
-
-~~~{.js}
-var cat_image = document.getElementById('cat');
-cat_image.addEventListener("click", meow);
-~~~
-
 Our event listener takes two arguments: the type of event and what we want it to do. 
-We want to execute a function called `meow()`, that we still need to write.
+We want to execute a function called `meow()`, which will open a pop-up window. We can use the JavaScript function alert().
 
 ~~~{.js}
 function meow() {

@@ -53,26 +53,23 @@
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&#39;image&#39;</span><span class="kw">&gt;</span>
     <span class="kw">&lt;img</span><span class="ot"> id=</span><span class="st">&quot;cat&quot;</span><span class="ot"> src=</span><span class="st">&quot;img/cat.jpg&quot;</span><span class="kw">&gt;</span>
 <span class="kw">&lt;/div&gt;</span></code></pre>
-<p>Using 'getElementByID', we can grab the element from the document (a magical object representing the entire page) and work with it in the JavaScript file.</p>
-<pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);</code></pre>
+<p>Using 'getElementByIl', we can grab the element from the document (a magical object representing the entire page) and work with it in the JavaScript file.</p>
+<pre class="js"><code>var cat_image = document.getElementById(&#39;cat&#39;);</code></pre>
 <p>Now we want to detect if someone clicks on the cat image. Event listeners help us by constantly checking if someone performs a certain action. The second argument determines what we want to happen. In our case, we want to execute a function called 'meow', that we haven't written yet.</p>
-<pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);
+<pre class="js"><code>var cat_image = document.getElementById(&#39;cat&#39;);
 cat_image.addEventListener(&quot;click&quot;, meow);</code></pre>
-<p>The last step is to write the meow function. We want a pop-up window. The JavaScript function alert() will give us one.</p>
-<pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);
-cat_image.addEventListener(&quot;click&quot;, meow);</code></pre>
-<p>Our event listener takes two arguments: the type of event and what we want it to do. We want to execute a function called <code>meow()</code>, that we still need to write.</p>
+<p>Our event listener takes two arguments: the type of event and what we want it to do. We want to execute a function called <code>meow()</code>, which will open a pop-up window. We can use the JavaScript function alert().</p>
 <pre class="js"><code>function meow() {
     alert(&quot;Meow!&quot;);
 };</code></pre>
 <p>If we want to execute a sequence of functions, we can also create something that's called <code>inline</code> function, that is only defined in the scope of this specific callback. Within this function, we can call <code>meow()</code>, but also othe functions, like <code>sleep()</code> (which doesn't exist, yet).</p>
-<pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);
+<pre class="js"><code>var cat_image = document.getElementById(&#39;cat&#39;);
 cat_image.addEventListener(&quot;click&quot;, function() {
     meow(); 
     sleep();
 });</code></pre>
 <p>Obviously, we can also drop the <code>meow()</code> function, if we don't want to use it ever again:</p>
-<pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);
+<pre class="js"><code>var cat_image = document.getElementById(&#39;cat&#39;);
 cat_image.addEventListener(&quot;click&quot;, function() {
     alert(&quot;Meow!&quot;); 
     sleep();
@@ -84,7 +81,7 @@ cat_image.addEventListener(&quot;click&quot;, function() {
 <div class="panel-body">
 <p>If we right click anywhere on our page and select &quot;Inspect Element&quot;, the browser takes us to the developer tools. Here, we have different tabs. The three most important ones are:</p>
 <ul>
-<li>Console - The console alerts us to things going wrong in out code by showing us an error and telling us in what line the error ocurred. We can also display the values of variables by including <code>console.log(x)</code> in our code.</li>
+<li>Console - The console alerts us to things going wrong in out code by showing us an error and telling us in what line the error ocurred. We can also display the values of variables by including <code>colsole.log(x)</code> in our code.</li>
 <li>Elements - If we want to know if our HTML elements are all in the right spot, this is where we need to look. Hovering over any part of the page will highlight the according element and we can look at how they are styled and temporarily change attributes.</li>
 <li>Sources - Here, we can look at the files that are used by our page. And even better, if we navigate to the JavaScript file, we can add breakpoints that stay in place when we reload the page. This allows us to investigate values of variables on the spot.</li>
 </ul>
@@ -104,7 +101,7 @@ cat_image.addEventListener(&quot;click&quot;, function() {
     FOOD!
 <span class="kw">&lt;/button&gt;</span></code></pre>
 <p>This is what we all should be up to by now:</p>
-<pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);
+<pre class="js"><code>var cat_image = document.getElementById(&#39;cat&#39;);
 var feed_button = document.getElementById(&#39;feed_button&#39;);
 
 feed_button.addEventListener(&quot;click&quot;, feed);
@@ -113,21 +110,21 @@ function feed() {
 };</code></pre>
 <p>The goal now is to make the cat put on a little bit of weight when we feed it. Again, we have to link to both the cat element and the food button so that both files know what we're talking about.</p>
 <p>We're setting the width by stringing a few words together: 'cat_image.style.width'. We can think of 'cat_image' as having an attribute called 'style', which in turn has an attribute called 'width'. Let's add a couple of grams. We have to retrieve the current object width. Our 'cat_image' object also has a attribute called 'offsetWidth'. This will give us the current width as a number (as opposed to the string '200px'). Google is your friend here. Use it to find out these handy functions. Lastly we have to append the new value with 'px'.</p>
-<pre class="js"><code>var cat_image = document.getElementByID(&#39;cat&#39;);
+<pre class="js"><code>var cat_image = document.getElementById(&#39;cat&#39;);
 var feed_button = document.getElementById(&#39;feed_button&#39;);
 
 feed_button.addEventListener(&quot;click&quot;, feed);
 function feed() {
     cat_image.style.width = (cat_image.offsetWidth + 30.0) + &#39;px&#39;;
-}</code></pre>
-<p>We could also pass an argument into the function by writing it in the brackets. We might, for example, want the use to be able to decide the meal size the cat eats.</p>
+};</code></pre>
+<p>We could also pass an argument into the function by writing it in the brackets. We might, for example, want the user to be able to decide the meal size the cat eats.</p>
 <p>We can also return a value and assign it to a variable (just like we do with any function we used so far, e.g. var element = document.getElementById(&quot;someID&quot;);):</p>
 <pre class="js"><code>var new_width = feed(10);
 
 function feed(mealsize) {
         cat_image.style.width = (cat_image.offsetWidth + parseInt(mealsize)) + &#39;px&#39;;
         return cat_image.style.width;
-}</code></pre>
+};</code></pre>
 <div id="let-the-cat-work-out" class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Let the cat work out</h2>

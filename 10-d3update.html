@@ -40,22 +40,25 @@
 </div>
 </div>
 <p>At the moment, the year that we are looking at in the data is hardcoded. Naturally, we want the user to be able to see how the data changes over time.</p>
-<p>The first thing we need is a slider in the user interface, our website. The slider element has the type <code>range</code>. We give it a ID in order to be able to select is from our JavaScript script, a class to style it (if we choose to), and a minimum, maximum, and step size that depend on our data. <code>value</code> is what we read out in order to know the position of the slider. We initialise it somewhere in the middle (1979).</p>
-<pre class="sourceCode html"><code class="sourceCode html">  <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;range&quot;</span><span class="ot"> name=</span><span class="st">&quot;range&quot;</span><span class="ot"> class=</span><span class="st">&quot;slider&quot;</span><span class="ot"> id=</span><span class="st">&quot;year_slider&quot;</span><span class="ot"> value=</span><span class="st">&quot;1979&quot;</span><span class="ot"> min=</span><span class="st">&quot;1950&quot;</span><span class="ot"> max=</span><span class="st">&quot;2008&quot;</span><span class="ot"> step=</span><span class="st">&quot;1&quot;</span> <span class="kw">&gt;&lt;br&gt;</span></code></pre>
-<p>In our script, we now want the year to be a variable, so we need to initialise it. Because the value is a string, we need to parse it to an integer using <code>parseInt()</code>. To get the index, we can simply subtract the first year 1950.</p>
+<p>Let's do this a slider. The first thing we need is add this slider to the user interface (our website). A slider element is actually an <code>input</code> element with the the type <code>range</code>. We give it a ID in order to be able to select is from our JavaScript script, a class to style it (if we choose to), and a minimum, maximum, and step size that depend on our data. <code>value</code> is what we read out in order to know the position of the slider. Let's initialise it somewhere in the middle (1979).</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;range&quot;</span><span class="ot"> name=</span><span class="st">&quot;range&quot;</span><span class="ot"> class=</span><span class="st">&quot;slider&quot;</span><span class="ot"> id=</span><span class="st">&quot;year_slider&quot;</span><span class="ot"> value=</span><span class="st">&quot;1979&quot;</span><span class="ot"> min=</span><span class="st">&quot;1950&quot;</span><span class="ot"> max=</span><span class="st">&quot;2008&quot;</span><span class="ot"> step=</span><span class="st">&quot;1&quot;</span> <span class="kw">&gt;&lt;br&gt;</span></code></pre>
+<p>In our script, we now want the year to be a variable, so we need to initialise it. Because the value is a string, we need to parse it to an integer using <code>parseInt()</code>. To get the index (rather than the actual year), we can simply subtract the first year 1950.</p>
 <pre class="js"><code>var year_idx = parseInt(document.getElementById(&quot;year_slider&quot;).value)-1950;</code></pre>
-<p>Updating the year becomes quite simple. All we need to do is add another event listener that changes the year the moment we touch the slider. The listener is called <code>&quot;input&quot;</code>. We then execute the <code>update()</code> function we wrote earlier.</p>
+<p>Updating the year becomes quite simple. All we need to do is add another event listener that changes the year the moment we touch the slider. The event we want to listen for is called <code>input</code>. We then execute the <code>update()</code> function we wrote earlier.</p>
 <pre class="js"><code>d3.select(&quot;#year_slider&quot;).on(&quot;input&quot;, function () {
     year_idx = parseInt(this.value) - 1950;
     update();
 });</code></pre>
-<p>So far, the update function only knows how to handle new data (<code>.enter</code>) and removed data (<code>.exit</code>), but not what to do when we update data. In addition to <code>d3.enter()</code> and <code>d3.exit()</code> D3 also offers <code>d3.transition</code> to handle updating data. First, we need to define how to transition between data points. We might want to interpolate between to values linearly over the duration of 200 ms.</p>
+<p>So far, the update function only knows how to handle new data (<code>.enter</code>) and removed data (<code>.exit</code>), but not what to do when we update data. In addition to <code>d3.enter()</code> and <code>d3.exit()</code>, D3 also offers <code>d3.transition</code> to handle updating data. First, we need to define how to transition between data points. We might want to interpolate between to values linearly over the duration of 200 ms, like this:</p>
 <pre class="js"><code>dot.transition().ease(&quot;linear&quot;).duration(200);</code></pre>
-<p>Now we know how it's gonna happen, but not what's happening, yet. We can simply move the part of our code that updates the circle attributes from our <code>enter</code> function to our <code>transition</code> function. Now, instead of using a hardcoded index for the year, we use the index <code>year_idx</code> that we updated in our event listener earlier.</p>
-<pre class="js"><code>        dot.transition().ease(&quot;linear&quot;).duration(200)
-                        .attr(&quot;cx&quot;, function(d) { return xScale(d.income[year_idx]); }) // this is why attr knows to work with the data
-                        .attr(&quot;cy&quot;, function(d) { return yScale(d.lifeExpectancy[year_idx]); })
-                        .attr(&quot;r&quot;, function(d) { return rScale(d.population[year_idx]); });</code></pre>
+<p>Now we know how it's gonna happen, but we need to tell the transition what the actual change is. We can simply move the part of our code that updates the circle attributes from our <code>enter</code> function to our <code>transition</code> function. Now, instead of using a hardcoded index for the year, we use the index <code>year_idx</code> that we updated in our event listener earlier.</p>
+<pre class="js"><code>dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
+        .style(&quot;fill&quot;, function(d) { return colorScale(d.region); });
+dot.exit().remove();
+dot.transition().ease(&quot;linear&quot;).duration(200)
+                .attr(&quot;cx&quot;, function(d) { return xScale(d.income[year_idx]); }) // this is how attr knows to work with the data
+                .attr(&quot;cy&quot;, function(d) { return yScale(d.lifeExpectancy[year_idx]); })
+                .attr(&quot;r&quot;, function(d) { return rScale(d.population[year_idx]); });</code></pre>
 <div id="other-transition-functions-you-might-want" class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Other transition functions you might want</h2>
@@ -78,20 +81,17 @@
 <p>D3 is incredible versatile. Try out different transitions and if you have time, maybe try drawing rectangles instead of circles.</p>
 </div>
 </div>
-<p>Next, we might want to create a tooltip. Let's go have a look at what's already out there. The creator of D3 has put up some code for pretty much everything you can imaging. The example for a simple tooltip can be found <a href="http://bl.ocks.org/biovisualize/1016860">here</a>. We need to first create the variable tooltip:</p>
-<pre class="js"><code>
-var tooltip = d3.select(&quot;body&quot;)
+<p>Next, we might want to create a tooltip. Let's go have a look at what's already out there. The creator of D3 has put up some code for pretty much everything you can imagine. The example for a simple tooltip can be found <a href="http://bl.ocks.org/biovisualize/1016860">here</a>. We need to first create the variable tooltip:</p>
+<pre class="js"><code>var tooltip = d3.select(&quot;body&quot;)
     .append(&quot;div&quot;)
     .style(&quot;position&quot;, &quot;absolute&quot;)  
-    .style(&quot;visibility&quot;, &quot;hidden&quot;);
-</code></pre>
+    .style(&quot;visibility&quot;, &quot;hidden&quot;);</code></pre>
 <p>and then create event listeners for moving the mouse into a circle and out of one. Different from the example on the web page, we want to display the specific country we are looking at. When we move the mouse, we want the tool tip to move with it. And the moment we leave a circle, we want the tool tip to hide again.</p>
-<pre class="js"><code>
-dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)                        
-                            .style(&quot;fill&quot;, function(d) { return colorScale(d.region); })
-                            .on(&quot;mouseover&quot;, function(d){return tooltip.style(&quot;visibility&quot;, &quot;visible&quot;).text(d.name);})
-                            .on(&quot;mousemove&quot;, function(){return tooltip.style(&quot;top&quot;, (event.pageY-10)+&quot;px&quot;).style(&quot;left&quot;,(event.pageX+10)+&quot;px&quot;);})
-                            .on(&quot;mouseout&quot;, function(){return tooltip.style(&quot;visibility&quot;, &quot;hidden&quot;);});</code></pre>
+<pre class="js"><code>dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)                        
+            .style(&quot;fill&quot;, function(d) { return colorScale(d.region); })
+            .on(&quot;mouseover&quot;, function(d){return tooltip.style(&quot;visibility&quot;, &quot;visible&quot;).text(d.name);})
+            .on(&quot;mousemove&quot;, function(){return tooltip.style(&quot;top&quot;, (event.pageY-10)+&quot;px&quot;).style(&quot;left&quot;,(event.pageX+10)+&quot;px&quot;);})
+            .on(&quot;mouseout&quot;, function(){return tooltip.style(&quot;visibility&quot;, &quot;hidden&quot;);});</code></pre>
 <div id="we-have-used-some-special-objects-given-to-us-by-the-browser" class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>We have used some special objects given to us by the browser</h2>
@@ -104,57 +104,57 @@ dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
 </ul>
 </div>
 </div>
-<p>Like any programming language, JavaScript can also be used to compute new values. As an example, let's compute the mean life expectancy and income for the different regions.</p>
+<p>Like any programming language, JavaScript can also be used to evaluate summary statistics of our data. As an example, let's compute the mean life expectancy and income for the different regions.</p>
 <p>First, we need to loop through all the data and group them by the region they are in:</p>
-<pre class="js"><code>    // Calculate the averages for each region.
-    var region_names = [&quot;Sub-Saharan Africa&quot;, &quot;South Asia&quot;, &quot;Middle East &amp; North Africa&quot;, &quot;America&quot;, &quot;East Asia &amp; Pacific&quot;, &quot;Europe &amp; Central Asia&quot;];
+<pre class="js"><code>// Calculate the averages for each region.
+var region_names = [&quot;Sub-Saharan Africa&quot;, &quot;South Asia&quot;, &quot;Middle East &amp; North Africa&quot;, &quot;America&quot;, &quot;East Asia &amp; Pacific&quot;, &quot;Europe &amp; Central Asia&quot;];
 
-    var region_data = [];
-    for( var i = 0; i &lt; region_names.length; i++ ){
-        var filtered_nations_by_regions = nations.filter(function(nation){
-            return (nation.region == region_names[i]); 
-        });
-        region_data[i] = calc_mean(filtered_nations_by_regions);
-    }
+var region_data = [];
+for( var i = 0; i &lt; region_names.length; i++ ){
+    var filtered_nations_by_regions = nations.filter(function(nation){
+        return (nation.region == region_names[i]); 
+    });
+    region_data[i] = calc_mean(filtered_nations_by_regions);
+}
 
-    var filtered_reg_nations = region_data.map(function(region) { return region;});</code></pre>
+var filtered_reg_nations = region_data.map(function(region) { return region;});</code></pre>
 <p>Next, we write a function that returns an array of objects region_data. We want it to contain the mean income and life for each year across all nations, weighted by population.</p>
-<pre class="js"><code>    function calc_mean(region_data) {
-        var mean_income = [];
-        var mean_lifeExpectancy = [];
+<pre class="js"><code>function calc_mean(region_data) {
+    var mean_income = [];
+    var mean_lifeExpectancy = [];
 
-        for( var year_idx2 = 0; year_idx2 &lt; region_data[0].years.length; year_idx2++ ){
-            var sum_income = 0;
-            var sum_lifeExpectancy = 0;
-            var sum_population = 0;
+    for( var year_idx2 = 0; year_idx2 &lt; region_data[0].years.length; year_idx2++ ){
+        var sum_income = 0;
+        var sum_lifeExpectancy = 0;
+        var sum_population = 0;
 
-            for( var k = 0; k &lt; region_data.length; k++ ){
-                var kpop = region_data[k].population[year_idx2];
-                var kincome = region_data[k].income[year_idx2];
-                var klife = region_data[k].lifeExpectancy[year_idx2];
-                sum_income += kpop*kincome; 
-                sum_lifeExpectancy += kpop*klife;
-                sum_population += kpop;             
-            }
-
-            mean_income[year_idx2] = sum_income/sum_population;
-            mean_lifeExpectancy[year_idx2] = sum_lifeExpectancy/sum_population;
+        for( var k = 0; k &lt; region_data.length; k++ ){
+            var kpop = region_data[k].population[year_idx2];
+            var kincome = region_data[k].income[year_idx2];
+            var klife = region_data[k].lifeExpectancy[year_idx2];
+            sum_income += kpop*kincome; 
+            sum_lifeExpectancy += kpop*klife;
+            sum_population += kpop;             
         }
-        averageData = {
-            region: region_data[0].region,
-            years: region_data[0].years,
-            mean_income: mean_income,
-            mean_lifeExpectancy: mean_lifeExpectancy
-        };
 
-        return averageData;
-    }</code></pre>
+        mean_income[year_idx2] = sum_income/sum_population;
+        mean_lifeExpectancy[year_idx2] = sum_lifeExpectancy/sum_population;
+    }
+    averageData = {
+        region: region_data[0].region,
+        years: region_data[0].years,
+        mean_income: mean_income,
+        mean_lifeExpectancy: mean_lifeExpectancy
+    };
+
+    return averageData;
+}</code></pre>
 <div id="the-master-challenge" class="challenge panel panel-success">
 <div class="panel-heading">
 <h1><span class="glyphicon glyphicon-pencil"></span>The master challenge</h1>
 </div>
 <div class="panel-body">
-<p>It's time to put everything you've learned together. Write code that displays (and updates) the mean values that we just computed as little crosses in the graph for the different regions.</p>
+<p>It's time to put together everything you've learned. Write code that displays (and updates) the mean values that we just computed as little crosses in the graph for the different regions.</p>
 </div>
 </div>
 <div id="style" class="challenge panel panel-success">
@@ -163,6 +163,14 @@ dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
 </div>
 <div class="panel-body">
 <p>Add axis labels and make the fonts pretty.</p>
+</div>
+</div>
+<div id="using-different-data-formats" class="challenge panel panel-success">
+<div class="panel-heading">
+<h1><span class="glyphicon glyphicon-pencil"></span>Using different data formats</h1>
+</div>
+<div class="panel-body">
+<p>What if you don't have your data in JSON format? Change your code to load in nations.csv instead of nations.json and have it produce the same plot.</p>
 </div>
 </div>
 <p>By the end of this lesson, your page should look something like this:</p>

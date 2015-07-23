@@ -70,7 +70,7 @@
 <p>Sometimes we want to have a list of objects that we can address using an index. In our case, we might want to have a list of multiple cats. Now if we want a second cat, we can store them both in the same array <code>cat_list</code>. We can append to an array using the <code>push</code> function:</p>
 <pre class="js"><code>var cat_list = [cat_object]; // initializing with the first field being cat_object
 cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : &#39;Snowball&#39;});</code></pre>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD This process is called 'nesting'.</p>
+<p>This process is called 'nesting'.</p>
 <div id="nesting" class="challenge panel panel-success">
 <div class="panel-heading">
 <h1><span class="glyphicon glyphicon-pencil"></span>Nesting</h1>
@@ -132,7 +132,7 @@ cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : &#39;Sn
 </div>
 </div>
 <p>When we start creating our data for the plot, this is the structured (and nicely annotated) data format that we want. In order to store our variable outside of the scripting environment, we need to convert it into a string.</p>
-<p>JavaScript provides an easy way to do this. Variables can get converted from objects/arrays to strings using <code>JSON.stringify()</code>. To convert our list of cats to a string, type &gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/gh-pages</p>
+<p>JavaScript provides an easy way to do this. Variables can get converted from objects/arrays to strings using <code>JSON.stringify()</code>. To convert our list of cats to a string, type</p>
 <pre class="js"><code>var cat_json = JSON.stringify(cat_list)</code></pre>
 <p>The resulting string is what we would normally store in a <code>.json</code> file to read it in later. At this stage, we can't really create a file, because we're in a browser and creating files would make it too easy to program a virus.</p>
 <p>So instead, let's have a look at our stringified variable using the <code>alert()</code> function:</p>
@@ -145,7 +145,7 @@ cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : &#39;Sn
 <h2><span class="glyphicon glyphicon-pencil"></span>De-stringify</h2>
 </div>
 <div class="panel-body">
-<p>Let's assume we read in a JSON formatted string from a file and want to retrieve the nice structure. This process is called parsing and we can &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD use the JSON.parse() function. Convert the data back and store it in a container called new_cat_list. ======= use the JSON.parse() function. Convert the variable back and store it in a container called <code>new_cat_list</code>. &gt;&gt;&gt;&gt;&gt;&gt; origin/gh-pages</p>
+<p>Let's assume we read in a JSON formatted string from a file and want to retrieve the nice structure. This process is called parsing and we can use the JSON.parse() function. Convert the variable back and store it in a container called <code>new_cat_list</code>.</p>
 </div>
 </div>
 <p>We are now at a stage where we can have a look at the data file that we want to work with. Open 'nations.json'.</p>

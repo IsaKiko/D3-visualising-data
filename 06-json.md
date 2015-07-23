@@ -87,7 +87,7 @@ We can append to an array using the `push` function:
 var cat_list = [cat_object]; // initializing with the first field being cat_object
 cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : 'Snowball'});
 ~~~
-<<<<<<< HEAD
+
 This process is called 'nesting'.
 
 > # Nesting {.challenge}
@@ -161,7 +161,6 @@ to convert it into a string.
 
 JavaScript provides an easy way to do this. Variables can get converted from objects/arrays to strings using `JSON.stringify()`. 
 To convert our list of cats to a string, type
->>>>>>> origin/gh-pages
 
 ~~~{.js}
 var cat_json = JSON.stringify(cat_list)
@@ -189,13 +188,8 @@ We could now copy this string and save it manually in a `.json` file.
 > ## De-stringify  {.challenge}
 > Let's assume we read in a JSON formatted string from a file and want to 
 > retrieve the nice structure. This process is called parsing and we can 
-<<<<<<< HEAD
-> use the JSON.parse() function. Convert the data back and store it in a 
-> container called new_cat_list.
-=======
 > use the JSON.parse() function. Convert the variable back and store it in a 
 > container called `new_cat_list`.
->>>>>>> origin/gh-pages
 
 We are now at a stage where we can have a look at the data file that we 
 want to work with. Open 'nations.json'.
