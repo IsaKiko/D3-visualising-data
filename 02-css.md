@@ -32,7 +32,7 @@ Changing the font size:
 If we want to change two things at the same time, we just mention all of them at once:
 
 ~~~ {.html}
-<h1 style="font-size: 10px; colour: blue">This is a big, blue heading</h1>
+<h1 style="font-size: 10px; color: blue">This is a big, blue heading</h1>
 ~~~
 
 This is a quick and simple way to change the appearance of elements on the spot.
