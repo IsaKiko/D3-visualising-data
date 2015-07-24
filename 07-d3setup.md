@@ -32,7 +32,7 @@ Create `index.html` containing the following:
 
     <h1>The Wealth & Health of the N-Nations</h1>
 
-    <p id="chart"_area></p>
+    <p id="chart_area"></p>
 
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="main.js"></script>
@@ -41,7 +41,7 @@ Create `index.html` containing the following:
 ~~~
 
 There are a few things in this file that look new:
-'<link rel="stylesheet" type="text/css" href="main.css" />' is linking the local CSS file (that can just be an empty file for now). `<script src="main.js"></script>` is linking the JavaScript file, the file in which all the action will happen. 
+`<link rel="stylesheet" type="text/css" href="main.css" />` is linking the local CSS file (that can just be an empty file for now). `<script src="main.js"></script>` is linking the JavaScript file, the file in which all the action will happen. 
 
 Additionally, we now need to link d3 using `<script src="http://d3js.org/d3.v3.min.js"></script>`. 
 
@@ -56,7 +56,7 @@ The first thing we need, is of course our data, which is stored in 'nations.json
 D3 provides a handy function to read in `json`-files:
 
 ~~~{.d3}
-d3.json("resources/nations.json", function(nations) { }
+d3.json("resources/nations.json", function(nations) { });
 ~~~
 
 This line probably needs a little explanation and we'll go through it bit by bit: 
@@ -117,7 +117,7 @@ We also create the canvas inside the frame:
 
 ~~~{.js}
 // Create canvas inside frame.
-var canvas = svg.append("g");
+var canvas = frame.append("g");
 ~~~
 
 Let's set up the dimensions for our elements that we want to use:
