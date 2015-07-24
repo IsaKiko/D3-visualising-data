@@ -27,7 +27,8 @@ var filtered_nations = nations.filter(function(nation){
 
 > # Filtering by region {.challenge}
 > You might have noticed that our data contains information about the region in 
-> which a country is. 
+> which a country is.
+> 
 > 1. Create a filter so that you only display data points from "Sub-Saharan Africa".
 
 We have now hard-coded a criterion for the data we want to display. Naturally, we might want to change what data gets displayed interactively using elements on our page. Let's create some checkboxes that let us add and remove the regions that we want to include. To do this, we will have to switch back to our HTML file for a while.
@@ -50,7 +51,7 @@ d3.selectAll(".region_cb").on("change", function () { <--- stuff happens here --
 
 This line listens to all checkboxes that have the class `region_cb`. Every time a checkbox's status changes from checked to unchecked or unchecked to checked, the following function is executed.  
 
-Inside this function, we want to decide what happens based on which of the checkboxes got checked or unchecked. The first step to doing this is to read out the value of the checkbox. We set this value to the region string earlier. Reading it can be done using the `this` keyword. `this` inside a function refers to the element through which the function got called, in our case the checkbox. 
+Inside this function, we want to decide what happens based on which of the checkboxes got checked or unchecked. The first step to doing this is to read out the value of the checkbox. We set this value to the region string earlier. Reading it can be done using the `this` keyword. `this` inside a callback function refers to the element through which the function got called, in our case the checkbox. 
 
 ~~~{.js}
 var type = this.value;
@@ -61,7 +62,7 @@ Now that we have the region string saved in `type`, we want to start adding data
 ~~~{.js}
 if (this.checked) { // adding data points 
   var new_nations = nations.filter(function(nation){ return nation.region == type;});
-  for (var idx = 0; idx < new_nations.length; idx++){
+  for (var idx in new_nations){
     filtered_nations.push(new_nations[idx]);
   }
 }
@@ -117,7 +118,7 @@ d3.selectAll(".region_cb").on("change", function() {
   var type = this.value;
   if (this.checked) { // adding data points (not quite right yet)
     var new_nations = nations.filter(function(nation){ return nation.region == type;});
-    for (var idx = 0; idx < new_nations.length; idx++){
+    for (var idx in new_nations){
       filtered_nations.push(new_nations[idx]);
     }
   } else { // remove data points from the data that match the filter
