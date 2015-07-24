@@ -111,13 +111,21 @@ This is equivalent to writing:
 <p id="chart_area"> <svg> </svg> </p>
 ~~~
 
-in the HTML file. We chose to append because we now have access to the SVG element without the need to seperately select it by ID.
+in the HTML file. We chose to append because we now have access to the SVG element without the need to separately select it by ID.
 
 We also create the canvas inside the frame:
 
 ~~~{.js}
 // Create canvas inside frame.
 var canvas = frame.append("g");
+~~~
+
+To illustrate that we can build arbitrary elements, and to actually display some elements, we'll add a temporary circle to our canvas and set its radius using the `attr` function:
+
+~~~{.js}
+// Create a circle inside the canvas, and set its 'r' attribute
+var c1 = canvas.append("circle");
+c1.attr("r", 10);
 ~~~
 
 Let's set up the dimensions for our elements that we want to use:
