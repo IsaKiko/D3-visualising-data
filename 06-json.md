@@ -62,7 +62,7 @@ var text = 'I love cats.';
 We can address this string by using indices, so `console.log(text[2])`
 returns `l`.
 
-Unlike arrays for which for need to call elements using their indices, 
+Unlike arrays which allow you to access elements using their indices, 
 JavaScript objects allow you to index elements using names. 
 This lets us create something like this:
 
