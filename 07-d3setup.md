@@ -32,7 +32,7 @@ Create `index.html` containing the following:
 
     <h1>The Wealth & Health of the N-Nations</h1>
 
-    <p id="chart"_area></p>
+    <p id="chart_area"></p>
 
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="main.js"></script>
