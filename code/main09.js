@@ -92,10 +92,8 @@ d3.json("nations.json", function(nations) {
 		var type = this.value;
 		if (this.checked) { // adding data points (not quite right yet)
 			var new_nations = nations.filter(function(nation){ return nation.region == type;});
-			for (var idx=0; idx<new_nations.length; idx++){
-				filtered_nations.push(new_nations[idx]);
-			}
-		} else{ // remove data points from the data that match the filter
+			filtered_nations = filtered_nations.concat(new_nations);
+		} else { // remove data points from the data that match the filter
 			filtered_nations = filtered_nations.filter(function(nation){ return nation.region != type;});
 		}
 		update();
