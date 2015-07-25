@@ -9,7 +9,7 @@ d3.json("nations.json", function(nations) {
 
 
 	var region_data = [];
-	for( var i = 0; i < region_names.length; i++ ){
+	for (var i in region_names) {
 		var filtered_nations_by_regions = nations.filter(function(nation){
 			return (nation.region == region_names[i]); 
 		});
@@ -129,15 +129,9 @@ d3.json("nations.json", function(nations) {
 		if (this.checked) { // adding data points (not quite right yet)
 			var new_nations = nations.filter(function(nation){ return nation.region == type;});
 			var new_reg_nations = region_data.filter(function(nation){return nation.region == type;});
-			for (var idx=0; idx<new_nations.length; idx++){
-				filtered_nations.push(new_nations[idx]);
-			}
-			for (var idx=0; idx<new_reg_nations.length; idx++){
-				filtered_reg_nations.push(new_reg_nations[idx]);
-			}
-
-		}
-		else{ // remove data points from the data that match the filter
+			filtered_nations = filtered_nations.concat(new_nations);
+			filtered_reg_nations = filtered_reg_nations.concat(new_reg_nations);
+		} else { // remove data points from the data that match the filter
 			filtered_nations = filtered_nations.filter(function(nation){ return nation.region != type;});
 			filtered_reg_nations = filtered_reg_nations.filter(function(nation){ return nation.region != type;});
 		}
@@ -202,12 +196,12 @@ d3.json("nations.json", function(nations) {
 		var mean_income = [];
 		var mean_lifeExpectancy = [];
 
-		for( var year_idx2 = 0; year_idx2 < region_data[0].years.length; year_idx2++ ){
+		for (var year_idx2 in region_data[0].years) {
 			var sum_income = 0;
 			var sum_lifeExpectancy = 0;
 			var sum_population = 0;
 
-			for( var k = 0; k < region_data.length; k++ ){
+			for (var k in region_data) {
 				var kpop = region_data[k].population[year_idx2];
 				var kincome = region_data[k].income[year_idx2];
 				var klife = region_data[k].lifeExpectancy[year_idx2];

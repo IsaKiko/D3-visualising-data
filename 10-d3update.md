@@ -102,7 +102,7 @@ First, we need to loop through all the data and group them by the region they ar
 var region_names = ["Sub-Saharan Africa", "South Asia", "Middle East & North Africa", "America", "East Asia & Pacific", "Europe & Central Asia"];
 
 var region_data = [];
-for( var i = 0; i < region_names.length; i++ ){
+for (var i in region_names) {
 	var filtered_nations_by_regions = nations.filter(function(nation){
 		return (nation.region == region_names[i]); 
 	});
@@ -119,12 +119,12 @@ function calc_mean(region_data) {
 	var mean_income = [];
 	var mean_lifeExpectancy = [];
 
-	for( var year_idx2 = 0; year_idx2 < region_data[0].years.length; year_idx2++ ){
+	for (var year_idx2 in region_data[0].years) {
 		var sum_income = 0;
 		var sum_lifeExpectancy = 0;
 		var sum_population = 0;
 
-		for( var k = 0; k < region_data.length; k++ ){
+		for (var k in region_data) {
 			var kpop = region_data[k].population[year_idx2];
 			var kincome = region_data[k].income[year_idx2];
 			var klife = region_data[k].lifeExpectancy[year_idx2];
