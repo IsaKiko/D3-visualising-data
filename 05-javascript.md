@@ -13,8 +13,8 @@ minutes: 20
 
 We've learned how to integrate text and graphical objects into our page and we also know how to publish it.
 So far, we might as well just create a plot elsewhere and publish it as an image. But wouldn't it be much better, if the user could interact with the data? To do that, we need to learn a little scripting, and, again, HTML provides a scripting environment.
-Everything between &lt;script&gt; and &lt;/script&gt; within the body will be interpreted as JavaScript code.
-Just like we did with styles, we can outsource our code into a separate file with the extension '.js'.
+Everything between &lt;script&gt; and &lt;/script&gt; within the body will be interpreted as JavaScript code. Since the code we write in the HTML file is executed sequentially, we need to make sure that whenever we refer to an element on the page, this element already exists. An easy way to ensure this is to include scripts just before the end of the body element. 
+Just like we did with styles, we can outsource our code into a separate file with the extension '.js'. 
 
 So, let's go back to using the cat image for now. We want the cat to acknowledge that we click on it.
 First we need to create our `interaction.js` file and link to it in the HTML body.

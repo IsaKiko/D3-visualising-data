@@ -43,7 +43,7 @@ Create `index.html` containing the following:
 There are a few things in this file that look new:
 '<link rel="stylesheet" type="text/css" href="main.css" />' is linking the local CSS file (that can just be an empty file for now). `<script src="main.js"></script>` is linking the JavaScript file, the file in which all the action will happen. 
 
-Additionally, we now need to link d3 using `<script src="http://d3js.org/d3.v3.min.js"></script>`. 
+Additionally, we now need to link d3 using `<script src="http://d3js.org/d3.v3.min.js"></script>`. The order matters. Since code is executed sequentially and we want to use parts of the D3 library in our own script, we have to link to d3.js first.
 
 The last bit, that's important here is an HTML element (paragraph) we create. We give it an id `chart_area`. This is the area we reserve for our pretty chart. We will use JavaScript (and D3) to fill it in. 
 
