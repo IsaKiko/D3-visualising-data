@@ -32,7 +32,7 @@ Create `index.html` containing the following:
 
     <h1>The Wealth & Health of the N-Nations</h1>
 
-    <p id="chart"_area></p>
+    <p id="chart_area"></p>
 
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="main.js"></script>
@@ -41,7 +41,7 @@ Create `index.html` containing the following:
 ~~~
 
 There are a few things in this file that look new:
-'<link rel="stylesheet" type="text/css" href="main.css" />' is linking the local CSS file (that can just be an empty file for now). `<script src="main.js"></script>` is linking the JavaScript file, the file in which all the action will happen. 
+`<link rel="stylesheet" type="text/css" href="main.css" />` is linking the local CSS file (that can just be an empty file for now). `<script src="main.js"></script>` is linking the JavaScript file, the file in which all the action will happen. 
 
 Additionally, we now need to link d3 using `<script src="http://d3js.org/d3.v3.min.js"></script>`. The order matters. Since code is executed sequentially and we want to use parts of the D3 library in our own script, we have to link to d3.js first.
 
@@ -56,7 +56,7 @@ The first thing we need, is of course our data, which is stored in 'nations.json
 D3 provides a handy function to read in `json`-files:
 
 ~~~{.d3}
-d3.json("resources/nations.json", function(nations) { }
+d3.json("resources/nations.json", function(nations) { });
 ~~~
 
 This line probably needs a little explanation and we'll go through it bit by bit: 
@@ -111,13 +111,21 @@ This is equivalent to writing:
 <p id="chart_area"> <svg> </svg> </p>
 ~~~
 
-in the HTML file. We chose to append because we now have access to the SVG element without the need to seperately select it by ID.
+in the HTML file. We chose to append because we now have access to the SVG element without the need to separately select it by ID.
 
 We also create the canvas inside the frame:
 
 ~~~{.js}
 // Create canvas inside frame.
-var canvas = svg.append("g");
+var canvas = frame.append("g");
+~~~
+
+To illustrate that we can build arbitrary elements, and to actually display some elements, we'll add a temporary circle to our canvas and set its radius using the `attr` function:
+
+~~~{.js}
+// Create a circle inside the canvas, and set its 'r' attribute
+var c1 = canvas.append("circle");
+c1.attr("r", 10);
 ~~~
 
 Let's set up the dimensions for our elements that we want to use:
