@@ -57,14 +57,12 @@ Inside this function, we want to decide what happens based on which of the check
 var type = this.value;
 ~~~
 
-Now that we have the region string saved in `type`, we want to start adding data points if the checkbox is checked now. Whether it is, is stored in `this.checked`.
+Now that we have the region string saved in `type`, we want to add the data points for the new nations to include if the checkbox is now checked. Whether it is checked or not is stored in `this.checked`. To add the new nations to `filtered_nations`, we use the `concat` function, which, similar to the `concat` function we used with strings, joins the array given as an argument onto the end of the first array. Here we join `new_nations` onto the end of `filtered_nations`. 
 
 ~~~{.js}
 if (this.checked) { // adding data points 
   var new_nations = nations.filter(function(nation){ return nation.region == type;});
-  for (var idx in new_nations){
-    filtered_nations.push(new_nations[idx]);
-  }
+  filtered_nations = filtered_nations.concat(new_nations);
 }
 ~~~
 
@@ -118,9 +116,7 @@ d3.selectAll(".region_cb").on("change", function() {
   var type = this.value;
   if (this.checked) { // adding data points (not quite right yet)
     var new_nations = nations.filter(function(nation){ return nation.region == type;});
-    for (var idx in new_nations){
-      filtered_nations.push(new_nations[idx]);
-    }
+    filtered_nations = filtered_nations.concat(new_nations);
   } else { // remove data points from the data that match the filter
     filtered_nations = filtered_nations.filter(function(nation){ return nation.region != type;});
   }
