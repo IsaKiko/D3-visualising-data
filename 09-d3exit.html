@@ -64,12 +64,10 @@
 <p>This line listens to all checkboxes that have the class <code>region_cb</code>. Every time a checkbox's status changes from checked to unchecked or unchecked to checked, the following function is executed.</p>
 <p>Inside this function, we want to decide what happens based on which of the checkboxes got checked or unchecked. The first step to doing this is to read out the value of the checkbox. We set this value to the region string earlier. Reading it can be done using the <code>this</code> keyword. <code>this</code> inside a callback function refers to the element through which the function got called, in our case the checkbox.</p>
 <pre class="js"><code>var type = this.value;</code></pre>
-<p>Now that we have the region string saved in <code>type</code>, we want to start adding data points if the checkbox is checked now. Whether it is, is stored in <code>this.checked</code>.</p>
+<p>Now that we have the region string saved in <code>type</code>, we want to add the data points for the new nations to include if the checkbox is now checked. Whether it is checked or not is stored in <code>this.checked</code>. To add the new nations to <code>filtered_nations</code>, we use the <code>concat</code> function, which, similar to the <code>concat</code> function we used with strings, joins the array given as an argument onto the end of the first array. Here we join <code>new_nations</code> onto the end of <code>filtered_nations</code>.</p>
 <pre class="js"><code>if (this.checked) { // adding data points 
   var new_nations = nations.filter(function(nation){ return nation.region == type;});
-  for (var idx in new_nations){
-    filtered_nations.push(new_nations[idx]);
-  }
+  filtered_nations = filtered_nations.concat(new_nations);
 }</code></pre>
 <p>This <code>if</code>-statement gets executed every time a checkbox is checked. To add the data points, we can use the <code>push</code>-function, which adds one object to an array at a time. First, we filter the nations we want to add, calling them <code>new_nations</code>. Next, we are looping through all new nations and add one at a time to the array <code>filtered_nations</code>.</p>
 <p>We also have to initialise <code>filtered_nations</code> at the top of our script. Remember that there is a difference between the object and the name space, so in order to keep <code>nations</code> the way it is, we need to map the values instead of just using <code>=</code>.</p>
@@ -116,9 +114,7 @@
   var type = this.value;
   if (this.checked) { // adding data points (not quite right yet)
     var new_nations = nations.filter(function(nation){ return nation.region == type;});
-    for (var idx in new_nations){
-      filtered_nations.push(new_nations[idx]);
-    }
+    filtered_nations = filtered_nations.concat(new_nations);
   } else { // remove data points from the data that match the filter
     filtered_nations = filtered_nations.filter(function(nation){ return nation.region != type;});
   }

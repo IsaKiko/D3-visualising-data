@@ -110,7 +110,7 @@ dot.transition().ease(&quot;linear&quot;).duration(200)
 var region_names = [&quot;Sub-Saharan Africa&quot;, &quot;South Asia&quot;, &quot;Middle East &amp; North Africa&quot;, &quot;America&quot;, &quot;East Asia &amp; Pacific&quot;, &quot;Europe &amp; Central Asia&quot;];
 
 var region_data = [];
-for( var i = 0; i &lt; region_names.length; i++ ){
+for (var i in region_names) {
     var filtered_nations_by_regions = nations.filter(function(nation){
         return (nation.region == region_names[i]); 
     });
@@ -123,12 +123,12 @@ var filtered_reg_nations = region_data.map(function(region) { return region;});<
     var mean_income = [];
     var mean_lifeExpectancy = [];
 
-    for( var year_idx2 = 0; year_idx2 &lt; region_data[0].years.length; year_idx2++ ){
+    for (var year_idx2 in region_data[0].years) {
         var sum_income = 0;
         var sum_lifeExpectancy = 0;
         var sum_population = 0;
 
-        for( var k = 0; k &lt; region_data.length; k++ ){
+        for (var k in region_data) {
             var kpop = region_data[k].population[year_idx2];
             var kincome = region_data[k].income[year_idx2];
             var klife = region_data[k].lifeExpectancy[year_idx2];
