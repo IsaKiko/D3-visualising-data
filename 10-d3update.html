@@ -90,7 +90,7 @@ dot.transition().ease(&quot;linear&quot;).duration(200)
 <pre class="js"><code>dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)                        
             .style(&quot;fill&quot;, function(d) { return colorScale(d.region); })
             .on(&quot;mouseover&quot;, function(d){return tooltip.style(&quot;visibility&quot;, &quot;visible&quot;).text(d.name);})
-            .on(&quot;mousemove&quot;, function(){return tooltip.style(&quot;top&quot;, (event.pageY-10)+&quot;px&quot;).style(&quot;left&quot;,(event.pageX+10)+&quot;px&quot;);})
+            .on(&quot;mousemove&quot;, function(){return tooltip.style(&quot;top&quot;, (d3.event.pageY-10)+&quot;px&quot;).style(&quot;left&quot;,(d3.event.pageX+10)+&quot;px&quot;);})
             .on(&quot;mouseout&quot;, function(){return tooltip.style(&quot;visibility&quot;, &quot;hidden&quot;);});</code></pre>
 <div id="we-have-used-some-special-objects-given-to-us-by-the-browser" class="callout panel panel-info">
 <div class="panel-heading">

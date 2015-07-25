@@ -49,7 +49,10 @@
 <h1><span class="glyphicon glyphicon-pencil"></span>Filtering by region</h1>
 </div>
 <div class="panel-body">
-<p>You might have noticed that our data contains information about the region in which a country is. 1. Create a filter so that you only display data points from &quot;Sub-Saharan Africa&quot;.</p>
+<p>You might have noticed that our data contains information about the region in which a country is.</p>
+<ol style="list-style-type: decimal">
+<li>Create a filter so that you only display data points from &quot;Sub-Saharan Africa&quot;.</li>
+</ol>
 </div>
 </div>
 <p>We have now hard-coded a criterion for the data we want to display. Naturally, we might want to change what data gets displayed interactively using elements on our page. Let's create some checkboxes that let us add and remove the regions that we want to include. To do this, we will have to switch back to our HTML file for a while.</p>
@@ -59,12 +62,12 @@
 <p>The next step is to add an event listener to the JavaScript file. Luckily, D3 provides us with some nice options. The <code>value</code> needs to be set to the region, because this is the value we want to filter our data by later.</p>
 <pre class="js"><code>d3.selectAll(&quot;.region_cb&quot;).on(&quot;change&quot;, function () { &lt;--- stuff happens here ---&gt; });</code></pre>
 <p>This line listens to all checkboxes that have the class <code>region_cb</code>. Every time a checkbox's status changes from checked to unchecked or unchecked to checked, the following function is executed.</p>
-<p>Inside this function, we want to decide what happens based on which of the checkboxes got checked or unchecked. The first step to doing this is to read out the value of the checkbox. We set this value to the region string earlier. Reading it can be done using the <code>this</code> keyword. <code>this</code> inside a function refers to the element through which the function got called, in our case the checkbox.</p>
+<p>Inside this function, we want to decide what happens based on which of the checkboxes got checked or unchecked. The first step to doing this is to read out the value of the checkbox. We set this value to the region string earlier. Reading it can be done using the <code>this</code> keyword. <code>this</code> inside a callback function refers to the element through which the function got called, in our case the checkbox.</p>
 <pre class="js"><code>var type = this.value;</code></pre>
 <p>Now that we have the region string saved in <code>type</code>, we want to start adding data points if the checkbox is checked now. Whether it is, is stored in <code>this.checked</code>.</p>
 <pre class="js"><code>if (this.checked) { // adding data points 
   var new_nations = nations.filter(function(nation){ return nation.region == type;});
-  for (var idx = 0; idx &lt; new_nations.length; idx++){
+  for (var idx in new_nations){
     filtered_nations.push(new_nations[idx]);
   }
 }</code></pre>
@@ -113,7 +116,7 @@
   var type = this.value;
   if (this.checked) { // adding data points (not quite right yet)
     var new_nations = nations.filter(function(nation){ return nation.region == type;});
-    for (var idx = 0; idx &lt; new_nations.length; idx++){
+    for (var idx in new_nations){
       filtered_nations.push(new_nations[idx]);
     }
   } else { // remove data points from the data that match the filter
