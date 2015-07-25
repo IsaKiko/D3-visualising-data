@@ -54,13 +54,13 @@
 
     <span class="kw">&lt;h1&gt;</span>The Wealth <span class="er">&amp;</span> Health of the N-Nations<span class="kw">&lt;/h1&gt;</span>
 
-    <span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;chart&quot;</span><span class="er">_area</span><span class="kw">&gt;&lt;/p&gt;</span>
+    <span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;chart_area&quot;</span><span class="kw">&gt;&lt;/p&gt;</span>
 
     <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://d3js.org/d3.v3.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
     <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;main.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
   <span class="kw">&lt;/body&gt;</span>
 <span class="kw">&lt;/html&gt;</span></code></pre>
-<p>There are a few things in this file that look new: '<link rel="stylesheet" type="text/css" href="main.css" />' is linking the local CSS file (that can just be an empty file for now). <code>&lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;</code> is linking the JavaScript file, the file in which all the action will happen.</p>
+<p>There are a few things in this file that look new: <code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;main.css&quot; /&gt;</code> is linking the local CSS file <code>main.css</code>(that can just be an empty file for now). <code>&lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;</code> is linking the JavaScript file, the file in which all the action will happen.</p>
 <p>Additionally, we now need to link d3 using <code>&lt;script src=&quot;http://d3js.org/d3.v3.min.js&quot;&gt;&lt;/script&gt;</code>. The order matters. Since code is executed sequentially and we want to use parts of the D3 library in our own script, we have to link to d3.js first.</p>
 <p>The last bit, that's important here is an HTML element (paragraph) we create. We give it an id <code>chart_area</code>. This is the area we reserve for our pretty chart. We will use JavaScript (and D3) to fill it in.</p>
 <p>Now, let's write main.js.</p>
