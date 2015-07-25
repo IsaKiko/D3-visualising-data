@@ -117,7 +117,7 @@ We also create the canvas inside the frame:
 
 ~~~{.js}
 // Create canvas inside frame.
-var canvas = svg.append("g");
+var canvas = frame.append("g");
 ~~~
 
 Let's set up the dimensions for our elements that we want to use:
