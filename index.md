@@ -15,7 +15,7 @@ We want to:
 
 * Display our data on a website to increase visibility and accessibility of our research.
 
-Our goal is to create a dynamic bubble plot (a prettier version of a scatter plot) and publish it on the internet.
+Our goal is to create a [dynamic bubble plot](http://bost.ocks.org/mike/nations/) (a prettier version of a scatter plot) and publish it on the internet.
 
 Along the way, we will learn:
 
