@@ -152,7 +152,7 @@ d3.json("nations.json", function(nations) {
 		dot.enter().append("circle").attr("class","dot")				      	
 									.style("fill", function(d) { return colorScale(d.region); })
 									.on("mouseover", function(d){return tooltip.style("visibility", "visible").text(d.name);})
-									.on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
+									.on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
 									.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
 		dot.exit().remove();
