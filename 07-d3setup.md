@@ -90,7 +90,7 @@ fill now.
 We'll have a picture frame (an SVG-element), our drawing area (a g-element), and in 
 that drawing area, we'll have separate elements for both axes and the area for our circles.
 
-Firt, we need to link the JavaScript and HTML environement so that we have writing access
+Firt, we need to link the JavaScript and HTML environment so that we have writing access
 to the HTML.
 To do this, we use the `.select()`. This lets us grab an element by specifying its ID.
 
@@ -111,7 +111,7 @@ This is equivalent to writing:
 <p id="chart_area"> <svg> </svg> </p>
 ~~~
 
-in the HTML file. We chose to append because we now have access to the SVG element without the need to seperately select it by ID.
+in the HTML file. We chose to append because we now have access to the SVG element without the need to separately select it by ID.
 
 We also create the canvas inside the frame:
 
