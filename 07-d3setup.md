@@ -149,10 +149,10 @@ canvas.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 > # Time for a challenge I think! {.challenge}
 > Let us consolidate our understanding of SVGs and D3 selectors.
-
+> 
 > 1. Add a circle element to the HTML using the SVG markup we learnt in lesson 3.
 > 2. Use `d3.select` to get a reference to the circle.
 > 3. Once the circle reference is obtained, make the radius 40px, the border black and the colour green.
-
+> 
 > HINT: use the `attr` and `style` methods on the circle object obtained.
 
