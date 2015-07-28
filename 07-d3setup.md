@@ -56,7 +56,7 @@ The first thing we need, is of course our data, which is stored in 'nations.json
 D3 provides a handy function to read in `json`-files:
 
 ~~~{.d3}
-d3.json("resources/nations.json", function(nations) { }
+d3.json("resources/nations.json", function(nations) { });
 ~~~
 
 This line probably needs a little explanation and we'll go through it bit by bit: 
