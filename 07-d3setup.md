@@ -90,7 +90,7 @@ fill now.
 We'll have a picture frame (an SVG-element), our drawing area (a g-element), and in 
 that drawing area, we'll have separate elements for both axes and the area for our circles.
 
-Firt, we need to link the JavaScript and HTML environment so that we have writing access
+First, we need to link the JavaScript and HTML environment so that we have writing access
 to the HTML.
 To do this, we use the `.select()`. This lets us grab an element by specifying its ID.
 
