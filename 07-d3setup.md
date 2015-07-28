@@ -113,7 +113,18 @@ This is equivalent to writing:
 
 in the HTML file. We chose to append because we now have access to the SVG element without the need to separately select it by ID.
 
-We also create the canvas inside the frame:
+We can open our HTML file in a browser and see that only the heading is actually visible on the page.
+It is normal as our drawing is currently empty.
+To materialize our empty drawing and be sure it is here, let's add a thick red border around it, by adding the following in the `main.css` file:
+
+~~~{.css}
+svg {
+   border: 5px solid red;
+}
+~~~
+
+Refreshing the page should make it clear that our empty drawing actually exists.
+Now, we also create the canvas inside the frame:
 
 ~~~{.js}
 // Create canvas inside frame.
@@ -138,6 +149,8 @@ var canvas_height = frame_height - margin.top - margin.bottom;
 frame.attr("width", frame_width);
 frame.attr("height", frame_height);
 ~~~
+
+Refreshing the page will show us the new size for the SVG drawing.
 
 The canvas element will have to fit nicely into the frame. To make it fit, we set
 a transform attribute and use the translate function. 
