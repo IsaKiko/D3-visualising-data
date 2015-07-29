@@ -87,8 +87,8 @@ if (this.checked) { // adding data points
 }
 ~~~
 
-This `if`-statement gets executed every time a checkbox is checked. To add the data points, we can use the `push`-function, which adds one object to an array at a time. 
-First, we filter the nations we want to add, calling them `new_nations`. Next, we are looping through all new nations and add one at a time to the array `filtered_nations`.
+This `if`-statement gets executed every time a checkbox is checked. To add the data points, we can use the `concat`-function, which concatenates two arrays and returns a new array.
+First, we filter the nations we want to add, calling them `new_nations`. Next, we concatenate this new array to the existing one and save it back to the array `filtered_nations`.
 
 We also have to initialise `filtered_nations` at the top of our script, or at least before our `refreshData` function. Remember that there is a difference between the object and the name space, so in order to keep `nations` the way it is, we need to map the values instead of just using `=`.
 
