@@ -103,7 +103,7 @@ var chart_area = d3.select(&quot;#chart_area&quot;);</code></pre>
 <p>in the HTML file. We chose to append because we now have access to the SVG element without the need to seperately select it by ID.</p>
 <p>We also create the canvas inside the frame:</p>
 <pre class="js"><code>// Create canvas inside frame.
-var canvas = svg.append(&quot;g&quot;);</code></pre>
+var canvas = frame.append(&quot;g&quot;);</code></pre>
 <p>Let's set up the dimensions for our elements that we want to use:</p>
 <pre class="js"><code>// Set margins, width, and height.
 var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5};
@@ -123,9 +123,19 @@ canvas.attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;
 <h1><span class="glyphicon glyphicon-pencil"></span>Time for a challenge I think!</h1>
 </div>
 <div class="panel-body">
-<p>FIXME: come up with sensible challenge (maybe a 'what if?'-challenge?) ]</p>
+<p>Let us consolidate our understanding of SVGs and D3 selectors.</p>
 </div>
 </div>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>Add a circle element to the HTML using the SVG markup we learnt in lesson 3.</li>
+<li>Use <code>d3.select</code> to get a reference to the circle.</li>
+<li>Once the circle reference is obtained, make the radius 40px, the border black and the colour green.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>HINT: use the <code>attr</code> and <code>style</code> methods on the circle object obtained.</p>
+</blockquote>
         </div>
       </div>
       <div class="footer">
