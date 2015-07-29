@@ -160,6 +160,13 @@ function calc_mean(region_data) {
 > Currently, we have manually created checkboxes in the HTML file.
 > Using the `region_names` variable that is a list of all region names, create the checkboxes using javascript and/or d3.
 
+> # Get the region names from the data {.challenge}
+> The `region_names` array is currently filled in manually.
+> You want to replace this by an automatic extraction from the actual data file.
+> 
+> - using the `nations` data and the `map` function, extract the `region` of each nation,
+> - using the `d3.set` function that creates a set (without duplicate values) and the `.values` function on a set (that return an array), filter the `region_names` array so that it does not contain duplicates anymore
+
 By the end of this lesson, your page should look something like this:
 
 <iframe src="http://isakiko.github.io/D3-visualising-data/code/index10.html" width="1000" height="600"></iframe>
