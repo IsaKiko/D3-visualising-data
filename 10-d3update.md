@@ -28,16 +28,16 @@ To get the index (rather than the actual year), we can simply subtract the first
 var year_idx = parseInt(document.getElementById("year_slider").value)-1950;
 ~~~
 
-Updating the year becomes quite simple. All we need to do is add another event listener that changes the year the moment we touch the slider. The event we want to listen for is called `input`. We then execute the `update()` function we wrote earlier.
+Updating the year becomes quite simple. All we need to do is add another event listener that changes the year the moment we touch the slider. The event we want to listen for is called `input`. We then execute the `refreshData()` function we wrote earlier.
 
 ~~~{.js}
 d3.select("#year_slider").on("input", function () {
 	year_idx = parseInt(this.value) - 1950;
-	update();
+	refreshData();
 });
 ~~~
 
-So far, the update function only knows how to handle new data (`.enter`) and removed data (`.exit`), but not what to do when we update data. 
+So far, the `refreshData` function only knows how to handle new data (`.enter`) and removed data (`.exit`), but not what to do when we update data. 
 In addition to `d3.enter()` and `d3.exit()`, D3 also offers `d3.transition` to handle updating data. First, we need to define how to transition between data points. We might want to interpolate between to values linearly over the duration of 200 ms, like this: 
 
 ~~~{.js}

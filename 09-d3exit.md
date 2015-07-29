@@ -21,18 +21,18 @@ It currently mixes two concerns:
 - one-time initialization: setting up the SVG element and its sub elements, positioning and sizing them, etc;
 - data manipulation (everything related to the `dot` variable), that we actually might want to execute again when data changes.
 
-To be able to execute the data-manipulation code multiple times, we will isolate it in a new function that we decide to name `update`, and call this function (so that the code is actually executed).
+To be able to execute the data-manipulation code multiple times, we will isolate it in a new function that we decide to name `refreshData`, and call this function (so that the code is actually executed).
 
 ~~~{.js}
 // define the function with the data-manipulation code
-function update() {
+function refreshData() {
     var dot = data_canvas.selectAll(".dot").data(nations, function(d){return d.name});
     
     dot.enter().append("circle").........
 }
 
 // call the function once
-update();
+refreshData();
 ~~~
 
 Now we can resume our original task: plotting only a sub-part of the data.
@@ -90,7 +90,7 @@ if (this.checked) { // adding data points
 This `if`-statement gets executed every time a checkbox is checked. To add the data points, we can use the `push`-function, which adds one object to an array at a time. 
 First, we filter the nations we want to add, calling them `new_nations`. Next, we are looping through all new nations and add one at a time to the array `filtered_nations`.
 
-We also have to initialise `filtered_nations` at the top of our script, or at least before our `update` function. Remember that there is a difference between the object and the name space, so in order to keep `nations` the way it is, we need to map the values instead of just using `=`.
+We also have to initialise `filtered_nations` at the top of our script, or at least before our `refreshData` function. Remember that there is a difference between the object and the name space, so in order to keep `nations` the way it is, we need to map the values instead of just using `=`.
 
 ~~~{.js}
 var filtered_nations = nations.map(function(nation) { return nation; });
@@ -114,8 +114,8 @@ A good, brief explanation of this linking between data and elements on the page 
 > # Another new dimension {.challenge}
 > 1. Have the colour of circles represent the region. Use category20() to make a scale. You will then need to add `.style("fill", function(d) { <-- fill in this bit ---> });` to the enter() function.
 
-As we have isolated the data-processing code in the `update` function, we can now refresh the data every time the checkbox is clicked.
-This means that we now have to call the `update` function from our event listener after updating `filtered_nations` based on the checkbox change:
+As we have isolated the data-processing code in the `refreshData` function, we can now refresh the data every time the checkbox is clicked.
+This means that we now have to call the `refreshData` function from our event listener after updating `filtered_nations` based on the checkbox change:
 
 ~~~{.js}
 d3.selectAll(".region_cb").on("change", function() {
@@ -126,7 +126,7 @@ d3.selectAll(".region_cb").on("change", function() {
   } else { // remove data points from the data that match the filter
     filtered_nations = filtered_nations.filter(function(nation){ return nation.region != type;});
   }
-  update();
+  refreshData();
 });
 ~~~
 
