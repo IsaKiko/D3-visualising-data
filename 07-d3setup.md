@@ -169,3 +169,12 @@ canvas.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 > 
 > HINT: use the `attr` and `style` methods on the circle object obtained.
 
+> # Understanding the "transform". {.challenge}
+> 
+> 
+> 1. Use Javascript code to Create a new circle inside our "canvas", positioned in 0, 0, with a radius of 5px.
+> 2. Check that the circle now shows up.
+> 3. Play with the values that are put for the "translate" transform in order to understand what is the reference frame used.
+> 
+> HINT: refresh your page in your browser every time you do a modification.
+
