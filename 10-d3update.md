@@ -64,7 +64,7 @@ dot.transition().ease("linear").duration(200)
 > * elastic(a, p) - simulates an elastic band; may extend slightly beyond 0 and 1.
 > * [more here](https://github.com/mbostock/d3/wiki/Transitions#d3_ease)
 
-> # Play time {.challenge}
+> ## Play time {.challenge}
 > D3 is incredible versatile. Try out different transitions and if you have time, maybe try drawing rectangles instead of circles.
 
 Next, we might want to create a tooltip. Let's go have a look at what's already out there. 
@@ -147,20 +147,20 @@ function calc_mean(region_data) {
 }
 ~~~
 
-> # The master challenge {.challenge}
+> ## The master challenge {.challenge}
 > It's time to put together everything you've learned. Write code that displays (and updates) the mean values that we just computed as little crosses in the graph for the different regions.
 
-> # ...style! {.challenge}
+> ## ...style! {.challenge}
 > Add axis labels and make the fonts pretty. 
 
-> # Using different data formats {.challenge}
+> ## Using different data formats {.challenge}
 > What if you don't have your data in JSON format? Change your code to load in nations.csv instead of nations.json and have it produce the same plot. 
 
-> # Generate the checkboxes automatically {.challenge}
+> ## Generate the checkboxes automatically {.challenge}
 > Currently, we have manually created checkboxes in the HTML file.
 > Using the `region_names` variable that is a list of all region names, create the checkboxes using javascript and/or d3.
 
-> # Get the region names from the data {.challenge}
+> ## Get the region names from the data {.challenge}
 > The `region_names` array is currently filled in manually.
 > You want to replace this by an automatic extraction from the actual data file.
 > 

@@ -160,7 +160,7 @@ a transform attribute and use the translate function.
 canvas.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 ~~~
 
-> # Time for a challenge I think! {.challenge}
+> ## Time for a challenge I think! {.challenge}
 > Let us consolidate our understanding of SVGs and D3 selectors.
 > 
 > 1. Create a new SVG element and a circle element using the SVG markup we learnt in lesson 3.
@@ -169,7 +169,7 @@ canvas.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 > 
 > HINT: use the `attr` and `style` methods on the circle object obtained.
 
-> # Understanding the "transform". {.challenge}
+> ## Understanding the "transform". {.challenge}
 > 
 > 
 > 1. Use Javascript code to Create a new circle inside our "canvas", positioned in 0, 0, with a radius of 5px.

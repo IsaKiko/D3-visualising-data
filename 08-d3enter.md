@@ -69,7 +69,7 @@ canvas.append("g")
 We add a transform attribute to move the axis to the bottom of the plotting area (instead of having it across the top). There are a number of transform options, but here we are just using `translate` and pass in the amount to shift the axis in the x and y directions, respectively. Here we shift it only in the y direction (i.e. down) by an amount given by height of the canvas.  
 We also give it a class, just in case we might want to select the axis later in our code.
 
-> # We might need a y-axis, too {.challenge}
+> ## We might need a y-axis, too {.challenge}
 > 1. Create a linear scale for the y-axis, with 10 being the minimum and 85 being the maximum value. Then, add the axis to the canvas.
 
 We're slowly getting there. Having our two axes, we can now finally add our data. 
@@ -112,7 +112,7 @@ The attributes `cx` and `cy` define the position of the centre of the circle and
 arbitrary number... for now.
 
 
-> # A new dimension {.challenge}
+> ## A new dimension {.challenge}
 > Change the code so that the radius of the circles represents the population. First, create a 'sqrt' scale with a minimum of 0 and a maximum of 5e8. The range should be between 0 and 40. Also, don't forget to include a mapping function for the scale for population. 
 
 

@@ -46,7 +46,7 @@ var filtered_nations = nations.filter(function(nation){
 });
 ~~~
 
-> # Filtering by region {.challenge}
+> ## Filtering by region {.challenge}
 > You might have noticed that our data contains information about the region in 
 > which a country is.
 > 
@@ -108,10 +108,10 @@ Whereas before `enter()` was used to append new elements to the plot, `exit()` i
 
 A good, brief explanation of this linking between data and elements on the page can be found [here](http://bost.ocks.org/mike/join/). This article discusses the three important functions used for this: `enter`, `exit`, and a third function `update` that we will get to shortly. 
 
-> # Removing elements {.challenge}
+> ## Removing elements {.challenge}
 > 1. Using an `else` case after the `if` statement, create a filter that removes elements from `filtered_data` that correspond to the checkbox that was just unchecked. (i.e. `else { filtered_nations = <--- fill in this bit --->}`). 
 
-> # Another new dimension {.challenge}
+> ## Another new dimension {.challenge}
 > 1. Have the colour of circles represent the region. Use category20() to make a scale. You will then need to add `.style("fill", function(d) { <-- fill in this bit ---> });` to the enter() function.
 
 As we have isolated the data-processing code in the `refreshData` function, we can now refresh the data every time the checkbox is clicked.

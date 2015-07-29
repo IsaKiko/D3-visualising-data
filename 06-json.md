@@ -90,7 +90,7 @@ cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : 'Snowba
 
 This process is called 'nesting'.
 
-> # Nesting {.challenge}
+> ## Nesting {.challenge}
 > 1. Append the array by a third cat, not entering a name or weight.
 > 1. Do all animals have to have the same attribute fields?
 > 1. Use the console of your browser to read the values of your object. 
@@ -124,7 +124,7 @@ to convert it into a string.
 JavaScript provides an easy way to do this. Data can get converted using 
 `JSON.stringify()`. 
 
-> # Arrays of objects {.challenge}
+> ## Arrays of objects {.challenge}
 > 1. Append a third cat to the array, not entering a name or weight.
 > 1. Do all animals have to have the same attribute fields?
 > 1. Use the console of your browser to read the values of your object. 
@@ -149,7 +149,7 @@ When the map function is called using `cat_list.map`, it loops through all eleme
 in `cat_list`, calls each temporarily `cat`, and creates a new list `dog_list`, which
 will have one dog per cat. The function `concat` simply concatenates two strings.
 
-> # How much do dogs weigh? {.challenge}
+> ## How much do dogs weigh? {.challenge}
 > 1. Let's assume dog misters weigh twice as much as their feline version. Make 
 > the new array reflect this.
 
