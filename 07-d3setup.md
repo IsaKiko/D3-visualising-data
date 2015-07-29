@@ -135,7 +135,7 @@ Let's set up the dimensions for our elements that we want to use:
 
 ~~~{.js}
 // Set margins, width, and height.
-var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5};
+var margin = {top: 21.5, right: 21.5, bottom: 21.5, left: 39.5};
 var frame_width = 960;
 var frame_height = 350;
 var canvas_width = frame_width - margin.left - margin.right;
