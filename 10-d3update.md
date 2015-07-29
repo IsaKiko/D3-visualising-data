@@ -156,6 +156,10 @@ function calc_mean(region_data) {
 > # Using different data formats {.challenge}
 > What if you don't have your data in JSON format? Change your code to load in nations.csv instead of nations.json and have it produce the same plot. 
 
+> # Generate the checkboxes automatically {.challenge}
+> Currently, we have manually created checkboxes in the HTML file.
+> Using the `region_names` variable that is a list of all region names, create the checkboxes using javascript and/or d3.
+
 By the end of this lesson, your page should look something like this:
 
 <iframe src="http://isakiko.github.io/D3-visualising-data/code/index10.html" width="1000" height="600"></iframe>
