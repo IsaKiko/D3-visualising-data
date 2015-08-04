@@ -6,10 +6,10 @@ title: Visualizing your data on the web using D3
 Open science should be visible science. And what better
 way to make your research visible and accessible than putting it on the 
 internet. But no one wants to read endless tables of data. We’d rather
-look at graphs, or, even better, have the possibility of interact with the data.
+look at graphs, or, even better, have the possibility of interacting with the data.
 And we have probably all created some graphs. But in order to make them 
-accessible by many people, we will have to move away from our specialized
-software to some a more universal platform - the internet. 
+accessible to many people, we will have to move away from our specialized
+software to a more universal platform - the internet. 
 
 We want to:
 
