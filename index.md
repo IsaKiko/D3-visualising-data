@@ -47,6 +47,7 @@ Along the way, we will learn:
 8.	[D3 Into the data](08-d3enter.html)
 9.	[D3 Add and remove](09-d3exit.html)
 10. [D3 Transitions](10-d3update.html)
+11. [Solutions](solutions.html)
 xx. [What now?](xx-d3future.html)
 
 We are using [gapminder data](http://gapminder.orf) and the later lessons are based on an example by [Mike Bostock](http://bost.ocks.org/mike/nations/).
