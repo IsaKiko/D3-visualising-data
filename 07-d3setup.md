@@ -56,13 +56,13 @@ The first thing we need, is of course our data, which is stored in 'nations.json
 D3 provides a handy function to read in `json`-files:
 
 ~~~{.d3}
-d3.json("resources/nations.json", function(nations) { }
+d3.json("code/nations.json", function(nations) { });
 ~~~
 
 This line probably needs a little explanation and we'll go through it bit by bit: 
 
 * `d3.json()` is called the function call. In this case, we have a function that reads in a json file, parses it, and is also able to do something with the parsed data on the way.
-* The first argument `"resources/nations.json"` tells the function where to get the data we want to have parsed.
+* The first argument `code/nations.json"` tells the function where to get the data we want to have parsed.
 * `function(...){...}` is called the callback function. It is a so-called 'inline' function, which means it has no name (we're only operating in the object space here). This also means we can't use this function anywhere else in our code. The code we put inside the curly brackets is the code that's run once d3.json() is called and the data is loaded.
 * D3 assigns the name `nations` to the parsed object it returns. We can only use 'nations' within the callback function, this means our code only knows of `nations` inside the curly brackets.
 * What seems unusual, but is actually quite common, is that this function call doesn't return anything. It is simply executed and displayed (if we tell it to), but no value is returned. 
@@ -90,7 +90,7 @@ fill now.
 We'll have a picture frame (an SVG-element), our drawing area (a g-element), and in 
 that drawing area, we'll have separate elements for both axes and the area for our circles.
 
-Firt, we need to link the JavaScript and HTML environement so that we have writing access
+First, we need to link the JavaScript and HTML environment so that we have writing access
 to the HTML.
 To do this, we use the `.select()`. This lets us grab an element by specifying its ID.
 
@@ -111,9 +111,20 @@ This is equivalent to writing:
 <p id="chart_area"> <svg> </svg> </p>
 ~~~
 
-in the HTML file. We chose to append because we now have access to the SVG element without the need to seperately select it by ID.
+in the HTML file. We chose to append because we now have access to the SVG element without the need to separately select it by ID.
 
-We also create the canvas inside the frame:
+We can open our HTML file in a browser and see that only the heading is actually visible on the page.
+It is normal as our drawing is currently empty.
+To materialize our empty drawing and be sure it is here, let's add a thick red border around it, by adding the following in the `main.css` file:
+
+~~~{.css}
+svg {
+   border: 5px solid red;
+}
+~~~
+
+Refreshing the page should make it clear that our empty drawing actually exists.
+Now, we also create the canvas inside the frame:
 
 ~~~{.js}
 // Create canvas inside frame.
@@ -124,7 +135,7 @@ Let's set up the dimensions for our elements that we want to use:
 
 ~~~{.js}
 // Set margins, width, and height.
-var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5};
+var margin = {top: 21.5, right: 21.5, bottom: 21.5, left: 39.5};
 var frame_width = 960;
 var frame_height = 350;
 var canvas_width = frame_width - margin.left - margin.right;
@@ -139,6 +150,8 @@ frame.attr("width", frame_width);
 frame.attr("height", frame_height);
 ~~~
 
+Refreshing the page will show us the new size for the SVG drawing.
+
 The canvas element will have to fit nicely into the frame. To make it fit, we set
 a transform attribute and use the translate function. 
 
@@ -147,12 +160,21 @@ a transform attribute and use the translate function.
 canvas.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 ~~~
 
-> # Time for a challenge I think! {.challenge}
+> ## Time for a challenge I think! {.challenge}
 > Let us consolidate our understanding of SVGs and D3 selectors.
-
-> 1. Add a circle element to the HTML using the SVG markup we learnt in lesson 3.
+> 
+> 1. Create a new SVG element and a circle element using the SVG markup we learnt in lesson 3.
 > 2. Use `d3.select` to get a reference to the circle.
 > 3. Once the circle reference is obtained, make the radius 40px, the border black and the colour green.
-
+> 
 > HINT: use the `attr` and `style` methods on the circle object obtained.
+
+> ## Understanding the "transform". {.challenge}
+> 
+> 
+> 1. Use Javascript code to Create a new circle inside our "canvas", positioned in 0, 0, with a radius of 5px.
+> 2. Check that the circle now shows up.
+> 3. Play with the values that are put for the "translate" transform in order to understand what is the reference frame used.
+> 
+> HINT: refresh your page in your browser every time you do a modification.
 

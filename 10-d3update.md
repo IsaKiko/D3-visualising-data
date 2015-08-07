@@ -28,16 +28,16 @@ To get the index (rather than the actual year), we can simply subtract the first
 var year_idx = parseInt(document.getElementById("year_slider").value)-1950;
 ~~~
 
-Updating the year becomes quite simple. All we need to do is add another event listener that changes the year the moment we touch the slider. The event we want to listen for is called `input`. We then execute the `update()` function we wrote earlier.
+Updating the year becomes quite simple. All we need to do is add another event listener that changes the year the moment we touch the slider. The event we want to listen for is called `input`. We then execute the `refreshData()` function we wrote earlier.
 
 ~~~{.js}
 d3.select("#year_slider").on("input", function () {
 	year_idx = parseInt(this.value) - 1950;
-	update();
+	refreshData();
 });
 ~~~
 
-So far, the update function only knows how to handle new data (`.enter`) and removed data (`.exit`), but not what to do when we update data. 
+So far, the `refreshData` function only knows how to handle new data (`.enter`) and removed data (`.exit`), but not what to do when we update data. 
 In addition to `d3.enter()` and `d3.exit()`, D3 also offers `d3.transition` to handle updating data. First, we need to define how to transition between data points. We might want to interpolate between to values linearly over the duration of 200 ms, like this: 
 
 ~~~{.js}
@@ -64,7 +64,7 @@ dot.transition().ease("linear").duration(200)
 > * elastic(a, p) - simulates an elastic band; may extend slightly beyond 0 and 1.
 > * [more here](https://github.com/mbostock/d3/wiki/Transitions#d3_ease)
 
-> # Play time {.challenge}
+> ## Play time {.challenge}
 > D3 is incredible versatile. Try out different transitions and if you have time, maybe try drawing rectangles instead of circles.
 
 Next, we might want to create a tooltip. Let's go have a look at what's already out there. 
@@ -147,14 +147,25 @@ function calc_mean(region_data) {
 }
 ~~~
 
-> # The master challenge {.challenge}
+> ## The master challenge {.challenge}
 > It's time to put together everything you've learned. Write code that displays (and updates) the mean values that we just computed as little crosses in the graph for the different regions.
 
-> # ...style! {.challenge}
+> ## ...style! {.challenge}
 > Add axis labels and make the fonts pretty. 
 
-> # Using different data formats {.challenge}
+> ## Using different data formats {.challenge}
 > What if you don't have your data in JSON format? Change your code to load in nations.csv instead of nations.json and have it produce the same plot. 
+
+> ## Generate the checkboxes automatically {.challenge}
+> Currently, we have manually created checkboxes in the HTML file.
+> Using the `region_names` variable that is a list of all region names, create the checkboxes using javascript and/or d3.
+
+> ## Get the region names from the data {.challenge}
+> The `region_names` array is currently filled in manually.
+> You want to replace this by an automatic extraction from the actual data file.
+> 
+> - using the `nations` data and the `map` function, extract the `region` of each nation,
+> - using the `d3.set` function that creates a set (without duplicate values) and the `.values` function on a set (that return an array), filter the `region_names` array so that it does not contain duplicates anymore
 
 By the end of this lesson, your page should look something like this:
 
