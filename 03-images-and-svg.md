@@ -83,5 +83,5 @@ find simple examples of using different, commonly used SVG shapes is
 
 > ## Make art! {.challenge}
 >
-> Make some art, using at least one circle, one rectangle, and one polygon
+> Make some art, using at least one circle, one rectangle, and one polygon.
 > If you don't know what to do, draw a robot! 

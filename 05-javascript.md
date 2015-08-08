@@ -38,7 +38,7 @@ The ID is an attribute we can set for the image:
 </div>
 ~~~
 
-Using 'getElementByIl', we can grab the element from the document (a magical object representing the entire page) and work with it in the JavaScript file.
+Using 'getElementById', we can grab the element from `document` (a magical object representing the entire page) and work with it in the JavaScript file.
 
 ~~~{.js}
 var cat_image = document.getElementById('cat');
@@ -47,8 +47,6 @@ var cat_image = document.getElementById('cat');
 Now we want to detect if someone clicks on the cat image.
 Event listeners help us by constantly checking if someone performs
 a certain action.
-The second argument determines what we want to happen. In our case,
-we want to execute a function called 'meow', that we haven't written yet.
 
 ~~~{.js}
 var cat_image = document.getElementById('cat');
@@ -98,30 +96,10 @@ cat_image.addEventListener("click", function() {
 > Use the alert() function to have the cat thank you.
 
 The next step to having a fully interactive page is to
-change HTML elements using JavaScript.
-
-We've created a button in the HTML file:
-
-~~~{.html}
-<button id='feed_button'>
-	FOOD!
-</button>
-~~~
-
-This is what we all should be up to by now:
-
-~~~{.js}
-var cat_image = document.getElementById('cat');
-var feed_button = document.getElementById('feed_button');
-
-feed_button.addEventListener("click", feed);
-function feed() {
-	alert("OMNOMNOM!");
-};
-~~~
-
+change HTML elements using JavaScript. We've created a button in the HTML file 
+and are calling a function when it is clicked. 
 The goal now is to make the cat put on a little bit of weight when we feed it.
-Again, we have to link to both the cat element and the food button so that
+We have to link to both the cat element and the food button so that
 both files know what we're talking about.
 
 We're setting the width by stringing a few words together:
@@ -145,7 +123,7 @@ function feed() {
 };
 ~~~
 
-We could also pass an argument into the function by writing it in the brackets.
+We could also pass an argument into the `feed` function by writing it in the brackets.
 We might, for example, want the user to be able to decide the meal size the cat eats.
 
 We can also return a value and assign it to a variable (just like we do with any function we used so far, e.g. var element = document.getElementById("someID");): 
