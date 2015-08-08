@@ -15,9 +15,7 @@ Websites that only consist of text can be quite boring. So let's have a look at 
 we can add an image. 
 
 ~~~{.html}
-<div class='image'>
-	<img src="cat.jpg">
-</div>
+<img class='image' src="cat.jpg">
 ~~~
 <img src="code/cat.jpg" style="height:350px">
 
@@ -26,7 +24,7 @@ position of the image we load and apply the style to other images we might want 
 
 ~~~{.css}
 .image {
-	width: 100px;
+	width: 200px;
 	position: relative;
 	left: 20px;
 }

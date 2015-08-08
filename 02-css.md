@@ -26,13 +26,13 @@ If we want to change the color, for example, we write:
 Changing the font size: 
 
 ~~~ {.html}
-<h1 style="font-size: 10px">This is a big heading</h1>
+<h1 style="font-size: 80px">This is a big heading</h1>
 ~~~
 
 If we want to change two things at the same time, we just mention all of them at once:
 
 ~~~ {.html}
-<h1 style="font-size: 10px; color: blue">This is a big, blue heading</h1>
+<h1 style="font-size: 80px; color: blue">This is a big, blue heading</h1>
 ~~~
 
 This is a quick and simple way to change the appearance of elements on the spot.
@@ -53,7 +53,7 @@ on our page.
 .title
 {
 	color: red;
-	font-size: 10px;
+	font-size: 50px;
 	text-align: center;
 }
 ~~~
@@ -82,9 +82,9 @@ In the body, we can use the class that we just created:
 
 > ## Create and use your own class {.challenge}
 >
-> Create a class called 'description'. 
-> Left bound, dark gray, font size, certain width on the page, padding around
-> ...also, write some text so it wraps around.
-> If you like, play with the heading, until you like how it looks. 
->
-> Optional: Set background of body to purple and text to white
+> Create a class called 'description' and a 'div' element with text that has this class.
+> Make the text dark gray with a custom font size. 
+> Add a black border just on the left side of the 'div' and add padding around the text. 
+> Try adding in enough text so that it wraps over multiple lines, and then set the width of the 'div' to different values. 
+> Try setting the background color of the 'div' element. 
+> If you like, play with the 'title' class as well, until you like how it looks. 
