@@ -15,9 +15,7 @@ Websites that only consist of text can be quite boring. So let's have a look at 
 we can add an image. 
 
 ~~~{.html}
-<div class='image'>
-	<img src="cat.jpg">
-</div>
+<img class='image' src="cat.jpg">
 ~~~
 <img src="code/cat.jpg" style="height:350px">
 
@@ -26,7 +24,7 @@ position of the image we load and apply the style to other images we might want 
 
 ~~~{.css}
 .image {
-	width: 100px;
+	width: 200px;
 	position: relative;
 	left: 20px;
 }
@@ -83,5 +81,5 @@ find simple examples of using different, commonly used SVG shapes is
 
 > ## Make art! {.challenge}
 >
-> Make some art, using at least one circle, one rectangle, and one polygon
+> Make some art, using at least one circle, one rectangle, and one polygon.
 > If you don't know what to do, draw a robot! 

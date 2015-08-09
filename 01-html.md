@@ -65,8 +65,8 @@ using &lt;div&gt; to open and &lt;/div&gt; to close it.
 		--> meta-data (like page title, inclusion of other files) <--
 	</head> 
 	<body> 
-		<div>Hello world!<div/>
-		<div>Hello back!<div/>
+		<div>Hello world!</div>
+		<div>Hello back!</div>
 	</body> 
 </html> 
 ~~~
@@ -75,4 +75,5 @@ using &lt;div&gt; to open and &lt;/div&gt; to close it.
 >
 > Create a folder that contains the file index.html (or download it).
 > What seems to be the difference between &lt;div&gt;, &lt;h1&gt;, and &lt;em&gt;?
+> What about the difference between two &lt;div&gt; elements and two &lt;span&gt; elements?
 > Create a heading that is in italics.

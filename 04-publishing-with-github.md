@@ -15,42 +15,32 @@ is provided by [Github](https://github.com).
 
 You should all have signed up for a Github account. If you haven't, now is the time! 
 
-As you might remember, Github is a version control software that is used to track 
-changes in text documents. This alone makes it perfect for hosting our code and 
+As you might remember, Github uses git, which is a version control software that is used to 
+track changes in text documents. This alone makes it perfect for hosting our code and 
 enables us to travel back in time and undo errors that we might introduce. 
 
-On Github you can create so-called repositories in your folders. This folder and its 
-subfolders are then tracked and Github tells you immediately if and what has changed 
-in the files that are contained within the repository. 
-You can 'commit' to a change you made and synchronize your local folder with 
-the one that is hosted on Github. 
+Using git you can create so-called repositories in your folders. The folder and its 
+subfolders are then tracked and git tells you immediately if and what has changed 
+in the files that are contained within the repository. You can 'commit' to a change 
+you made and synchronize your local repository with the one that is hosted on Github. 
 
 But what's even better is that Github gives us the possibility to turn 
 every repository into a website. 
 
-First, let's create our new repository:
+First, let's create our new repository on Github:
 
-* Click on your face (upper right corner)
-* Go to the 'Repository' tab
-* Click 'Add a new repository'
-* Name it 'myartwork', and click 'Create repository'
+* Sign in to Github (https://github.com)
+* Create a new repository and call it 'myartwork'
 
-Don't worry about the other options for now.
+Don't worry about the other options for now. Using git in the command line, the Github app for Windows and Mac OS X, or Sourcetree (https://www.sourcetreeapp.com/), clone this repository to get a local copy. 
+Copy the file that contains your artwork into your local repository and call it 'index.html'.
+The reason for this is that 'index.html' is the default file that is loaded on the server. 
 
-* Click 'Set up in Desktop'. 
-
-Your computer should now be cloning the (still empty) repository to the location of your choice.
-Copy the file that contains your artwork into this folder and call it 'index.html'.
-The reason for this is that 'index.html' is the default location that is shown. 
-
-Save the file, commit to the change using your Github program, and push the changes 
-to your repository ('Publish' button in the GUI).
+Save the file, commit the change, and push the changes to the repository on Github.
 
 Right now, our code is on the web, but we haven't told the Github to publish it yet. 
-To do this, we create a branch called 'gh-pages'.
-
-* To create this branch, navigate to your repository and click on where it says "branch:master" first (...and then some more things??...). You will find your webpage at www.username.github.io/repositoryname. From now on, remember to only commit to your gh-pages branch. Otherwise changes will not show up.
+To do this, we create a branch called 'gh-pages'. To create this branch, navigate to your repository and click on where it says "branch:master". An input field should appear. Type in 'gh-pages' and press enter. A new branch should have been created and you should be able to find your webpage at: http://username.github.io/myartwork (with your username in place of 'username'). From now on, remember to only commit/push to your gh-pages branch. Otherwise your changes will not show up.
 
 > ## Show us your art work! {.challenge}
 >
-> Publish your art work and send us a link. It should be www.username.github.io/myartwork/index.html
+> Publish your art work and send us a link. It should be http://username.github.io/myartwork

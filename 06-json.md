@@ -92,8 +92,8 @@ This process is called 'nesting'.
 
 > # Nesting {.challenge}
 > 1. Append the array by a third cat, not entering a name or weight.
-> 1. Do all animals have to have the same attribute fields?
-> 1. Use the console of your browser to read the values of your object. 
+> 2. Do all animals have to have the same attribute fields?
+> 3. Use the console of your browser to read the values of your object. 
 
 
 > ## Object space and name space {.challenge}
@@ -106,7 +106,7 @@ This process is called 'nesting'.
 >~~~
 > 
 > 1. Change the name of the first cat object `cat_list2[0]`. Look at the whole list again (`cat_list2`). What happened?
-> 1. Look at cat_object. What's going on??
+> 2. Look at cat_object. What's going on??
 
 In Javascript, we have a name space and an object space. 
 The name space contains the names of the variables, the object space contains the actual content. 
@@ -114,21 +114,6 @@ Normally, you would assume that each name points to one object (`cat_object.weig
 When we changed the name of `cat_list2[0]`, what we actually did was changing the content of the one object `cat_object` that they were all pointing to.
 
 <img src="img/namespace.png" alt="Name space and object space" width="500" />
-
-
-When we start creating our data for the plot, we want it to be nicely structured 
-and annotated. Basically, we want a Javascript object that we can work with. 
-In order to store our data outside of the scripting environment though, we need
-to convert it into a string.
-
-JavaScript provides an easy way to do this. Data can get converted using 
-`JSON.stringify()`. 
-
-> # Arrays of objects {.challenge}
-> 1. Append a third cat to the array, not entering a name or weight.
-> 1. Do all animals have to have the same attribute fields?
-> 1. Use the console of your browser to read the values of your object. 
-
 
 A good way of creating a new array (as in a new object, not just a new 
 name for the same one) that relates to an array we already have 
@@ -150,7 +135,7 @@ in `cat_list`, calls each temporarily `cat`, and creates a new list `dog_list`, 
 will have one dog per cat. The function `concat` simply concatenates two strings.
 
 > # How much do dogs weigh? {.challenge}
-> 1. Let's assume dog misters weigh twice as much as their feline version. Make 
+> Let's assume dog misters weigh twice as much as their feline version. Make 
 > the new array reflect this.
 
 
