@@ -43,9 +43,9 @@
 <p>We can change the appearance of our text in different ways. A quick way is to simply mention what we want our element to look like when we create it by setting the &quot;style&quot; attribute. If we want to change the color, for example, we write:</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h1</span><span class="ot"> style=</span><span class="st">&quot;color:blue&quot;</span><span class="kw">&gt;</span>This is a blue heading<span class="kw">&lt;/h1&gt;</span></code></pre>
 <p>Changing the font size:</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h1</span><span class="ot"> style=</span><span class="st">&quot;font-size: 10px&quot;</span><span class="kw">&gt;</span>This is a big heading<span class="kw">&lt;/h1&gt;</span></code></pre>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h1</span><span class="ot"> style=</span><span class="st">&quot;font-size: 80px&quot;</span><span class="kw">&gt;</span>This is a big heading<span class="kw">&lt;/h1&gt;</span></code></pre>
 <p>If we want to change two things at the same time, we just mention all of them at once:</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h1</span><span class="ot"> style=</span><span class="st">&quot;font-size: 10px; color: blue&quot;</span><span class="kw">&gt;</span>This is a big, blue heading<span class="kw">&lt;/h1&gt;</span></code></pre>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h1</span><span class="ot"> style=</span><span class="st">&quot;font-size: 80px; color: blue&quot;</span><span class="kw">&gt;</span>This is a big, blue heading<span class="kw">&lt;/h1&gt;</span></code></pre>
 <p>This is a quick and simple way to change the appearance of elements on the spot. However, if we want to create different elements of the same type, we have to do a lot of typing, and our file will quickly become confusing and hard to maintain.</p>
 <p>If we want to change the look of many elements at the same time, we can instead create a style file (extension .css).</p>
 <ul>
@@ -55,7 +55,7 @@
 <pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.title</span>
 <span class="kw">{</span>
     <span class="kw">color:</span> <span class="dt">red</span><span class="kw">;</span>
-    <span class="kw">font-size:</span> <span class="dt">10px</span><span class="kw">;</span>
+    <span class="kw">font-size:</span> <span class="dt">50px</span><span class="kw">;</span>
     <span class="kw">text-align:</span> <span class="dt">center</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
 <p>All that's left to do, is to tell the HTML file where to find our new CSS file. This is done by linking to it in the head:</p>
@@ -76,8 +76,7 @@
 <h2><span class="glyphicon glyphicon-pencil"></span>Create and use your own class</h2>
 </div>
 <div class="panel-body">
-<p>Create a class called 'description'. Left bound, dark gray, font size, certain width on the page, padding around ...also, write some text so it wraps around. If you like, play with the heading, until you like how it looks.</p>
-<p>Optional: Set background of body to purple and text to white</p>
+<p>Create a class called 'description' and a 'div' element with text that has this class. Make the text dark gray with a custom font size. Add a black border just on the left side of the 'div' and add padding around the text. Try adding in enough text so that it wraps over multiple lines, and then set the width of the 'div' to different values. Try setting the background color of the 'div' element. If you like, play with the 'title' class as well, until you like how it looks.</p>
 </div>
 </div>
         </div>

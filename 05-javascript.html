@@ -53,9 +53,9 @@
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&#39;image&#39;</span><span class="kw">&gt;</span>
     <span class="kw">&lt;img</span><span class="ot"> id=</span><span class="st">&quot;cat&quot;</span><span class="ot"> src=</span><span class="st">&quot;img/cat.jpg&quot;</span><span class="kw">&gt;</span>
 <span class="kw">&lt;/div&gt;</span></code></pre>
-<p>Using 'getElementByIl', we can grab the element from the document (a magical object representing the entire page) and work with it in the JavaScript file.</p>
+<p>Using 'getElementById', we can grab the element from <code>document</code> (a magical object representing the entire page) and work with it in the JavaScript file.</p>
 <pre class="js"><code>var cat_image = document.getElementById(&#39;cat&#39;);</code></pre>
-<p>Now we want to detect if someone clicks on the cat image. Event listeners help us by constantly checking if someone performs a certain action. The second argument determines what we want to happen. In our case, we want to execute a function called 'meow', that we haven't written yet.</p>
+<p>Now we want to detect if someone clicks on the cat image. Event listeners help us by constantly checking if someone performs a certain action.</p>
 <pre class="js"><code>var cat_image = document.getElementById(&#39;cat&#39;);
 cat_image.addEventListener(&quot;click&quot;, meow);</code></pre>
 <p>Our event listener takes two arguments: the type of event and what we want it to do. We want to execute a function called <code>meow()</code>, which will open a pop-up window. We can use the JavaScript function alert().</p>
@@ -95,20 +95,7 @@ cat_image.addEventListener(&quot;click&quot;, function() {
 <p>Create a button using the &lt;button&gt; element to feed the cat. Use the alert() function to have the cat thank you.</p>
 </div>
 </div>
-<p>The next step to having a fully interactive page is to change HTML elements using JavaScript.</p>
-<p>We've created a button in the HTML file:</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;button</span><span class="ot"> id=</span><span class="st">&#39;feed_button&#39;</span><span class="kw">&gt;</span>
-    FOOD!
-<span class="kw">&lt;/button&gt;</span></code></pre>
-<p>This is what we all should be up to by now:</p>
-<pre class="js"><code>var cat_image = document.getElementById(&#39;cat&#39;);
-var feed_button = document.getElementById(&#39;feed_button&#39;);
-
-feed_button.addEventListener(&quot;click&quot;, feed);
-function feed() {
-    alert(&quot;OMNOMNOM!&quot;);
-};</code></pre>
-<p>The goal now is to make the cat put on a little bit of weight when we feed it. Again, we have to link to both the cat element and the food button so that both files know what we're talking about.</p>
+<p>The next step to having a fully interactive page is to change HTML elements using JavaScript. We've created a button in the HTML file and are calling a function when it is clicked. The goal now is to make the cat put on a little bit of weight when we feed it. We have to link to both the cat element and the food button so that both files know what we're talking about.</p>
 <p>We're setting the width by stringing a few words together: 'cat_image.style.width'. We can think of 'cat_image' as having an attribute called 'style', which in turn has an attribute called 'width'. Let's add a couple of grams. We have to retrieve the current object width. Our 'cat_image' object also has a attribute called 'offsetWidth'. This will give us the current width as a number (as opposed to the string '200px'). Google is your friend here. Use it to find out these handy functions. Lastly we have to append the new value with 'px'.</p>
 <pre class="js"><code>var cat_image = document.getElementById(&#39;cat&#39;);
 var feed_button = document.getElementById(&#39;feed_button&#39;);
@@ -117,7 +104,7 @@ feed_button.addEventListener(&quot;click&quot;, feed);
 function feed() {
     cat_image.style.width = (cat_image.offsetWidth + 30.0) + &#39;px&#39;;
 };</code></pre>
-<p>We could also pass an argument into the function by writing it in the brackets. We might, for example, want the user to be able to decide the meal size the cat eats.</p>
+<p>We could also pass an argument into the <code>feed</code> function by writing it in the brackets. We might, for example, want the user to be able to decide the meal size the cat eats.</p>
 <p>We can also return a value and assign it to a variable (just like we do with any function we used so far, e.g. var element = document.getElementById(&quot;someID&quot;);):</p>
 <pre class="js"><code>var new_width = feed(10);
 

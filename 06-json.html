@@ -99,20 +99,6 @@ cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : &#39;Sn
 </div>
 <p>In Javascript, we have a name space and an object space. The name space contains the names of the variables, the object space contains the actual content. Normally, you would assume that each name points to one object (<code>cat_object.weight</code> --&gt; <code>5</code>, <code>cat_object.name</code> --&gt; 'Princess Caroline'). What we did, when we created our list is that we used three names to point to the same object (<code>cat_list[0]</code>, <code>cat_list[1]</code>, <code>cat_object</code> --&gt; <code>{weight = 5 , past_weight_values = [4.5, 5.1, 4.9], name = 'Princess Caroline'}</code>). When we changed the name of <code>cat_list2[0]</code>, what we actually did was changing the content of the one object <code>cat_object</code> that they were all pointing to.</p>
 <p><img src="img/namespace.png" alt="Name space and object space" width="500" /></p>
-<p>When we start creating our data for the plot, we want it to be nicely structured and annotated. Basically, we want a Javascript object that we can work with. In order to store our data outside of the scripting environment though, we need to convert it into a string.</p>
-<p>JavaScript provides an easy way to do this. Data can get converted using <code>JSON.stringify()</code>.</p>
-<div id="arrays-of-objects" class="challenge panel panel-success">
-<div class="panel-heading">
-<h1><span class="glyphicon glyphicon-pencil"></span>Arrays of objects</h1>
-</div>
-<div class="panel-body">
-<ol style="list-style-type: decimal">
-<li>Append a third cat to the array, not entering a name or weight.</li>
-<li>Do all animals have to have the same attribute fields?</li>
-<li>Use the console of your browser to read the values of your object.</li>
-</ol>
-</div>
-</div>
 <p>A good way of creating a new array (as in a new object, not just a new name for the same one) that relates to an array we already have can be done using the <code>map()</code> function.</p>
 <p>As an example, we can create a list of dogs that have the same names as our cats, only appended by &quot;Mr.&quot;.</p>
 <pre class="js"><code>dog_list = cat_list.map(function(cat) {
@@ -126,9 +112,7 @@ cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : &#39;Sn
 <h1><span class="glyphicon glyphicon-pencil"></span>How much do dogs weigh?</h1>
 </div>
 <div class="panel-body">
-<ol style="list-style-type: decimal">
-<li>Let's assume dog misters weigh twice as much as their feline version. Make the new array reflect this.</li>
-</ol>
+<p>Let's assume dog misters weigh twice as much as their feline version. Make the new array reflect this.</p>
 </div>
 </div>
 <p>When we start creating our data for the plot, this is the structured (and nicely annotated) data format that we want. In order to store our variable outside of the scripting environment, we need to convert it into a string.</p>
