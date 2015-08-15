@@ -49,5 +49,5 @@ Along the way, we will learn:
 10. [D3 Transitions](10-d3update.html)
 xx. [What now?](xx-d3future.html)
 
-We are using [gapminder data](http://gapminder.org) and the later lessons are based on an example by [Mike Bostock](http://bost.ocks.org/mike/nations/).
+We are using [gapminder data](http://gapminder.org) and the later lessons are based on an example by [Mike Bostock](http://bost.ocks.org/mike/nations/). In order to make this example slightly easier, we interpolated the data. The data files can be found [here](https://github.com/IsaKiko/D3-visualising-data/blob/gh-pages/resources/nations.json).
 Lessons created by [Isabell Kiral-Kornek](https://github.com/isakiko) and [Robert Kerr](https://github.com/robrkerr).
