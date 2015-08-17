@@ -93,7 +93,7 @@
 <p>First, let's draw a little schematic of how we want the page to be structured.</p>
 <p><img src="img/chart_area.png" alt="What we want.." width="700" /></p>
 <p>We already set up our HTML page to contain a chart area. That's the space we want to fill now. We'll have a picture frame (an SVG-element), our drawing area (a g-element), and in that drawing area, we'll have separate elements for both axes and the area for our circles.</p>
-<p>Firt, we need to link the JavaScript and HTML environement so that we have writing access to the HTML. To do this, we use the <code>.select()</code>. This lets us grab an element by specifying its ID.</p>
+<p>First, we need to link the JavaScript and HTML environment so that we have writing access to the HTML. To do this, we use the <code>.select()</code>. This lets us grab an element by specifying its ID.</p>
 <pre class="js"><code>// Select the chart area by ID 
 var chart_area = d3.select(&quot;#chart_area&quot;);</code></pre>
 <p>Now we're setting up the grid by appending the chart area by the SVG picture frame.</p>
@@ -118,24 +118,18 @@ frame.attr(&quot;height&quot;, frame_height);</code></pre>
 <p>The canvas element will have to fit nicely into the frame. To make it fit, we set a transform attribute and use the translate function.</p>
 <pre class="js"><code>// Shift the canvas and make it slightly smaller than the svg canvas.
 canvas.attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);</code></pre>
-<div id="time-for-a-challenge-i-think" class="challenge panel panel-success">
+<div id="adding-svgs-from-javascript-file" class="challenge panel panel-success">
 <div class="panel-heading">
-<h1><span class="glyphicon glyphicon-pencil"></span>Time for a challenge I think!</h1>
+<h1><span class="glyphicon glyphicon-pencil"></span>Adding SVGs from JavaScript file</h1>
 </div>
 <div class="panel-body">
-<p>Let us consolidate our understanding of SVGs and D3 selectors.</p>
-</div>
-</div>
-<blockquote>
 <ol style="list-style-type: decimal">
-<li>Add a circle element to the HTML using the SVG markup we learnt in lesson 3.</li>
-<li>Use <code>d3.select</code> to get a reference to the circle.</li>
+<li>Add a SVG circle element to the frame.</li>
 <li>Once the circle reference is obtained, make the radius 40px, the border black and the colour green.</li>
 </ol>
-</blockquote>
-<blockquote>
-<p>HINT: use the <code>attr</code> and <code>style</code> methods on the circle object obtained.</p>
-</blockquote>
+<p>HINT: You can use the <code>attr</code> and <code>style</code> methods on the circle object obtained.</p>
+</div>
+</div>
         </div>
       </div>
       <div class="footer">

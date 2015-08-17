@@ -90,7 +90,7 @@ fill now.
 We'll have a picture frame (an SVG-element), our drawing area (a g-element), and in 
 that drawing area, we'll have separate elements for both axes and the area for our circles.
 
-Firt, we need to link the JavaScript and HTML environement so that we have writing access
+First, we need to link the JavaScript and HTML environment so that we have writing access
 to the HTML.
 To do this, we use the `.select()`. This lets us grab an element by specifying its ID.
 
@@ -147,12 +147,9 @@ a transform attribute and use the translate function.
 canvas.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 ~~~
 
-> # Time for a challenge I think! {.challenge}
-> Let us consolidate our understanding of SVGs and D3 selectors.
-
-> 1. Add a circle element to the HTML using the SVG markup we learnt in lesson 3.
-> 2. Use `d3.select` to get a reference to the circle.
-> 3. Once the circle reference is obtained, make the radius 40px, the border black and the colour green.
-
-> HINT: use the `attr` and `style` methods on the circle object obtained.
+> # Adding SVGs from JavaScript file {.challenge}
+> 1. Add a SVG circle element to the frame.
+> 1. Once the circle reference is obtained, make the radius 40px, the border black and the colour green.
+>
+> HINT: You can use the `attr` and `style` methods on the circle object obtained.
 
