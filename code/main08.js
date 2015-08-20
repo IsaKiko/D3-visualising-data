@@ -37,7 +37,6 @@ d3.json("nations.json", function(nations) {
     // domain, range, log scale all determing data values are mapped to graph positions.
 
     var yScale = d3.scale.linear().domain([10, 85]).range([canvas_height, 0]);  // life expectancy
-    var colorScale = d3.scale.category20();
 
     // an alternative notation that d3 offers is to chain everything together using the dot-syntax 
     // (you'll see this a lot). The order is mostly arbitrary. 
@@ -85,7 +84,6 @@ d3.json("nations.json", function(nations) {
     .data(nations, function(d){return d.name});
 
     dot.enter().append("circle").attr("class","dot")                
-                  .style("fill", function(d) { return colorScale(d.region); })
                   .attr("cx", function(d) { return xScale(d.income[d.income.length-1]); }) // this is how attr knows to work with the data
                   .attr("cy", function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1]); })
                   .attr("r", function(d) { return rScale(d.population[d.population.length-1]); });
