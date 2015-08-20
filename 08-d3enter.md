@@ -113,7 +113,7 @@ arbitrary number... for now.
 
 
 > # A new dimension {.challenge}
-> Change the code so that the radius of the circles represents the population. First, create a 'sqrt' scale with a minimum of 0 and a maximum of 5e8. The range should be between 0 and 40. Also, don't forget to include a mapping function for the scale for population. 
+> Change the code so that the radius of the circles represents the population. First, create a 'sqrt' scale with a minimum of 0 and a maximum of 5e8. The range should be between 0 and 40. 
 
 
 <iframe src="http://isakiko.github.io/D3-visualising-data/code/index08.html" width="1000" height="600"></iframe>
