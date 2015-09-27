@@ -125,14 +125,14 @@ our cats, only appended by "Mr.".
 ~~~{.js}
 dog_list = cat_list.map(function(cat) {
 	return {
-		name: "Mr ".concat(cat.name);
+		name: "Mr "+ cat.name;
 	};
 });
 ~~~
 
 When the map function is called using `cat_list.map`, it loops through all elements
 in `cat_list`, calls each temporarily `cat`, and creates a new list `dog_list`, which
-will have one dog per cat. The function `concat` simply concatenates two strings.
+will have one dog per cat. We join the two strings with a simple `+`.
 
 > # How much do dogs weigh? {.challenge}
 > Let's assume dog misters weigh twice as much as their feline version. Make 
@@ -173,7 +173,7 @@ We could now copy this string and save it manually in a `.json` file.
 > ## De-stringify  {.challenge}
 > Let's assume we read in a JSON formatted string from a file and want to 
 > retrieve the nice structure. This process is called parsing and we can 
-> use the JSON.parse() function. Convert the variable back and store it in a 
+> use the JSON.parse() function. Convert the variable `cat_json` back and store it in a 
 > container called `new_cat_list`.
 
 We are now at a stage where we can have a look at the data file that we 

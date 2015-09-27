@@ -90,8 +90,6 @@ A good, brief explanation of this linking between data and elements on the page 
 > # Removing elements {.challenge}
 > 1. Using an `else` case after the `if` statement, create a filter that removes elements from `filtered_data` that correspond to the checkbox that was just unchecked. (i.e. `else { filtered_nations = <--- fill in this bit --->}`). 
 
-> # Another new dimension {.challenge}
-> 1. Have the colour of circles represent the region. Use category20() to make a scale. You will then need to add `.style("fill", function(d) { <-- fill in this bit ---> });` to the enter() function.
 
 As a last step, let's move `enter()` and `exit()` into a separate function. This will become useful when we want to update the data from different elements on the page. 
 
@@ -125,6 +123,9 @@ d3.selectAll(".region_cb").on("change", function() {
 ~~~
 
 In order to create the plot when we first load the page, we will also have to call `update()` outside of our event listeners once. 
+
+> # Another new dimension {.challenge}
+> 1. Have the colour of circles represent the region. Use category20() to make a scale. You will then need to add `.style("fill", function(d) { <-- fill in this bit ---> });` to the enter() function.
 
 By the end of this lesson, your page should look something like this:
 

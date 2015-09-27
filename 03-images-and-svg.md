@@ -17,7 +17,10 @@ we can add an image.
 ~~~{.html}
 <img class='image' src="cat.jpg">
 ~~~
-<img src="code/cat.jpg" style="height:350px">
+
+Note that the image element does not need a closing bracket. Having a closing bracket in this case would imply that there could be content between the brackets, which, in the case of an image does not make sense.
+
+If you want to follow along, you will need to download the cat image from our reposotory. Or you can select any other image from your computer. 
 
 And by adding a class called 'image' to our CSS file, we can define the size and 
 position of the image we load and apply the style to other images we might want to load. 
@@ -70,14 +73,14 @@ The circle element is already defined. 'cx', 'cy', and 'r' are attributes that
 are special to the circle element. 'cx' and 'cy' define the x and y coordinates of 
 the center of the circle, 'r' is the radius of the circle. 
 
-> ## Question {.challenge}
->
-> What happens if 'cx' and 'cy' aren't set?
-
 But what if we don't want to only use circles, but instead want to use other shapes?
 On the internet we can find tons of helpful examples. A good resource to 
 find simple examples of using different, commonly used SVG shapes is 
 [w3school](http://www.w3schools.com/svg/default.asp). 
+
+> ## Question {.challenge}
+>
+> What happens if 'cx' and 'cy' aren't set?
 
 > ## Make art! {.challenge}
 >

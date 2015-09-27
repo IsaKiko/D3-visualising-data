@@ -18,19 +18,19 @@ The main purpose of D3 is to create visualisations of data online. Because it us
 
 As a little refresher, we will repeat a little bit html to set up our page. 
 
-Create `index.html` containing the following:
+Create a new GitHub repository and create a gh-pages branch to which you commit. This is, where our actual page will live.
+Then create `index.html` in the new repository containing the following:
 
 ~~~{.html}
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>The Wealth & Health of the N-Nations</title>
+    <title>The Wealth & Health of Nations</title>
     <link rel="stylesheet" type="text/css" href="main.css" />
   </head>
   <body>
 
-    <h1>The Wealth & Health of the N-Nations</h1>
+    <h1>The Wealth & Health of Nations</h1>
 
     <p id="chart_area"></p>
 
@@ -90,6 +90,13 @@ fill now.
 We'll have a picture frame (an SVG-element), our drawing area (a g-element), and in 
 that drawing area, we'll have separate elements for both axes and the area for our circles.
 
+What we now want to end up with in our html document is this:
+
+~~~{.html}
+<p id="chart_area"> <svg> </svg> </p>
+~~~
+
+But this time, we want to create these elements automatically using JavaScript only.
 First, we need to link the JavaScript and HTML environment so that we have writing access
 to the HTML.
 To do this, we use the `.select()`. This lets us grab an element by specifying its ID.
@@ -103,12 +110,6 @@ Now we're setting up the grid by appending the chart area by the SVG picture fra
 
 ~~~{.js} 
 var frame = chart_area.append("svg");
-~~~
-
-This is equivalent to writing:
-
-~~~{.html}
-<p id="chart_area"> <svg> </svg> </p>
 ~~~
 
 in the HTML file. We chose to append because we now have access to the SVG element without the need to seperately select it by ID.
@@ -151,5 +152,5 @@ canvas.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 > 1. Add a SVG circle element to the frame.
 > 1. Once the circle reference is obtained, make the radius 40px, the border black and the colour green.
 >
-> HINT: You can use the `attr` and `style` methods on the circle object obtained.
+> HINT: You can use the `attr` method on the circle object obtained.
 

@@ -87,16 +87,6 @@
 </ol>
 </div>
 </div>
-<div id="another-new-dimension" class="challenge panel panel-success">
-<div class="panel-heading">
-<h1><span class="glyphicon glyphicon-pencil"></span>Another new dimension</h1>
-</div>
-<div class="panel-body">
-<ol style="list-style-type: decimal">
-<li>Have the colour of circles represent the region. Use category20() to make a scale. You will then need to add <code>.style(&quot;fill&quot;, function(d) { &lt;-- fill in this bit ---&gt; });</code> to the enter() function.</li>
-</ol>
-</div>
-</div>
 <p>As a last step, let's move <code>enter()</code> and <code>exit()</code> into a separate function. This will become useful when we want to update the data from different elements on the page.</p>
 <pre class="js"><code>function update() {
   var dot = data_canvas.selectAll(&quot;.dot&quot;).data(filtered_nations, function(d){return d.name});
@@ -121,6 +111,16 @@
   update();
 });</code></pre>
 <p>In order to create the plot when we first load the page, we will also have to call <code>update()</code> outside of our event listeners once.</p>
+<div id="another-new-dimension" class="challenge panel panel-success">
+<div class="panel-heading">
+<h1><span class="glyphicon glyphicon-pencil"></span>Another new dimension</h1>
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Have the colour of circles represent the region. Use category20() to make a scale. You will then need to add <code>.style(&quot;fill&quot;, function(d) { &lt;-- fill in this bit ---&gt; });</code> to the enter() function.</li>
+</ol>
+</div>
+</div>
 <p>By the end of this lesson, your page should look something like this:</p>
 <iframe src="http://isakiko.github.io/D3-visualising-data/code/index09.html" width="1000" height="600"></iframe>
         </div>

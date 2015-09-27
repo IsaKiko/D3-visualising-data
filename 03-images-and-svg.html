@@ -41,7 +41,8 @@
 </div>
 <p>Websites that only consist of text can be quite boring. So let's have a look at how we can add an image.</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;img</span><span class="ot"> class=</span><span class="st">&#39;image&#39;</span><span class="ot"> src=</span><span class="st">&quot;cat.jpg&quot;</span><span class="kw">&gt;</span></code></pre>
-<p><img src="code/cat.jpg" style="height:350px"></p>
+<p>Note that the image element does not need a closing bracket. Having a closing bracket in this case would imply that there could be content between the brackets, which, in the case of an image does not make sense.</p>
+<p>If you want to follow along, you will need to download the cat image from our reposotory. Or you can select any other image from your computer.</p>
 <p>And by adding a class called 'image' to our CSS file, we can define the size and position of the image we load and apply the style to other images we might want to load.</p>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.image</span> <span class="kw">{</span>
     <span class="kw">width:</span> <span class="dt">200px</span><span class="kw">;</span>
@@ -67,6 +68,7 @@
     <span class="kw">stroke-width:</span> <span class="dt">5</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
 <p>The circle element is already defined. 'cx', 'cy', and 'r' are attributes that are special to the circle element. 'cx' and 'cy' define the x and y coordinates of the center of the circle, 'r' is the radius of the circle.</p>
+<p>But what if we don't want to only use circles, but instead want to use other shapes? On the internet we can find tons of helpful examples. A good resource to find simple examples of using different, commonly used SVG shapes is <a href="http://www.w3schools.com/svg/default.asp">w3school</a>.</p>
 <div id="question" class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Question</h2>
@@ -75,7 +77,6 @@
 <p>What happens if 'cx' and 'cy' aren't set?</p>
 </div>
 </div>
-<p>But what if we don't want to only use circles, but instead want to use other shapes? On the internet we can find tons of helpful examples. A good resource to find simple examples of using different, commonly used SVG shapes is <a href="http://www.w3schools.com/svg/default.asp">w3school</a>.</p>
 <div id="make-art" class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Make art!</h2>

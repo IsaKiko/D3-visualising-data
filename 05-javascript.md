@@ -14,7 +14,7 @@ minutes: 20
 We've learned how to integrate text and graphical objects into our page and we also know how to publish it.
 So far, we might as well just create a plot elsewhere and publish it as an image. But wouldn't it be much better, if the user could interact with the data? To do that, we need to learn a little scripting, and, again, HTML provides a scripting environment.
 Everything between &lt;script&gt; and &lt;/script&gt; within the body will be interpreted as JavaScript code. Since the code we write in the HTML file is executed sequentially, we need to make sure that whenever we refer to an element on the page, this element already exists. An easy way to ensure this is to include scripts just before the end of the body element. 
-Just like we did with styles, we can outsource our code into a separate file with the extension '.js'. 
+Just like we did with styles, we can outsource our code into a separate file with the extension `.js`. 
 
 So, let's go back to using the cat image for now. We want the cat to acknowledge that we click on it.
 First we need to create our `interaction.js` file and link to it in the HTML body.
@@ -38,7 +38,7 @@ The ID is an attribute we can set for the image:
 </div>
 ~~~
 
-Using 'getElementById', we can grab the element from `document` (a magical object representing the entire page) and work with it in the JavaScript file.
+Using `getElementById`, we can grab the element from `document` (a magical object representing the entire page) and work with it in the JavaScript file.
 
 ~~~{.js}
 var cat_image = document.getElementById('cat');
@@ -92,7 +92,7 @@ cat_image.addEventListener("click", function() {
 > * Sources - Here, we can look at the files that are used by our page. And even better, if we navigate to the JavaScript file, we can add breakpoints that stay in place when we reload the page. This allows us to investigate values of variables on the spot.
 
 > ## Feed your pet cat {.challenge}
-> Create a button using the &lt;button&gt; element to feed the cat.
+> Create a button using the &lt;button&gt; element to feed the cat using the steps outlined earlier.
 > Use the alert() function to have the cat thank you.
 
 The next step to having a fully interactive page is to
@@ -137,9 +137,6 @@ function feed(mealsize) {
 };
 ~~~
 
-> ## Let the cat work out  {.challenge}
-> Create a second button 'run around the block', that makes the cat slimmer again.
-
 In JavaScript there are two main data types: strings (text, everything in quotes)
 and numbers. It's important to remember that you can't do maths with strings or
 append numbers together.
@@ -160,6 +157,10 @@ We've also just used that, when we concatenated
 > * contextmenu - Right click
 > * mouseover - Mouse moved over an element
 > * keypress - Key pressed on keyboard
+
+
+> ## Let the cat work out  {.challenge}
+> Create a second button 'run around the block', that makes the cat slimmer again.
 
 
 By the end of this lesson, your page should look something like this:

@@ -29,10 +29,18 @@ Along the way, we will learn:
 
 > ## Prerequisites {.prereq}
 >
-> * Github account and Github client for your operating system (Windows, Linux, iOS)
-> * Participation in at least one SWC workshop
-> * Familiarity with at least one programming language: concept of loops, functions, and conditionals
-> * Familiarity with your favorite text editor (Sublime 2 is a good option)
+> * Github account and Github client for your operating system (Windows, Linux, iOS).
+> * Participation in at least one SWC workshop.
+> * Familiarity with at least one programming language: concept of loops, functions, and conditionals.
+> * Familiarity with your favorite text editor (Sublime 2 is a good option).
+> * You will need to be comfortable with Google! 
+> * Preferably Google Chrome (because of its excellent developer tools).
+
+> ## Setup {.prereq}
+>
+> * Install [live-server](https://www.npmjs.com/package/live-server) for your operating system.
+> * It's probably a good idea to install a GitHub client.
+
 
 
 ## Topics

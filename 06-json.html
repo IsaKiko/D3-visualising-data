@@ -103,10 +103,10 @@ cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : &#39;Sn
 <p>As an example, we can create a list of dogs that have the same names as our cats, only appended by &quot;Mr.&quot;.</p>
 <pre class="js"><code>dog_list = cat_list.map(function(cat) {
     return {
-        name: &quot;Mr &quot;.concat(cat.name);
+        name: &quot;Mr &quot;+ cat.name;
     };
 });</code></pre>
-<p>When the map function is called using <code>cat_list.map</code>, it loops through all elements in <code>cat_list</code>, calls each temporarily <code>cat</code>, and creates a new list <code>dog_list</code>, which will have one dog per cat. The function <code>concat</code> simply concatenates two strings.</p>
+<p>When the map function is called using <code>cat_list.map</code>, it loops through all elements in <code>cat_list</code>, calls each temporarily <code>cat</code>, and creates a new list <code>dog_list</code>, which will have one dog per cat. We join the two strings with a simple <code>+</code>.</p>
 <div id="how-much-do-dogs-weigh" class="challenge panel panel-success">
 <div class="panel-heading">
 <h1><span class="glyphicon glyphicon-pencil"></span>How much do dogs weigh?</h1>
@@ -129,7 +129,7 @@ cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : &#39;Sn
 <h2><span class="glyphicon glyphicon-pencil"></span>De-stringify</h2>
 </div>
 <div class="panel-body">
-<p>Let's assume we read in a JSON formatted string from a file and want to retrieve the nice structure. This process is called parsing and we can use the JSON.parse() function. Convert the variable back and store it in a container called <code>new_cat_list</code>.</p>
+<p>Let's assume we read in a JSON formatted string from a file and want to retrieve the nice structure. This process is called parsing and we can use the JSON.parse() function. Convert the variable <code>cat_json</code> back and store it in a container called <code>new_cat_list</code>.</p>
 </div>
 </div>
 <p>We are now at a stage where we can have a look at the data file that we want to work with. Open 'nations.json'.</p>

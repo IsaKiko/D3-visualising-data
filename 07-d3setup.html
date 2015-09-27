@@ -42,17 +42,16 @@
 <p>We've finally learned everything we need to know to start using D3. D3 is a JavaScript library. This means that we can use all of the JavaScript commands that we have already learned, but on top of these, there are a few new functions that will make our life easier.</p>
 <p>The main purpose of D3 is to create visualisations of data online. Because it uses JavaScript, it is possible to make graphs interactive!</p>
 <p>As a little refresher, we will repeat a little bit html to set up our page.</p>
-<p>Create <code>index.html</code> containing the following:</p>
+<p>Create a new GitHub repository and create a gh-pages branch to which you commit. This is, where our actual page will live. Then create <code>index.html</code> in the new repository containing the following:</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
 <span class="kw">&lt;html&gt;</span>
   <span class="kw">&lt;head&gt;</span>
-    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>
-    <span class="kw">&lt;title&gt;</span>The Wealth <span class="er">&amp;</span> Health of the N-Nations<span class="kw">&lt;/title&gt;</span>
+    <span class="kw">&lt;title&gt;</span>The Wealth <span class="er">&amp;</span> Health of Nations<span class="kw">&lt;/title&gt;</span>
     <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="ot"> href=</span><span class="st">&quot;main.css&quot;</span> <span class="kw">/&gt;</span>
   <span class="kw">&lt;/head&gt;</span>
   <span class="kw">&lt;body&gt;</span>
 
-    <span class="kw">&lt;h1&gt;</span>The Wealth <span class="er">&amp;</span> Health of the N-Nations<span class="kw">&lt;/h1&gt;</span>
+    <span class="kw">&lt;h1&gt;</span>The Wealth <span class="er">&amp;</span> Health of Nations<span class="kw">&lt;/h1&gt;</span>
 
     <span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;chart_area&quot;</span><span class="kw">&gt;&lt;/p&gt;</span>
 
@@ -93,13 +92,13 @@
 <p>First, let's draw a little schematic of how we want the page to be structured.</p>
 <p><img src="img/chart_area.png" alt="What we want.." width="700" /></p>
 <p>We already set up our HTML page to contain a chart area. That's the space we want to fill now. We'll have a picture frame (an SVG-element), our drawing area (a g-element), and in that drawing area, we'll have separate elements for both axes and the area for our circles.</p>
-<p>First, we need to link the JavaScript and HTML environment so that we have writing access to the HTML. To do this, we use the <code>.select()</code>. This lets us grab an element by specifying its ID.</p>
+<p>What we now want to end up with in our html document is this:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;chart_area&quot;</span><span class="kw">&gt;</span> <span class="kw">&lt;svg&gt;</span> <span class="kw">&lt;/svg&gt;</span> <span class="kw">&lt;/p&gt;</span></code></pre>
+<p>But this time, we want to create these elements automatically using JavaScript only. First, we need to link the JavaScript and HTML environment so that we have writing access to the HTML. To do this, we use the <code>.select()</code>. This lets us grab an element by specifying its ID.</p>
 <pre class="js"><code>// Select the chart area by ID 
 var chart_area = d3.select(&quot;#chart_area&quot;);</code></pre>
 <p>Now we're setting up the grid by appending the chart area by the SVG picture frame.</p>
 <pre class="js"><code>var frame = chart_area.append(&quot;svg&quot;);</code></pre>
-<p>This is equivalent to writing:</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;chart_area&quot;</span><span class="kw">&gt;</span> <span class="kw">&lt;svg&gt;</span> <span class="kw">&lt;/svg&gt;</span> <span class="kw">&lt;/p&gt;</span></code></pre>
 <p>in the HTML file. We chose to append because we now have access to the SVG element without the need to seperately select it by ID.</p>
 <p>We also create the canvas inside the frame:</p>
 <pre class="js"><code>// Create canvas inside frame.
@@ -127,7 +126,7 @@ canvas.attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;
 <li>Add a SVG circle element to the frame.</li>
 <li>Once the circle reference is obtained, make the radius 40px, the border black and the colour green.</li>
 </ol>
-<p>HINT: You can use the <code>attr</code> and <code>style</code> methods on the circle object obtained.</p>
+<p>HINT: You can use the <code>attr</code> method on the circle object obtained.</p>
 </div>
 </div>
         </div>
