@@ -65,7 +65,7 @@ by linking to it in the head:
 <!DOCTYPE html>
 <html> 
 	<head> 
-		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<link rel="stylesheet" type="text/css" href="styles.css">
 	</head> 
 ~~~
 
