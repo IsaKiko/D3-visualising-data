@@ -52,7 +52,7 @@ created:
 var xAxis = d3.svg.axis().orient("bottom").scale(xScale);
 ~~~
 
-We also want to orient it horizontally, at the bottom of our canvas.
+`orient()` influences the orientation of the axis and the position of the ticks. We will still need to position it inside the canvas. 
 
 So far, the xAxis exists, but it's not actually showing up anywhere on the page.
 To push the axis to our canvas, we create a new group element (using `.append`).
