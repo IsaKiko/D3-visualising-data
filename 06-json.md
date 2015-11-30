@@ -120,12 +120,12 @@ name for the same one) that relates to an array we already have
 can be done using the `map()` function. 
 
 As an example, we can create a list of dogs that have the same names as 
-our cats, only appended by "Mr.".
+our cats, only appended by "Doggie ".
 
 ~~~{.js}
 dog_list = cat_list.map(function(cat) {
 	return {
-		name: "Mr "+ cat.name;
+		name: "Doggie "+ cat.name;
 	};
 });
 ~~~
@@ -135,9 +135,8 @@ in `cat_list`, calls each temporarily `cat`, and creates a new list `dog_list`, 
 will have one dog per cat. We join the two strings with a simple `+`.
 
 > # How much do dogs weigh? {.challenge}
-> Let's assume dog misters weigh twice as much as their feline version. Make 
+> Let's assume our dogs weigh twice as much as their feline versions. Make 
 > the new array reflect this.
-
 
 When we start creating our data for the plot, this is the structured 
 (and nicely annotated) data format that we want. 
@@ -148,7 +147,7 @@ JavaScript provides an easy way to do this. Variables can get converted from obj
 To convert our list of cats to a string, type
 
 ~~~{.js}
-var cat_json = JSON.stringify(cat_list)
+var cat_json = JSON.stringify(cat_list);
 ~~~ 
 
 The resulting string is what we would normally store in a `.json` file to 
