@@ -64,12 +64,14 @@
 <p>The last bit, that's important here is an HTML element (paragraph) we create. We give it an id <code>chart_area</code>. This is the area we reserve for our pretty chart. We will use JavaScript (and D3) to fill it in.</p>
 <p>Now, let's write main.js.</p>
 <p>Similar to the syntax we've already seen (<code>JSON.stringify</code>), D3-specific functions can be called using a <code>d3.</code>-syntax.</p>
-<p>The first thing we need, is of course our data, which is stored in 'nations.json'. D3 provides a handy function to read in <code>json</code>-files:</p>
-<pre class="d3"><code>d3.json(&quot;resources/nations.json&quot;, function(nations) { })</code></pre>
+
+<p>The first thing we need, is of course our data, which we can find at <a href="https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/code/nations.json">https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/code/nations.json</a>. D3 provides a handy function to read in <code>json</code>-files:
+<pre class="d3"><code>var dataUrl = &quot;https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/code/nations.json&quot;;
+d3.json(dataUrl, function(nations) { })</code></pre>
 <p>This line probably needs a little explanation and we'll go through it bit by bit:</p>
 <ul>
 <li><code>d3.json()</code> is called the function call. In this case, we have a function that reads in a json file, parses it, and is also able to do something with the parsed data on the way.</li>
-<li>The first argument <code>&quot;resources/nations.json&quot;</code> tells the function where to get the data we want to have parsed.</li>
+<li>The first argument <code>dataUrl</code> tells the function where to get the data we want to have parsed.</li>
 <li><code>function(...){...}</code> is called the callback function. It is a so-called 'inline' function, which means it has no name (we're only operating in the object space here). This also means we can't use this function anywhere else in our code. The code we put inside the curly brackets is the code that's run once d3.json() is called and the data is loaded.</li>
 <li>D3 assigns the name <code>nations</code> to the parsed object it returns. We can only use 'nations' within the callback function, this means our code only knows of <code>nations</code> inside the curly brackets.</li>
 <li>What seems unusual, but is actually quite common, is that this function call doesn't return anything. It is simply executed and displayed (if we tell it to), but no value is returned.</li>

@@ -52,11 +52,11 @@ Now, let's write main.js.
 
 Similar to the syntax we've already seen (`JSON.stringify`), D3-specific functions can be called using a `d3.`-syntax.
 
-The first thing we need, is of course our data, which we can find at 'https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/resources/nations.json'.
+The first thing we need, is of course our data, which we can find at 'https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/code/nations.json'.
 D3 provides a handy function to read in `json`-files:
 
 ~~~{.d3}
-var dataUrl = "https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/resources/nations.json";
+var dataUrl = "https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/code/nations.json";
 d3.json(dataUrl, function(nations) { }
 ~~~
 

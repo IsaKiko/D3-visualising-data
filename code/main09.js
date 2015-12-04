@@ -1,5 +1,6 @@
 // Load the data.
-d3.json("nations.json", function(nations) {
+var dataUrl = "https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/code/nations.json";
+d3.json(dataUrl, function(nations) {
 
 	var filtered_nations = nations.map(function(nation) { return nation; });
 

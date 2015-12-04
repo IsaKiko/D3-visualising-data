@@ -1,12 +1,12 @@
 // Load the data.
-d3.json("nations.json", function(nations) {
+var dataUrl = "https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/code/nations.json";
+d3.json(dataUrl, function(nations) {
 
 	var filtered_nations = nations.map(function(nation) { return nation;});
 	var year_idx = parseInt(document.getElementById("year_slider").value)-1950;
 
 	// Calculate the averages for each region.
 	var region_names = ["Sub-Saharan Africa", "South Asia", "Middle East & North Africa", "America", "East Asia & Pacific", "Europe & Central Asia"];
-
 
 	var region_data = [];
 	for (var i in region_names) {
