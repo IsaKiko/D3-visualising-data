@@ -52,17 +52,18 @@ Now, let's write main.js.
 
 Similar to the syntax we've already seen (`JSON.stringify`), D3-specific functions can be called using a `d3.`-syntax.
 
-The first thing we need, is of course our data, which is stored in 'nations.json'.
+The first thing we need, is of course our data, which we can find at 'https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/resources/nations.json'.
 D3 provides a handy function to read in `json`-files:
 
 ~~~{.d3}
-d3.json("resources/nations.json", function(nations) { }
+var dataUrl = "https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/resources/nations.json";
+d3.json(dataUrl, function(nations) { }
 ~~~
 
 This line probably needs a little explanation and we'll go through it bit by bit: 
 
 * `d3.json()` is called the function call. In this case, we have a function that reads in a json file, parses it, and is also able to do something with the parsed data on the way.
-* The first argument `"resources/nations.json"` tells the function where to get the data we want to have parsed.
+* The first argument `dataUrl` tells the function where to get the data we want to have parsed.
 * `function(...){...}` is called the callback function. It is a so-called 'inline' function, which means it has no name (we're only operating in the object space here). This also means we can't use this function anywhere else in our code. The code we put inside the curly brackets is the code that's run once d3.json() is called and the data is loaded.
 * D3 assigns the name `nations` to the parsed object it returns. We can only use 'nations' within the callback function, this means our code only knows of `nations` inside the curly brackets.
 * What seems unusual, but is actually quite common, is that this function call doesn't return anything. It is simply executed and displayed (if we tell it to), but no value is returned. 

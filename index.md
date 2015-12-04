@@ -38,7 +38,6 @@ Along the way, we will learn:
 
 > ## Setup {.prereq}
 >
-> * Install [live-server](https://www.npmjs.com/package/live-server) for your operating system.
 > * It's probably a good idea to install a GitHub client.
 
 
