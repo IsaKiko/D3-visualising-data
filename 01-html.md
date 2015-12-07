@@ -54,9 +54,6 @@ Since our browser understands this language, we can instantly
 open our local index.html file and the browser will interpret our
 code as visual components. 
 
-If you are using a windows system, run nodejs command prompt. Otherwise, open a terminal. Navigate to the folder containing index.html in your terminal and type 
-'live-server'. The live server will automatically look for a file called index.html and open it in the browser. If you want to look at a different file, amend the url in the browser by '/yourfilename.html'.
-
 HTML has more predefined elements that will vary in size and style. 
 To divide the page into different section, we can create a division 
 using &lt;div&gt; to open and &lt;/div&gt; to close it. 
