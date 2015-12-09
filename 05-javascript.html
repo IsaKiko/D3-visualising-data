@@ -62,17 +62,17 @@ cat_image.addEventListener(&quot;click&quot;, meow);</code></pre>
 <pre class="js"><code>function meow() {
     alert(&quot;Meow!&quot;);
 };</code></pre>
-<p>If we want to execute a sequence of functions, we can also create something that's called <code>inline</code> function, that is only defined in the scope of this specific callback. Within this function, we can call <code>meow()</code>, but also othe functions, like <code>sleep()</code> (which doesn't exist, yet).</p>
+<p>If we want to execute a sequence of functions, we can also create something that's called <code>inline</code> function, that is only defined in the scope of this specific callback. Within this function, we can call <code>meow()</code>, but also othe functions, like <code>purr()</code> (which doesn't exist, yet).</p>
 <pre class="js"><code>var cat_image = document.getElementById(&#39;cat&#39;);
 cat_image.addEventListener(&quot;click&quot;, function() {
     meow(); 
-    sleep();
+    purr();
 });</code></pre>
 <p>Obviously, we can also drop the <code>meow()</code> function, if we don't want to use it ever again:</p>
 <pre class="js"><code>var cat_image = document.getElementById(&#39;cat&#39;);
 cat_image.addEventListener(&quot;click&quot;, function() {
     alert(&quot;Meow!&quot;); 
-    sleep();
+    purr();
 });</code></pre>
 <div id="debugging-in-a-browser" class="callout panel panel-info">
 <div class="panel-heading">
