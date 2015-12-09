@@ -91,7 +91,7 @@ cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : 'Snowba
 This process is called 'nesting'.
 
 > # Nesting {.challenge}
-> 1. Append the array by a third cat, not entering a name or weight.
+> 1. Append a third cat to the array, not entering a name or weight.
 > 2. Do all animals have to have the same attribute fields?
 > 3. Use the console of your browser to read the values of your object. 
 
@@ -125,7 +125,7 @@ our cats, only appended by "Doggie ".
 ~~~{.js}
 dog_list = cat_list.map(function(cat) {
 	return {
-		name: "Doggie "+ cat.name;
+		name: "Doggie "+ cat.name
 	};
 });
 ~~~
