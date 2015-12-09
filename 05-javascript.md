@@ -62,13 +62,13 @@ function meow() {
 };
 ~~~
 
-If we want to execute a sequence of functions, we can also create something that's called `inline` function, that is only defined in the scope of this specific callback. Within this function, we can call `meow()`, but also othe functions, like `sleep()` (which doesn't exist, yet).
+If we want to execute a sequence of functions, we can also create something that's called `inline` function, that is only defined in the scope of this specific callback. Within this function, we can call `meow()`, but also othe functions, like `purr()` (which doesn't exist, yet).
 
 ~~~{.js}
 var cat_image = document.getElementById('cat');
 cat_image.addEventListener("click", function() {
 	meow();	
-	sleep();
+	purr();
 });
 ~~~
 
