@@ -78,7 +78,7 @@ Obviously, we can also drop the `meow()` function, if we don't want to use it ev
 var cat_image = document.getElementById('cat');
 cat_image.addEventListener("click", function() {
 	alert("Meow!");	
-	sleep();
+	purr();
 });
 ~~~
 
