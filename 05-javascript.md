@@ -54,7 +54,7 @@ cat_image.addEventListener("click", meow);
 ~~~
 
 Our event listener takes two arguments: the type of event and what we want it to do. 
-We want to execute a function called `meow()`, which will open a pop-up window. We can use the JavaScript function alert().
+We want to execute a callback function called `meow()`, which will open a pop-up window. We can use the JavaScript function alert().
 
 ~~~{.js}
 function meow() {
