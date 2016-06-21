@@ -145,8 +145,11 @@ The canvas element will have to fit nicely into the frame. To make it fit, we se
 a transform attribute and use the translate function. 
 
 ~~~{.js}
-// Shift the canvas and make it slightly smaller than the svg canvas.
+// Shift the canvas
 canvas.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+// and make it slightly smaller than the svg canvas
+canvas.attr("width", canvas_width);
+canvas.attr("height", canvas_height);
 ~~~
 
 > # Adding SVGs from JavaScript file {.challenge}

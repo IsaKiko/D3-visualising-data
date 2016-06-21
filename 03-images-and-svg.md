@@ -11,7 +11,7 @@ minutes: 20
 > * Understanding Scalable Vector Graphics (SVGs) 
 > * Adding multiple SVGs to your page
 
-Websites that only consist of text can be quite boring. So let's have a look at how
+Websites that only consist of text can sometimes be quite boring. So let's have a look at how
 we can add an image. 
 
 ~~~{.html}
@@ -20,7 +20,7 @@ we can add an image.
 
 Note that the image element does not need a closing bracket. Having a closing bracket in this case would imply that there could be content between the brackets, which, in the case of an image does not make sense.
 
-If you want to follow along, you will need to download the cat image from our reposotory. Or you can select any other image from your computer. 
+If you want to follow along, you will need to download the cat image from our repository. Or you can select any other image from your computer. 
 
 And by adding a class called 'image' to our CSS file, we can define the size and 
 position of the image we load and apply the style to other images we might want to load. 

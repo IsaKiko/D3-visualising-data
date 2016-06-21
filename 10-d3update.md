@@ -14,7 +14,7 @@ minutes: 20
 At the moment, the year that we are looking at in the data is hardcoded. 
 Naturally, we want the user to be able to see how the data changes over time. 
 
-Let's do this a slider. The first thing we need is add this slider to the user interface (our website). A slider element is actually an `input` element with the the type `range`. We give it a ID in order to be able to select is from our JavaScript script, a class to style it (if we choose to), and a minimum, maximum, and step size that depend on our data. `value` is what we read out in order to know the position of the slider. Let's initialise it somewhere in the middle (1979).
+Let's do this a slider. The first thing we need is add this slider to the user interface (our website). A slider element is actually an `input` element with the type `range`. We give it a ID in order to be able to select is from our JavaScript script, a class to style it (if we choose to), and a minimum, maximum, and step size that depend on our data. `value` is what we read out in order to know the position of the slider. Let's initialise it somewhere in the middle (1979).
 
 ~~~{.html}
 <input type="range" name="range" class="slider" id="year_slider" value="1979" min="1950" max="2008" step="1" ><br>
