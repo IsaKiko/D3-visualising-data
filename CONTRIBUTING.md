@@ -27,6 +27,11 @@ You also agree to abide by our
     or for [our other lessons][swc-lessons].
     Comments on issues and reviews of pull requests are equally welcome.
 
+5. To build the site from modified Markdown files, please run
+   `make preview`.
+   You might need to install [pandoc](http://pandoc.org/installing.html) as well as some python modules first:
+   `pip install pandocfilters CommonMark==0.5.4`
+
 ## Other Resources
 
 1.  This lesson is based on the template found at
