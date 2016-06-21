@@ -57,7 +57,7 @@ D3 provides a handy function to read in `json`-files:
 
 ~~~{.d3}
 var dataUrl = "https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/code/nations.json";
-d3.json(dataUrl, function(nations) { }
+d3.json(dataUrl, function(nations) { })
 ~~~
 
 This line probably needs a little explanation and we'll go through it bit by bit: 
