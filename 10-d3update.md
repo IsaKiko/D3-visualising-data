@@ -42,17 +42,23 @@ So far, the update function only knows how to handle new data (`.enter`) and rem
 In addition to `d3.enter()` and `d3.exit()`, D3 also offers `d3.transition` to handle updating data. First, we need to define how to transition between data points. We might want to interpolate between to values linearly over the duration of 200 ms, like this:
 
 ~~~{.js}
-dot.transition().easeLinear.duration(200);
+dot.transition().ease(d3.easeLinear).duration(200);
 ~~~
 
 Now we know how it's gonna happen, but we need to tell the transition what the actual change is.
 We can simply move the part of our code that updates the circle attributes from our `enter` function to our `transition` function. Now, instead of using a hardcoded index for the year, we use the index `year_idx` that we updated in our event listener earlier.
 
+You might also noticed that the bigger circles cover the smaller ones. We can
+use `sort()` in our d3 selections to take care of that problem. `sort()` takes
+a function that compares two values, and return a positive, negative, or zero
+result, and reinserts the selected elements based on their differences.
+
 ~~~{.js}
 dot.enter().append("circle").attr("class","dot")
+				.sort(function (a, b) { return b.population[year_idx] - a.population[year_idx]; })
         .style("fill", function(d) { return colorScale(d.region); });
 dot.exit().remove();
-dot.transition().easeLinear.duration(200)
+dot.transition().ease(d3.easeLinear).duration(200)
 				.attr("cx", function(d) { return xScale(d.income[year_idx]); }) // this is how attr knows to work with the data
 				.attr("cy", function(d) { return yScale(d.lifeExpectancy[year_idx]); })
 				.attr("r", function(d) { return rScale(d.population[year_idx]); });
@@ -83,6 +89,7 @@ and then create event listeners for moving the mouse into a circle and out of on
 
 ~~~{.js}
 dot.enter().append("circle").attr("class","dot")
+			.sort(function (a, b) { return b.population[year_idx] - a.population[year_idx]; })
 			.style("fill", function(d) { return colorScale(d.region); })
 			.on("mouseover", function(d){return tooltip.style("visibility", "visible").text(d.name);})
 			.on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
