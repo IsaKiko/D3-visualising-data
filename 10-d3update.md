@@ -38,10 +38,11 @@ d3.select("#year_slider").on("input", function () {
 ~~~
 
 So far, the update function only knows how to handle new data (`.enter`) and removed data (`.exit`), but not what to do when we update data.
+
 In addition to `d3.enter()` and `d3.exit()`, D3 also offers `d3.transition` to handle updating data. First, we need to define how to transition between data points. We might want to interpolate between to values linearly over the duration of 200 ms, like this:
 
 ~~~{.js}
-dot.transition().ease("linear").duration(200);
+dot.transition().easeLinear.duration(200);
 ~~~
 
 Now we know how it's gonna happen, but we need to tell the transition what the actual change is.
@@ -51,7 +52,7 @@ We can simply move the part of our code that updates the circle attributes from 
 dot.enter().append("circle").attr("class","dot")
         .style("fill", function(d) { return colorScale(d.region); });
 dot.exit().remove();
-dot.transition().ease("linear").duration(200)
+dot.transition().easeLinear.duration(200)
 				.attr("cx", function(d) { return xScale(d.income[year_idx]); }) // this is how attr knows to work with the data
 				.attr("cy", function(d) { return yScale(d.lifeExpectancy[year_idx]); })
 				.attr("r", function(d) { return rScale(d.population[year_idx]); });
