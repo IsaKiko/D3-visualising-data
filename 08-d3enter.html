@@ -39,7 +39,7 @@
 </div>
 </div>
 <p>We design our axes based on our data. This means we have to know the minimum and maximum values of our data and have to decide whether we want linear or logarithmic axes.</p>
-<pre class="js"><code>// Create a logarithmic scale for the income 
+<pre class="js"><code>// Create a logarithmic scale for the income
 var xScale = d3.scale.log(); // income
 xScale.domain([250, 1e5]); // set minimum and maximum value
 xScale.range([0, canvas_width]); // set minimum and maximum range on the page</code></pre>
@@ -74,12 +74,12 @@ canvas.append(&quot;g&quot;)
 <p><img src="img/data_structure.png" alt="data structure" width="500" /></p>
 <pre class="js"><code>var data_canvas = canvas.append(&quot;g&quot;)
   .attr(&quot;class&quot;, &quot;data_canvas&quot;);
-      
+
 var dot = data_canvas.selectAll(&quot;.dot&quot;)
   .data(nations, function(d){return d.name});
 
 dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
-  .attr(&quot;cx&quot;, function(d) { return xScale(d.income[d.income.length-1]); }) 
+  .attr(&quot;cx&quot;, function(d) { return xScale(d.income[d.income.length-1]); })
   .attr(&quot;cy&quot;, function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1]); })
   .attr(&quot;r&quot;, 5);</code></pre>
 <p>We're starting this bit by adding a <code>g</code> element to our canvas. This group is going to be our data canvas, so that's the class name we give it. We then select everything of the class <code>dot</code>. This is an empty set at the moment, since we haven't created any dots, yet. We are then telling our page where to find the data, using <code>.data(nations)</code>.</p>
@@ -105,7 +105,7 @@ dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
       </div>
     </div>
     <!-- Javascript placed at the end of the document so the pages load faster -->
-    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
   </body>
 </html>

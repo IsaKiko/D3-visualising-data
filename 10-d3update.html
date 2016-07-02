@@ -84,10 +84,10 @@ dot.transition().ease(&quot;linear&quot;).duration(200)
 <p>Next, we might want to create a tooltip. Let's go have a look at what's already out there. The creator of D3 has put up some code for pretty much everything you can imagine. The example for a simple tooltip can be found <a href="http://bl.ocks.org/biovisualize/1016860">here</a>. We need to first create the variable tooltip:</p>
 <pre class="js"><code>var tooltip = d3.select(&quot;body&quot;)
     .append(&quot;div&quot;)
-    .style(&quot;position&quot;, &quot;absolute&quot;)  
+    .style(&quot;position&quot;, &quot;absolute&quot;)
     .style(&quot;visibility&quot;, &quot;hidden&quot;);</code></pre>
 <p>and then create event listeners for moving the mouse into a circle and out of one. Different from the example on the web page, we want to display the specific country we are looking at. When we move the mouse, we want the tool tip to move with it. And the moment we leave a circle, we want the tool tip to hide again.</p>
-<pre class="js"><code>dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)                        
+<pre class="js"><code>dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
             .style(&quot;fill&quot;, function(d) { return colorScale(d.region); })
             .on(&quot;mouseover&quot;, function(d){return tooltip.style(&quot;visibility&quot;, &quot;visible&quot;).text(d.name);})
             .on(&quot;mousemove&quot;, function(){return tooltip.style(&quot;top&quot;, (d3.event.pageY-10)+&quot;px&quot;).style(&quot;left&quot;,(d3.event.pageX+10)+&quot;px&quot;);})
@@ -112,7 +112,7 @@ var region_names = [&quot;Sub-Saharan Africa&quot;, &quot;South Asia&quot;, &quo
 var region_data = [];
 for (var i in region_names) {
     var filtered_nations_by_regions = nations.filter(function(nation){
-        return (nation.region == region_names[i]); 
+        return (nation.region == region_names[i]);
     });
     region_data[i] = calc_mean(filtered_nations_by_regions);
 }
@@ -132,9 +132,9 @@ var filtered_reg_nations = region_data.map(function(region) { return region;});<
             var kpop = region_data[k].population[year_idx2];
             var kincome = region_data[k].income[year_idx2];
             var klife = region_data[k].lifeExpectancy[year_idx2];
-            sum_income += kpop*kincome; 
+            sum_income += kpop*kincome;
             sum_lifeExpectancy += kpop*klife;
-            sum_population += kpop;             
+            sum_population += kpop;
         }
 
         mean_income[year_idx2] = sum_income/sum_population;
@@ -185,7 +185,7 @@ var filtered_reg_nations = region_data.map(function(region) { return region;});<
       </div>
     </div>
     <!-- Javascript placed at the end of the document so the pages load faster -->
-    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
   </body>
 </html>
