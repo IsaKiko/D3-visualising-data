@@ -104,13 +104,13 @@ var region_names = ["Sub-Saharan Africa", "South Asia", "Middle East & North Afr
 
 var region_data = [];
 for (var i in region_names) {
-	var filtered_nations_by_regions = nations.filter(function(nation){
+	var filtered_nations_by_regions = nations.filter( function(nation) {
 		return (nation.region == region_names[i]);
 	});
 	region_data[i] = calc_mean(filtered_nations_by_regions);
 }
 
-var filtered_reg_nations = region_data.map(function(region) { return region;});
+var filtered_reg_nations = region_data.map(function(region) { return region; });
 ~~~
 
 Next, we write a function that returns an array of objects region_data. We want it to contain the mean income and life for each year across all nations, weighted by population.
