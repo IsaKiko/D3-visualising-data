@@ -55,13 +55,15 @@ result, and reinserts the selected elements based on their differences.
 
 ~~~{.js}
 dot.enter().append("circle").attr("class","dot")
-				.sort(function (a, b) { return b.population[year_idx] - a.population[year_idx]; })
         .style("fill", function(d) { return colorScale(d.region); });
 dot.exit().remove();
 dot.transition().ease(d3.easeLinear).duration(200)
 				.attr("cx", function(d) { return xScale(d.income[year_idx]); }) // this is how attr knows to work with the data
 				.attr("cy", function(d) { return yScale(d.lifeExpectancy[year_idx]); })
 				.attr("r", function(d) { return rScale(d.population[year_idx]); });
+
+data_canvas.selectAll(".dot")
+	.sort(function (a, b) { return b.population[year_idx] - a.population[year_idx]; });
 ~~~
 
 > ## Other transition functions you might want {.callout}
