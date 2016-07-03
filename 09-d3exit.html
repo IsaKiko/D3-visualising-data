@@ -41,7 +41,7 @@
 </div>
 <p>Our plot is pretty busy. We might not want to display everything all the time. The goal for this lesson is to update the plot based on what kind of data we want to display.</p>
 <p>First, we need to find a way to filter our data. We use the function <code>filter</code> to do this. Similar to previous functions (e.g. <code>map</code>), this function iterates over each of the elements in the array <code>nations</code>, temporarily calling it <code>nation</code>. It only includes elements in the new array <code>filtered_nations</code> if the function evaluates to 'true' for that element. Here this will be the case for nations whose population in 2009 was larger than 10,000,000.</p>
-<pre class="js"><code>var filtered_nations = nations.filter(function(nation){ 
+<pre class="js"><code>var filtered_nations = nations.filter(function(nation){
     return nation.population[nation.population.length-1] &gt; 10000000;
 });</code></pre>
 <div id="filtering-by-region" class="challenge panel panel-success">
@@ -65,7 +65,7 @@
 <p>Inside this function, we want to decide what happens based on which of the checkboxes got checked or unchecked. The first step to doing this is to read out the value of the checkbox. We set this value to the region string earlier. Reading it can be done using the <code>this</code> keyword. <code>this</code> inside a callback function refers to the element through which the function got called, in our case the checkbox.</p>
 <pre class="js"><code>var type = this.value;</code></pre>
 <p>Now that we have the region string saved in <code>type</code>, we want to add the data points for the new nations to include if the checkbox is now checked. Whether it is checked or not is stored in <code>this.checked</code>. To add the new nations to <code>filtered_nations</code>, we use the <code>concat</code> function, which, similar to the <code>concat</code> function we used with strings, joins the array given as an argument onto the end of the first array. Here we join <code>new_nations</code> onto the end of <code>filtered_nations</code>.</p>
-<pre class="js"><code>if (this.checked) { // adding data points 
+<pre class="js"><code>if (this.checked) { // adding data points
   var new_nations = nations.filter(function(nation){ return nation.region == type;});
   filtered_nations = filtered_nations.concat(new_nations);
 }</code></pre>
@@ -91,7 +91,7 @@
 <pre class="js"><code>function update() {
   var dot = data_canvas.selectAll(&quot;.dot&quot;).data(filtered_nations, function(d){return d.name});
 
-  dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)                
+  dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
                 .style(&quot;fill&quot;, function(d) { return colorScale(d.region); });
                 .attr(&quot;cx&quot;, function(d) { return xScale(d.income[d.income.length-1]); }) // this is how attr knows to work with the data
                 .attr(&quot;cy&quot;, function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1]); })
@@ -122,7 +122,7 @@
 </div>
 </div>
 <p>By the end of this lesson, your page should look something like this:</p>
-<iframe src="http://isakiko.github.io/D3-visualising-data/code/index09.html" width="1000" height="600"></iframe>
+<iframe src="code/index09.html" width="1000" height="600"></iframe>
         </div>
       </div>
       <div class="footer">
@@ -133,7 +133,7 @@
       </div>
     </div>
     <!-- Javascript placed at the end of the document so the pages load faster -->
-    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
   </body>
 </html>

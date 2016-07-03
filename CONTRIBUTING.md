@@ -1,14 +1,9 @@
-Software Carpentry is an open source project,
-and we welcome contributions of all kinds:
-new lessons,
-fixes to existing material,
-bug reports,
-and reviews of proposed changes are all equally welcome.
+Software Carpentry is an open source project, and we welcome contributions of
+all kinds: new lessons, fixes to existing material, bug reports, and reviews of
+proposed changes are all equally welcome.
 
-By contributing,
-you are agreeing that Software Carpentry may redistribute your work under
-[these licenses][license].
-You also agree to abide by our
+By contributing, you are agreeing that Software Carpentry may redistribute your
+work under [these licenses][license]. You also agree to abide by our
 [contributor code of conduct][conduct].
 
 ## Getting Started

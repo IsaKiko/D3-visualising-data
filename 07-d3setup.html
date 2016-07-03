@@ -97,7 +97,7 @@ d3.json(dataUrl, function(nations) { })</code></pre>
 <p>What we now want to end up with in our html document is this:</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;chart_area&quot;</span><span class="kw">&gt;</span> <span class="kw">&lt;svg&gt;</span> <span class="kw">&lt;/svg&gt;</span> <span class="kw">&lt;/p&gt;</span></code></pre>
 <p>But this time, we want to create these elements automatically using JavaScript only. First, we need to link the JavaScript and HTML environment so that we have writing access to the HTML. To do this, we use the <code>.select()</code>. This lets us grab an element by specifying its ID.</p>
-<pre class="js"><code>// Select the chart area by ID 
+<pre class="js"><code>// Select the chart area by ID
 var chart_area = d3.select(&quot;#chart_area&quot;);</code></pre>
 <p>Now we're setting up the grid by appending the chart area by the SVG picture frame.</p>
 <pre class="js"><code>var frame = chart_area.append(&quot;svg&quot;);</code></pre>
@@ -141,7 +141,7 @@ canvas.attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;
       </div>
     </div>
     <!-- Javascript placed at the end of the document so the pages load faster -->
-    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
   </body>
 </html>

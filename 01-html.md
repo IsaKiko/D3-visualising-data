@@ -11,12 +11,12 @@ minutes: 20
 > * Understand the structure of an HTML document
 > * Understand the different elements within an HTML document
 
-A way of writing that is understood by all web browsers is HTML: 
-hypertext markup language. Since we don’t have the ability to do 
-logical operations (loops, etc.) with HTML alone, it’s 
+A way of writing that is understood by all web browsers is HTML:
+hypertext markup language. Since we don’t have the ability to do
+logical operations (loops, etc.) with HTML alone, it’s
 not technically a programming language.
 
-Let’s see how we can get our browser to greet the world. 
+Let’s see how we can get our browser to greet the world.
 We need to:
 
 * Create a local folder 'my_first_webpage'
@@ -30,45 +30,45 @@ file to expect. To do this, we start our file with:
 <!DOCTYPE html>
 <html>
 	--> Everything goes in here <--
-</html> 
+</html>
 ~~~
 
-Every good webpage consists of a head and a body. 
+Every good webpage consists of a head and a body.
 The header (&lt;head&gt; to open and &lt;/head&gt; to close) normally
 contains any meta-data. This could be name of the page or
-the inclusion of other files. 
+the inclusion of other files.
 
 The body (&lt;body&gt; to open and &lt;/body&gt; to close) is where all our content
-should go. So everything we type between the brackets will be displayed 
+should go. So everything we type between the brackets will be displayed
 on our page.
 
 ~~~ {.html}
-<head> 
+<head>
 </head>
-<body> 
+<body>
 	Hello world!
-</body> 
+</body>
 ~~~
 
-Since our browser understands this language, we can instantly 
+Since our browser understands this language, we can instantly
 open our local index.html file and the browser will interpret our
-code as visual components. 
+code as visual components.
 
-HTML has more predefined elements that will vary in size and style. 
-To divide the page into different section, we can create a division 
-using &lt;div&gt; to open and &lt;/div&gt; to close it. 
+HTML has more predefined elements that will vary in size and style.
+To divide the page into different section, we can create a division
+using &lt;div&gt; to open and &lt;/div&gt; to close it.
 
 ~~~ {.html}
 <!DOCTYPE html>
-<html> 
-	<head> 
+<html>
+	<head>
 		--> meta-data (like page title, inclusion of other files) <--
-	</head> 
-	<body> 
+	</head>
+	<body>
 		<div>Hello world!</div>
 		<div>Hello back!</div>
-	</body> 
-</html> 
+	</body>
+</html>
 ~~~
 
 > ## Other elements {.challenge}
@@ -78,4 +78,4 @@ using &lt;div&gt; to open and &lt;/div&gt; to close it.
 > What about the difference between two &lt;div&gt; elements and two &lt;span&gt; elements?
 > Create a heading that is in italics. Never be afraid to google to find out how to use certain elements and find out about the syntax!
 
-Useful resources are also the mozilla developer network ([MDN](https://developer.mozilla.org/en-US/)) and [w3school](http://www.w3schools.com). 
+Useful resources are also the mozilla developer network ([MDN](https://developer.mozilla.org/en-US/)) and [w3school](http://www.w3schools.com).
